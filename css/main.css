@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
     font-family: 'Lato', sans-serif;
     background: #444;
@@ -139,4 +140,8 @@ h2 {
 .paragraph p {
     color: #444;
     margin-top: -30px;
+=======
+mpaper-tabs {
+    font-faily: sans-serif;
+>>>>>>> FETCH_HEAD
 }

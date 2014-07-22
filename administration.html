@@ -9,6 +9,7 @@
 
     <!-- Import Polymer Components -->
     <script src="bower_components/platform/platform.js"></script>
+    <link rel="import" href="bower_components/core-elements/core-elements.html">
     <link rel="import" href="bower_components/paper-elements/paper-elements.html">
     <link rel="import" href="bower_components/polymer/polymer.html">
 
@@ -18,10 +19,22 @@
 </head>
 
 <body>
-    <h1>TODO Administration Page</h1>
-	<a href="index.html">Index</a>
+    <core-scaffold>
+        <core-header-panel navigation flex mode="seamed">
+            <core-toolbar>TODO Administration Page</core-toolbar>
+            <core-menu theme="core-light-theme" selected="0">
+                <core-item icon="settings" label="Settings"></core-item>
+                <core-item icon="mail" label="Mail"></core-item>
+            </core-menu>
+        </core-header-panel>
+        <div tool>Tool</div>
+        <div><a href="index.html">Index</a>
+        </div>
+    </core-scaffold>
+
     <!-- jQuery (for later) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
 </body>
 
 </html>
