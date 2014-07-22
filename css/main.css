@@ -1,0 +1,142 @@
+body {
+    font-family: 'Lato', sans-serif;
+    background: #444;
+    margin: 0;
+}
+h1,
+h2 {
+    text-shadow: 2px 2px #333;
+}
+h1 {
+    color: #81c161;
+    font-size: 60pt;
+    line-height: 20%;
+}
+h1 span {
+    color: #aaa;
+    font-weight: 300;
+}
+h2 {
+    color: #ccc;
+    font-size: 30pt;
+    line-height: 10%;
+    font-weight: 300;
+}
+.wrapper {
+    width: 70%;
+    margin-top: 100px;
+    margin: 0px auto;
+}
+.content_wrapper {
+    background: #eee;
+    width: 100%;
+    height: 100%;
+}
+#menu {
+    width: 100%;
+    position: relative;
+    height: 100px;
+    background: #fff;
+    padding: 0;
+    margin: 0;
+    float: left;
+}
+#menu ul {
+    display: table;
+    margin: 0px auto;
+    width: 100%;
+    padding: 0px;
+    height: 100px;
+}
+
+
+<!-- home --> 
+
+#menu ul li:nth-child(1) {
+    background: #84ff99;
+    color: #478852;
+}
+
+#menu li.home{
+    background: #84ff99;
+    color: #478852;
+}
+
+#menu li.home:hover {
+    background: #5eff72;
+    transition: 0.4s;
+}
+#menu li.home:active {
+    background: #20ff3d;
+    transition: 0.4s;
+}
+
+
+<!-- register --> 
+
+#menu ul li:nth-child(2) {
+    background: #90ddff;
+    color: #57859a;
+}
+
+#menu li.register {
+    background: #90ddff;
+    color: #57859a;
+}
+#menu li.register:hover {
+    background: #6dd1ff;
+    transition: 0.4s;
+}
+#menu li.register:active {
+    background: #3bc5ff;
+    transition: 0.4s;
+}
+
+
+<!-- Admin -->
+
+#menu ul li:nth-child(3) {
+    background: #f691ff;
+    color: #985b9d;
+}
+#menu li.admin {
+    background: #f691ff;
+    color: #985b9d;
+}
+#menu li.admin:hover {
+    background: #f367ff;
+    transition: 0.4s;
+}
+#menu li.admin:active {
+    background: #f13fff;
+    transition: 0.4s;
+}
+
+
+#menu li {
+    display: table-cell;
+    width: 33%;
+    text-decoration: none;
+    vertical-align: middle;
+}
+#menu ul li h3 {
+    text-align: center;
+    font-size: 16pt;
+    font-weight: lighter;
+}
+
+.paragraph {
+    padding: 35px;
+    margin-top: 100px;    
+}
+
+.paragraph h3 {
+    font-size: 50px;
+    color: #c96ec9;
+    text-shadow: 1px 1px #555;
+}
+
+.paragraph p {
+    color: #444;
+    margin-top: -30px;
+}
