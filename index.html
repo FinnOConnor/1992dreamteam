@@ -2,46 +2,50 @@
 <html>
 
 <head>
-
-    <!-- Polymer Imports -->
-    <script src="../platform/platform.js"></script>
-    <link rel="import" href="../polymer/polymer.html">
-    <link rel="import" href="bower_components/paper-elements/paper-elements.html">
-
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tawa Cricket - Home</title>
 
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700,300' rel='stylesheet' type='text/css'>
 
     <!-- JQuery -->
-     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
     <!-- Main CSS file -->
     <link href='css/main.css' rel='stylesheet' type='text/css'>
 
+    <!-- Bootstrap Stuff -->
+    <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery for Bootstrap's JavaScript plugins -->
+    <script src="bootstrap/jquery.min.js"></script>
+    <!-- Include all compiled Bootstrap plugins -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    
+
     <script>
-    $( document ).ready(function() {
-        $('.register').click(function(e){
-            //e.preventDefault();
-            $(".paragraph").load("registration.html");
+        $(document).ready(function() {
+            $('.register').click(function(e) {
+                //e.preventDefault();
+                $(".paragraph").load("registration.html");
+
+            });
+
+            $('.home').click(function(e) {
+                $(".paragraph").hide();
+                $(".paragraph").load("index.html");
+                $(".paragraph").show();
+
+                //$('.paragraph').animate({'display' : 'block'},100);
+            });
+
 
         });
-        
-        $('.home').click(function(e){
-            $(".paragraph").hide();
-            $(".paragraph").load("index.html");   
-            $(".paragraph").show();
-            
-            //$('.paragraph').animate({'display' : 'block'},100);
-        });
-            
+    </script>
 
-    });
 
-    </script>    
-    
-    
 </head>
 
 <body>
@@ -64,12 +68,13 @@
         </div>
 
         <div class="content_wrapper">
-            
+
             <div class="paragraph">
                 <h3>You there, welcome!</h3>
-                
-                <p>HI! Welcome to the Tawa Cricket registration website. Here you can register yourself or your child into a cricket team. HOLY FUCKBALLS!</p></div>
-        
+
+                <p>HI! Welcome to the Tawa Cricket registration website. Here you can register yourself or your child into a cricket team. HOLY FUCKBALLS!</p>
+            </div>
+
         </div>
 
 
