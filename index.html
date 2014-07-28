@@ -24,10 +24,21 @@
     $( document ).ready(function() {
         $('.register').click(function(e){
             e.preventDefault();
-            
-            $(".paragraph").load("registration.html");
+            $(".paragraph").slideDown( "slow", function() {
+                $(".paragraph").load("registration.html");
+            });
 
         });
+        
+        $('.home').click(function(e){
+            $(".paragraph").hide();
+            $(".paragraph").load("index.html");   
+            $(".paragraph").show();
+            
+            //$('.paragraph').animate({'display' : 'block'},100);
+        });
+            
+
     });
 
     </script>    

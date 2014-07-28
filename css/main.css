@@ -50,44 +50,44 @@ h2 {
 }
 
 
-<!-- home --> 
+<!-- register --> 
 
-#menu ul li:nth-child(1) {
+#menu ul li:nth-child(2) {
     background: #84ff99;
     color: #478852;
 }
 
-#menu li.home{
+#menu li.register{
     background: #84ff99;
     color: #478852;
 }
 
-#menu li.home:hover {
+#menu li.register:hover {
     background: #5eff72;
     transition: 0.4s;
 }
-#menu li.home:active {
+#menu li.register:active {
     background: #20ff3d;
     transition: 0.4s;
 }
 
 
-<!-- register --> 
+<!-- home --> 
 
-#menu ul li:nth-child(2) {
+#menu ul li:nth-child(1) {
     background: #90ddff;
     color: #57859a;
 }
 
-#menu li.register {
+#menu li.home {
     background: #90ddff;
     color: #57859a;
 }
-#menu li.register:hover {
+#menu li.home:hover {
     background: #6dd1ff;
     transition: 0.4s;
 }
-#menu li.register:active {
+#menu li.home:active {
     background: #3bc5ff;
     transition: 0.4s;
 }
@@ -96,19 +96,19 @@ h2 {
 <!-- Admin -->
 
 #menu ul li:nth-child(3) {
-    background: #f691ff;
-    color: #985b9d;
+    background: #ff9e6e;
+    color: #a76543;
 }
 #menu li.admin {
-    background: #f691ff;
-    color: #985b9d;
+    background: #ff9e6e;
+    color: #a76543;
 }
 #menu li.admin:hover {
-    background: #f367ff;
+    background: #ff8345;
     transition: 0.4s;
 }
 #menu li.admin:active {
-    background: #f13fff;
+    background: #ff5b08;
     transition: 0.4s;
 }
 
@@ -129,6 +129,7 @@ h2 {
 .paragraph {
     padding: 35px;
     margin-top: 100px;    
+    transition: width 2s;
 }
 
 .paragraph h3 {
