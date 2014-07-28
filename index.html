@@ -21,20 +21,21 @@
 
     <script>
         $(document).ready(function() {
+            
+            /* Loads Registration page */
             $('.register').click(function(e) {
-                //e.preventDefault();
                 $(".paragraph").load("registration.html");
-
             });
 
+            /* Loads Home page */
             $('.home').click(function(e) {
-                $(".paragraph").hide();
-                $(".paragraph").load("index.html");
-                $(".paragraph").show();
-
-                //$('.paragraph').animate({'display' : 'block'},100);
+                $('body').load("index.html");
             });
 
+            /* Loads Admin page */
+            $('.admin').click(function(e) {
+                $('body').load("administration.html");
+            });
 
         });
     </script>
