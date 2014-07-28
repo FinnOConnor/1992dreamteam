@@ -17,14 +17,16 @@
     <link href='css/main.css' rel='stylesheet' type='text/css'>
 
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
     <script>
         $(document).ready(function() {
             
             /* Loads Registration page */
             $('.register').click(function(e) {
-                $(".paragraph").load("registration.html");
+                $(".registration_container").load("registration.html");
+            });
+            
+         $('.register').click(function(e) {
+                $('.registration_container').css({'visibility' : 'visible'},500);
             });
 
             /* Loads Home page */
@@ -64,11 +66,13 @@
 
         <div class="content_wrapper">
 
-            <div class="paragraph">
+            <div class="home_container">
                 <h3>You there, welcome!</h3>
 
                 <p>HI! Welcome to the Tawa Cricket registration website. Here you can register yourself or your child into a cricket team. HOLY FUCKBALLS!</p>
             </div>
+            
+            <div class="registration_container"></div>
 
         </div>
 
