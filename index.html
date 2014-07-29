@@ -18,20 +18,31 @@
 
 
     <script>
-        $(document).ready(function() {
+        $(document).ready(function() {    
+            
+            var home_height = $('#home_container').height() + 70;
+            
+            /* Puts the registration form at the same y position as the Home page */
+            $("#registration_container").css("margin-top", -home_height +"px"); 
+            
+            
+            
+            console.log(home_height);
             
             /* Loads Registration page */
             $('.register').click(function(e) {
-                $(".registration_container").load("registration.html");
-            });
-            
-         $('.register').click(function(e) {
-                $('.registration_container').css({'visibility' : 'visible'},500);
+                /* Load the external HTML file */
+                $("#registration_container").load("registration.html");
+                $("#registration_container").animate({left: 0},400);
+                $("#home_container").animate({left: "200%"},400);
+                
+                              
             });
 
             /* Loads Home page */
             $('.home').click(function(e) {
-                $('body').load("index.html");
+                $("#home_container").animate({left: "0"},400);
+                $("#registration_container").animate({left: "200%"},400);                
             });
 
             /* Loads Admin page */
@@ -46,38 +57,36 @@
 </head>
 
 <body>
+        <div class="wrapper">
+            <h1>TAWA<span> / CRICKET</span></h1>
 
-    <div class="wrapper">
-        <h1>TAWA<span> / CRICKET</span></h1>
+            <div id="menu">
+                <ul>
+                    <li class="home">
+                        <h3>Home</h3>
+                    </li>
+                    <li class="register">
+                        <h3>Register</h3>
+                    </li>
+                    <li class="admin">
+                        <h3>Admin</h3>
+                    </li>
+                </ul>
+            </div>
 
-        <div id="menu">
-            <ul>
-                <li class="home">
-                    <h3>Home</h3>
-                </li>
-                <li class="register">
-                    <h3>Register</h3>
-                </li>
-                <li class="admin">
-                    <h3>Admin</h3>
-                </li>
-            </ul>
-        </div>
 
-        <div class="content_wrapper">
 
-            <div class="home_container">
+            <div id="home_container" class="container">
                 <h3>You there, welcome!</h3>
 
                 <p>HI! Welcome to the Tawa Cricket registration website. Here you can register yourself or your child into a cricket team. HOLY FUCKBALLS!</p>
             </div>
             
-            <div class="registration_container"></div>
+            <div id="registration_container" class="container"></div>
 
         </div>
 
 
-    </div>
 
 </body>
 

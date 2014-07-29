@@ -11,10 +11,12 @@ h1 {
     color: #81c161;
     font-size: 60pt;
     line-height: 20%;
+    
 }
 h1 span {
     color: #aaa;
     font-weight: 300;
+
 }
 h2 {
     color: #ccc;
@@ -22,28 +24,27 @@ h2 {
     line-height: 10%;
     font-weight: 300;
 }
+
 .wrapper {
-    width: 70%;
-    margin-top: 100px;
-    margin: 0px auto;
+	width: 900px;
+	position: absolute;
+	left: 50%;
+	margin-left: -450px;
+
 }
-.content_wrapper {
-    background: #eee;
-    width: 100%;
-    height: 100%;
-}
+
+
 #menu {
     width: 100%;
     position: relative;
     height: 100px;
     background: #fff;
     padding: 0;
-    margin: 0;
-    float: left;
+    float: left;    
 }
 #menu ul {
     display: table;
-    margin: 0px auto;
+    margin: 0px auto;   
     width: 100%;
     padding: 0px;
     height: 100px;
@@ -126,23 +127,31 @@ h2 {
     font-weight: lighter;
 }
 
-.home_container {
+.container {
     padding: 35px;
-    margin-top: 100px;    
-    transition: width 2s;
+    background: #eee; 
+	position: relative;
+	clear: both;
+	width: 830px;
+	top: 0;      
 }
 
-.home_container h3 {
+.container h3 {
     font-size: 50px;
     color: #c96ec9;
     text-shadow: 1px 1px #555;
+    margin-top: 0px;
 }
 
-.home_container p {
+.container p {
     color: #444;
     margin-top: -30px;
 }
 
-.registration_container {
-    visibility: visible;
+#registration_container {
+    left: 200%; 
+}
+
+#home_container {
+
 }
