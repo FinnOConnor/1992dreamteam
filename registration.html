@@ -7,16 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tawa Cricket - Register</title>
     <!-- CSS -->
-    <link href="css/main.css." rel="stylesheet">
-
+    <link href="css/main.css" rel="stylesheet">
+    <!-- JQuery -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.junior').click(function(e) {
+                $(".registration_container").load("forms/junior.html");
+            });
+            $('.senior').click(function(e) {
+                $(".registration_container").load("forms/senior.html");
+            });
+            $('.volunteer').click(function(e) {
+                $(".registration_container").load("forms/volunteer.html");
+            });
+        });
+    </script>
 </head>
 
-<body style="display: none;">
+<body>
     <div class="registration_container">
         <h1>TODO Registration Page</h1>
-        <a href="index.html">Index</a>
+        <button class="junior">Junior</button>
+        <button class="senior">Senior</button>
+        <button class="volunteer">Volunteer</button>
     </div>
-
 </body>
 
 </html>
