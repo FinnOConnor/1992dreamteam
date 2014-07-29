@@ -30,44 +30,63 @@ h2 {
 	position: absolute;
 	left: 50%;
 	margin-left: -450px;
-
 }
 
-
-#menu {
+.menu {
     width: 100%;
     position: relative;
     height: 100px;
     background: #fff;
     padding: 0;
-    float: left;    
+    overflow: hidden;
+    top: 0;
+    float: left;  
 }
-#menu ul {
+
+.menu ul {
     display: table;
+    height: 100px;    
     margin: 0px auto;   
     width: 100%;
-    padding: 0px;
-    height: 100px;
+    margin-left: -40px;   
+    overflow: hidden;
+    top: 0;
+    float: left;
+}
+
+.menu li {
+    display: table-cell;
+    width: 33%;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.menu ul li h3 {
+    text-align: center;
+    font-size: 16pt;
+    font-weight: lighter;
 }
 
 
 <!-- register --> 
 
-#menu ul li:nth-child(2) {
+.menu ul li:nth-child(2) {
+    background: #84ff99;
+    
+    color: #478852;
+}
+
+.menu li.register{
     background: #84ff99;
     color: #478852;
 }
 
-#menu li.register{
-    background: #84ff99;
-    color: #478852;
-}
-
-#menu li.register:hover {
+.menu li.register:hover {
     background: #5eff72;
     transition: 0.4s;
 }
-#menu li.register:active {
+.menu li.register:active {
     background: #20ff3d;
     transition: 0.4s;
 }
@@ -75,20 +94,20 @@ h2 {
 
 <!-- home --> 
 
-#menu ul li:nth-child(1) {
+.menu ul li:nth-child(1) {
     background: #90ddff;
     color: #57859a;
 }
-
-#menu li.home {
+    
+.menu li.home {
     background: #90ddff;
     color: #57859a;
 }
-#menu li.home:hover {
+.menu li.home:hover {
     background: #6dd1ff;
     transition: 0.4s;
 }
-#menu li.home:active {
+.menu li.home:active {
     background: #3bc5ff;
     transition: 0.4s;
 }
@@ -96,34 +115,59 @@ h2 {
 
 <!-- Admin -->
 
-#menu ul li:nth-child(3) {
+.menu ul li:nth-child(3) {
     background: #ff9e6e;
     color: #a76543;
 }
-#menu li.admin {
+.menu li.admin {
     background: #ff9e6e;
     color: #a76543;
 }
-#menu li.admin:hover {
+.menu li.admin:hover {
     background: #ff8345;
     transition: 0.4s;
 }
-#menu li.admin:active {
+.menu li.admin:active {
     background: #ff5b08;
     transition: 0.4s;
 }
 
 
-#menu li {
-    display: table-cell;
-    width: 33%;
-    text-decoration: none;
-    vertical-align: middle;
-    cursor: pointer;
+#sub_menu {
+    width: 300px;
+    padding-top: 100px;
+    position: absolute;
+    height: 100px;
+    float: left;    
+    transition: 0.5s;
+    background-color:transparent;
 }
-#menu ul li h3 {
+
+#sub_menu:hover {
+    margin-top: -100px;
+}
+
+#sub_menu ul {
+    display: table;
+    margin: 0px auto;   
+    width: 100%;
+    padding: 0px;
+    height: 100px;
+}
+
+#sub_menu li {
+    background: #52ff77;
+    transition: 0.2s;    
+}
+
+#sub_menu li:hover {
+    background: #42d361;
+    color:  #a0edb0;
+}
+
+#sub_menu ul li h3 {
     text-align: center;
-    font-size: 16pt;
+    font-size: 12pt;
     font-weight: lighter;
 }
 
