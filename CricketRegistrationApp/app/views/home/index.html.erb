@@ -14,7 +14,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
     <!-- Main CSS file -->
-    <link href='css/main.css' rel='stylesheet' type='text/css'>
+    <%= stylesheet_link_tag "main" %>
 
 
     <script>
@@ -55,7 +55,7 @@
         <div class="wrapper">
             <h1>TAWA<span> | CRICKET</span></h1>
             
-            <div id="facebook"><img src="img/facebook.png"><span>check out our page!</span></div>
+            <div id="facebook"><img src=<%= asset_path 'facebook.png' %>><span>check out our page!</span></div>
 
             <div id="menu" class="menu">
                 <ul>
