@@ -44,6 +44,31 @@ h2 {
     float: left;  
 }
 
+#facebook {
+    float: right;
+    width: 200px;
+    top:0;
+    margin-top: -75px;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+#facebook:hover{
+    opacity: 1;
+    transition: 0.4s;
+}
+
+#facebook img{
+    position: absolute;
+    margin-top: -5px;
+}
+
+#facebook span {
+    color: #777;
+    margin-left: 45px;
+    font-variant: small-caps;    
+}
+
 .menu ul {
     display: table;
     height: 100px;    
@@ -183,7 +208,7 @@ h2 {
 
 .container h3 {
     font-size: 50px;
-    color: #c96ec9;
+    color: #6e9fc9;
     text-shadow: 1px 1px #555;
     margin-top: 0px;
 }
