@@ -80,6 +80,7 @@ h2 {
     float: left;
 }
 
+
 .menu li {
     display: table-cell;
     width: 33%;
@@ -209,6 +210,7 @@ h2 {
 .container h3 {
     font-size: 50px;
     color: #6e9fc9;
+    line-height: 150%;
     text-shadow: 1px 1px #555;
     margin-top: 0px;
 }
@@ -216,7 +218,7 @@ h2 {
 .container p {
     color: #444;
     margin-top: -30px;
-    line-height: 180%;
+    line-height: 200%;
     font-weight: 100;
 }
 
