@@ -33,16 +33,16 @@
             $('.register').click(function(e) {
                 /* Load the external HTML file */
                 $("#registration_container").load("CircketApp/app/views/players/index.html.erb.");
-                $("#registration_container").animate({left: 0},400);
-                $("#home_container").animate({left: "200%"},400);
+                $("#registration_container").animate({right: 0},400);
+                $("#home_container").animate({right: "200%"},400);
                 
                               
             });
 
             /* Loads Home page */
             $('.home').click(function(e) {
-                $("#home_container").animate({left: "0"},400);
-                $("#registration_container").animate({left: "200%"},400);                
+                $("#home_container").animate({right: "0"},400);
+                $("#registration_container").animate({right: "200%"},400);                
             });
 
             /* Loads Admin page */
