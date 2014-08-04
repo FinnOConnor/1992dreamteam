@@ -1,1 +1,0 @@
-json.extract! @parent, :id, :p_first_name, :p_surname, :p_gender, :p_home_phone, :p_mobile, :p_email, :s_first_name, :s_surname, :s_gender, :s_address, :s_home_phone, :s_mobile, :s_email, :created_at, :updated_at
