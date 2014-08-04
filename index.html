@@ -21,33 +21,28 @@
         $(document).ready(function() {    
             
             var home_height = $('#home_container').height() + 70;
+            var selectedPage = null;
             
             /* Puts the registration form at the same y position as the Home page */
             $("#registration_container").css("margin-top", -home_height +"px"); 
-            
 
-            
-            console.log(home_height);
-            
             /* Loads Registration page */
             $('.register').click(function(e) {
-                /* Load the external HTML file */
-                $("#registration_container").load("CircketApp/app/views/players/index.html.erb.");
-                $("#registration_container").animate({right: 0},400);
-                $("#home_container").animate({right: "200%"},400);
-                
-                              
+                slide(this);    
             });
+            
+            function slide(page){
+                /* Load the external HTML file */
+                console.log($("#registration_container").attr("right"));
+                $("#registration_container").animate({right: 0},400);
+                $("#home_container").animate({right: "200%"},400);   
+                $("#registration_container").load($(page).attr("id") +".html");                    
+            }
 
             /* Loads Home page */
             $('.home').click(function(e) {
                 $("#home_container").animate({right: "0"},400);
                 $("#registration_container").animate({right: "200%"},400);                
-            });
-
-            /* Loads Admin page */
-            $('.admin').click(function(e) {
-                $('body').load("administration.html");
             });
 
         });
@@ -59,6 +54,8 @@
 <body>
         <div class="wrapper">
             <h1>TAWA<span> | CRICKET</span></h1>
+            
+            <div id="facebook"><img src="img/facebook.png"><span>check out our page!</span></div>
 
             <div id="menu" class="menu">
                 <ul>
@@ -72,15 +69,15 @@
                         <div id="sub_menu" class="menu">
 
                             <ul class="registration">
-                                <li clas="junior">
+                                <li id="junior" class="register">
                                     <h3>Junior</h3>
                                 </li>
                                     
-                                <li clas="senior">
+                                <li id ="senior" class="register">
                                     <h3>Senior</h3>
                                 </li>    
                                 
-                                <li clas="volunteer">
+                                <li id="volunteer" class="register">
                                     <h3>Volunteer</h3>
                                 </li>    
                                 
@@ -99,9 +96,12 @@
 
             <div id="home_container" class="container">
                 <h3>You there, welcome!</h3>
+                
+
 
                 <p>HI! Welcome to the Tawa Cricket registration website. Here you can register yourself or your child into a cricket team. What a thing!<br><br>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+               
             </div>
             
             <div id="registration_container" class="container"></div>
