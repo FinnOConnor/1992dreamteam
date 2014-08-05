@@ -17,6 +17,7 @@
       <th>S home phone</th>
       <th>S mobile phone</th>
       <th>S email</th>
+	  <th>Children</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -38,6 +39,7 @@
         <td><%= parent.s_home_phone %></td>
         <td><%= parent.s_mobile_phone %></td>
         <td><%= parent.s_email %></td>
+		<td><%=  %></td>
         <td><%= link_to 'Show', parent %></td>
         <td><%= link_to 'Edit', edit_parent_path(parent) %></td>
         <td><%= link_to 'Destroy', parent, method: :delete, data: { confirm: 'Are you sure?' } %></td>

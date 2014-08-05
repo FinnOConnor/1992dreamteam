@@ -35,8 +35,16 @@
                 /* Load the external HTML file */
                 console.log($("#registration_container").attr("right"));
                 $("#registration_container").animate({right: 0},400);
-                $("#home_container").animate({right: "200%"},400);   
-                $("#registration_container").load($(page).attr("id") +".html");                    
+                $("#home_container").animate({right: "200%"},400);  
+				if($(page).attr("id")== "junior"){
+					$("#registration_container").load("../parents/new");
+				}		
+				if($(page).attr("id") =="senior"){
+					$("#registration_container").load("../players/new");
+				}
+				if($(page).attr("id")== "volunteer"){
+					$("#registration_container").load("../coaches/new");
+				}				
             }
 
             /* Loads Home page */
@@ -105,7 +113,12 @@
                
             </div>
             
-            <div id="registration_container" class="container"></div>
+            <div id="registration_container" class="container">
+			
+			
+
+			
+			</div>
 
         </div>
 
