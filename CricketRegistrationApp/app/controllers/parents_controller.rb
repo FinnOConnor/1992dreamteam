@@ -15,6 +15,7 @@ class ParentsController < ApplicationController
   # GET /parents/new
   def new
     @parent = Parent.new
+	@player = Player.new
   end
 
   # GET /parents/1/edit
@@ -25,7 +26,8 @@ class ParentsController < ApplicationController
   # POST /parents.json
   def create
     @parent = Parent.new(parent_params)
-
+	@player = Player.new(params[:player])
+	
     respond_to do |format|
       if @parent.save
         format.html { redirect_to @parent, notice: 'Parent was successfully created.' }
