@@ -18,6 +18,7 @@
     <script>
         $(document).ready(function() {    
             
+            var height = $(window).height();
             var home_height = $('#home_container').height() + 70;
             var selectedPage = null;
             
@@ -57,9 +58,12 @@
                 $("#registration_container").animate({right: "200%"},400);       
                 
                 /*Gets rid of the header */          
-                $("#container_header").animate({position : "absolute", left: "0px"},200);
-                $("#menu").animate({left : "-666px", margin: "0px auto", },200);
+                $("#container_header").animate({marginLeft: "-667px"}, 400, function(){
+                    $("#wrapper_header").animate({marginTop: "-125px"},400);});
                 
+                
+                $("#administration_container").load("../admin/index");
+                $("#administration_container").animate({top: "0", marginTop: "100px",height: height-100 + "px"},600);         
 
             });
     
@@ -75,8 +79,10 @@
             
             <div id="container_header">
     
-            <h1>TAWA<span> | CRICKET</span></h1>
-            
+            <div class="title">  
+                <h1>TAWA<span> | CRICKET</span></h1>
+            </div>
+                
             <div id="facebook"><img src=<%= asset_path 'facebook.png' %>><span>check out our page!</span></div>
 
             <div id="menu" class="menu">
@@ -131,14 +137,14 @@
             <div id="registration_container" class="container">
 			
 			</div>
+
+
+        </div>
+
             
             <div id="administration_container" class="container">
 			
 			</div>
-
-        </div>
-
-
 
 </body>
 

@@ -240,6 +240,11 @@ h2 {
 
 #registration_container {
     right: 200%; 
+    top: 26px;
+    background: #efefef;
+    padding: 35px;
+    width: 930px;
+    
 }
 
 #home_container {
@@ -247,6 +252,22 @@ h2 {
 }
 
 #administration_container {
-    right: 200%; 
+    top: -200%; 
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+}
+
+
+<!-- Admin Page -->
+
+#admin_sidebar{
+    position: absolute;
+    float: left;
+    top: 0;
+    width: 333px;
+    height: 100%;
+    background: #d6855c;
 }
 
