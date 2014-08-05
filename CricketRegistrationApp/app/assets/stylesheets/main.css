@@ -11,7 +11,6 @@ h2 {
 h1 {
     color: #81c161;
     font-size: 60pt;
-    line-height: 20%;
     
 }
 h1 span {
@@ -26,11 +25,27 @@ h2 {
     font-weight: 300;
 }
 
+#wrapper_header {
+    width: 100%;
+    margin: 0;
+    height: 226px;
+    background: #555;
+    top: 0;
+    position: absolute;
+}
+
+#container_header {
+    width: 1000px;
+    margin: 0px auto;
+}    
+
 .wrapper {
-	width: 900px;
+	width: 1000px;
 	position: absolute;
 	left: 50%;
-	margin-left: -450px;
+	margin-left: -500px;
+    margin-top: 226px;
+    top: 0;
 }
 
 .menu {
@@ -100,7 +115,6 @@ h2 {
 
 .menu ul li:nth-child(2) {
     background: #84ff99;
-    
     color: #478852;
 }
 
@@ -161,7 +175,7 @@ h2 {
 
 
 #sub_menu {
-    width: 300px;
+    width: 333px;
     padding-top: 100px;
     position: absolute;
     height: 100px;
@@ -199,24 +213,26 @@ h2 {
 }
 
 .container {
-    padding: 35px;
-    background: #eee; 
 	position: relative;
 	clear: both;
-	width: 830px;
+    margin-top: 25px;
+	width: 100%;
 	top: 0;      
 }
 
 .container h3 {
     font-size: 50px;
-    color: #6e9fc9;
+    color: #99c6f0;
     line-height: 150%;
-    text-shadow: 1px 1px #555;
+    text-shadow: 1px 1px #222;
     margin-top: 0px;
 }
 
 .container p {
-    color: #444;
+    color: #dbdbdb;
+    text-shadow: 2px 2px #333;   
+    font-family: georgia;
+    font-size: 14pt;
     margin-top: -30px;
     line-height: 200%;
     font-weight: 100;
@@ -228,5 +244,9 @@ h2 {
 
 #home_container {
 
+}
+
+#administration_container {
+    right: 200%; 
 }
 

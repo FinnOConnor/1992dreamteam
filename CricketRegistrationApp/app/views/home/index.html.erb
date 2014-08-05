@@ -52,6 +52,18 @@
                 $("#home_container").animate({right: "0"},400);
                 $("#registration_container").animate({right: "200%"},400);                
             });
+            
+            $('.admin').click(function(e) {
+                /* Hides the other containers */
+                $("#home_container").animate({right: "200%"},400);
+                $("#registration_container").animate({right: "200%"},400);       
+                
+                /*Gets rid of the header */          
+                $("#container_header").animate({position : "absolute", left: "0px"},200);
+                $("#menu").animate({left : "-666px", margin: "0px auto", },200);
+                
+
+            });
     
 
         });
@@ -61,7 +73,10 @@
 </head>
 
 <body>
-        <div class="wrapper">
+        <div id="wrapper_header">
+            
+            <div id="container_header">
+    
             <h1>TAWA<span> | CRICKET</span></h1>
             
             <div id="facebook"><img src=<%= asset_path 'facebook.png' %>><span>check out our page!</span></div>
@@ -95,13 +110,15 @@
                         </div>       
                         
                     </li>
-                    <li class="admin" onclick="self.location='../admin/index.html.erb'">
+                    <li class="admin">
                         <h3>Admin</h3>
                     </li>
                 </ul>
             </div>
+         </div>
 
-
+        </div>    
+        <div class="wrapper">
 
             <div id="home_container" class="container">
                 <h3>You there, welcome!</h3>
@@ -115,8 +132,9 @@
             
             <div id="registration_container" class="container">
 			
-			
-
+			</div>
+            
+            <div id="administration_container" class="container">
 			
 			</div>
 
