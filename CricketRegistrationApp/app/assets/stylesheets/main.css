@@ -38,27 +38,7 @@ h2 {
 #container_header {
     width: 1000px;
     margin: 0px auto;
-}    
-
-.wrapper {
-	width: 1000px;
-	position: absolute;
-	left: 50%;
-	margin-left: -500px;
-    margin-top: 226px;
-    top: 0;
-}
-
-.menu {
-    width: 100%;
-    position: relative;
-    height: 100px;
-    background: #fff;
-    padding: 0;
-    overflow: hidden;
-    top: 0;
-    float: left;  
-}
+}  
 
 #facebook {
     float: right;
@@ -84,6 +64,28 @@ h2 {
     margin-left: 45px;
     font-variant: small-caps;    
 }
+
+
+.wrapper {
+	width: 1000px;
+	position: absolute;
+	left: 50%;
+	margin-left: -500px;
+    margin-top: 226px;
+    top: 0;
+}
+
+.menu {
+    width: 100%;
+    position: relative;
+    height: 100px;
+    background: #fff;
+    padding: 0;
+    overflow: hidden;
+    top: 0;
+    float: left;  
+}
+
 
 .menu ul {
     display: table;
@@ -242,13 +244,14 @@ h2 {
 #registration_container {
     right: 200%; 
     top: 26px;
-    background: #efefef;
-    padding: 35px;
-    width: 930px;
+    background: #fcfcfc;
+    padding: 50px;
+    width: 900px;
 }
 
 #registration_container h3{
-    color: #84ff99
+    color: #84ff99;
+    text-shadow: 1px 1px #777;    
 }
 
 #home_container {

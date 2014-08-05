@@ -28,7 +28,6 @@
     padding-left:0;
 }
 
-
 #admin_sidebar ul li{
     margin: 0px auto;
     width: 90%;
@@ -75,4 +74,33 @@
     z-index: 2;
 }
 
+.field input {
+    background: #fff;
+    padding: 15px;
+    width: 400px;
+    border: 6px solid #ededed;
+    font-size: 12pt;
+}
+
+.field input:hover , input:focus {
+    border: 6px solid #afffac;
+}
+
+.field {
+    font-size: 14pt;
+    color: #444;
+    line-height: 250%;
+}
+
+.names ul {
+    display: table;
+    height: 50px;
+    width: 900px;
+}
+
+.names ul li {
+    display: table-cell;
+    text-decoration: none;
+    height: 50px;
+}
 
