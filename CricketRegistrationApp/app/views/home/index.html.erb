@@ -16,8 +16,7 @@
 
 
     <script>
-        $(document).ready(function() {    
-            
+        $(document).ready(function() {                
             var height = $(window).height();
             var home_height = $('#home_container').height() + 70;
             var selectedPage = null;
@@ -53,18 +52,20 @@
             });
             
             $('.admin').click(function(e) {
+                
+                /* Load the admin page */                
+                $("#administration_container").load("../admin/index");
+
                 /* Hides the other containers */
                 $("#home_container").animate({right: "200%"},400);
                 $("#registration_container").animate({right: "200%"},400);       
+         
                 
-                /*Gets rid of the header */          
+                /*Gets rid of the header and slides the admin pane in  */          
                 $("#container_header").animate({marginLeft: "-667px"}, 400, function(){
-                    $("#wrapper_header").animate({marginTop: "-125px"},400);});
+                    $("#wrapper_header").animate({marginTop: "-125px"},400, function(){                $("#administration_container").animate({top: "0", marginTop: "100px",height: height-100 + "px"},600);});});
                 
                 
-                $("#administration_container").load("../admin/index");
-                $("#administration_container").animate({top: "0", marginTop: "100px",height: height-100 + "px"},600);         
-
             });
     
 
@@ -141,10 +142,12 @@
 
         </div>
 
-            
+        <div id="administration_wrapper">    
             <div id="administration_container" class="container">
-			
+                   
 			</div>
+            <div id="back"><center><h4>back</h4></center></div> 
+        </div>
 
 </body>
 

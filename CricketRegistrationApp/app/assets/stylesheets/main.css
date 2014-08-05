@@ -25,6 +25,7 @@ h2 {
     font-weight: 300;
 }
 
+
 #wrapper_header {
     width: 100%;
     margin: 0;
@@ -244,7 +245,10 @@ h2 {
     background: #efefef;
     padding: 35px;
     width: 930px;
-    
+}
+
+#registration_container h3{
+    color: #84ff99
 }
 
 #home_container {
@@ -259,15 +263,4 @@ h2 {
     z-index: -1;
 }
 
-
-<!-- Admin Page -->
-
-#admin_sidebar{
-    position: absolute;
-    float: left;
-    top: 0;
-    width: 333px;
-    height: 100%;
-    background: #d6855c;
-}
 
