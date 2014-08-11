@@ -28,10 +28,8 @@ class PlayersController < ApplicationController
 
     respond_to do |format|
       if @player.save
-		flash[:success] = "Thanks for registering"
-		redirect_to :action => 'new'
-        #format.html { redirect_to @player, notice: 'Player was successfully created.' }
-        #format.json { render :show, status: :created, location: @player }
+        format.html { redirect_to @player, notice: 'Player was successfully created.' }
+        format.json { render :show, status: :created, location: @player }
       else
         format.html { render :new }
         format.json { render json: @player.errors, status: :unprocessable_entity }
@@ -71,6 +69,6 @@ class PlayersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def player_params
-      params.require(:player).permit(:first_name, :surname, :gender, :date_of_birth, :address, :contact_phone, :email, :school, :school_year, :school_next_year, :grade_last_season, :senior, :notes, :team_id, :parent_id)
+      params.require(:player).permit(:first_name, :surname, :gender, :date_of_birth, :address, :contact_phone, :email, :school_year, :school_next_year, :grade_last_season, :team_id_last_season, :senior, :notes, :team_id, :parent_id)
     end
 end

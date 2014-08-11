@@ -15,6 +15,7 @@ one:
   s_home_phone: 1
   s_mobile_phone: 1
   s_email: MyString
+  coach_id: 1
 
 two:
   p_first_name: MyString
@@ -31,3 +32,4 @@ two:
   s_home_phone: 1
   s_mobile_phone: 1
   s_email: MyString
+  coach_id: 1

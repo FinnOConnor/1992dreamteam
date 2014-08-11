@@ -15,7 +15,6 @@ class ParentsController < ApplicationController
   # GET /parents/new
   def new
     @parent = Parent.new
-	@player = Player.new
   end
 
   # GET /parents/1/edit
@@ -26,8 +25,7 @@ class ParentsController < ApplicationController
   # POST /parents.json
   def create
     @parent = Parent.new(parent_params)
-	@player = Player.new(params[:player])
-	
+
     respond_to do |format|
       if @parent.save
         format.html { redirect_to @parent, notice: 'Parent was successfully created.' }
@@ -71,6 +69,6 @@ class ParentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def parent_params
-      params.require(:parent).permit(:p_first_name, :p_surname, :p_gender, :p_address, :p_home_phone, :p_mobile_phone, :p_email, :s_first_name, :s_surname, :s_gender, :s_address, :s_home_phone, :s_mobile_phone, :s_email)
+      params.require(:parent).permit(:p_first_name, :p_surname, :p_gender, :p_address, :p_home_phone, :p_mobile_phone, :p_email, :s_first_name, :s_surname, :s_gender, :s_address, :s_home_phone, :s_mobile_phone, :s_email, :coach_id)
     end
 end

@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :date_of_birth %><br>
-    <%= f.date_select :date_of_birth, { :include_blank => false, :start_year => 2010, :end_year => 1950 } %>
+    <%= f.date_select :date_of_birth %>
   </div>
   <div class="field">
     <%= f.label :address %><br>
@@ -40,12 +40,8 @@
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :school %><br>
-    <%= f.text_field :school %>
-  </div>
-  <div class="field">
     <%= f.label :school_year %><br>
-    <%= f.number_field :school_year %>
+    <%= f.text_field :school_year %>
   </div>
   <div class="field">
     <%= f.label :school_next_year %><br>
@@ -54,6 +50,10 @@
   <div class="field">
     <%= f.label :grade_last_season %><br>
     <%= f.text_field :grade_last_season %>
+  </div>
+  <div class="field">
+    <%= f.label :team_id_last_season %><br>
+    <%= f.text_field :team_id_last_season %>
   </div>
   <div class="field">
     <%= f.label :senior %><br>

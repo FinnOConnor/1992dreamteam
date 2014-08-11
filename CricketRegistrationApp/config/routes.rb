@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :payments
+
+  resources :parents
+
+  resources :players
+
   get 'admin/index'
 
   get 'home/index'

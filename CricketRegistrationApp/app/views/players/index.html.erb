@@ -1,4 +1,4 @@
-<h3>Listing players</h3>
+<h1>Listing players</h1>
 
 <table>
   <thead>
@@ -10,10 +10,10 @@
       <th>Address</th>
       <th>Contact phone</th>
       <th>Email</th>
-      <th>School</th>
       <th>School year</th>
       <th>School next year</th>
       <th>Grade last season</th>
+      <th>Team id last season</th>
       <th>Senior</th>
       <th>Notes</th>
       <th>Team</th>
@@ -32,14 +32,14 @@
         <td><%= player.address %></td>
         <td><%= player.contact_phone %></td>
         <td><%= player.email %></td>
-        <td><%= player.school %></td>
         <td><%= player.school_year %></td>
         <td><%= player.school_next_year %></td>
         <td><%= player.grade_last_season %></td>
+        <td><%= player.team_id_last_season %></td>
         <td><%= player.senior %></td>
         <td><%= player.notes %></td>
-        <td><%= player.team.name %></td>
-        <td><%= player.parent.p_first_name %></td>
+        <td><%= player.team_id %></td>
+        <td><%= player.parent_id %></td>
         <td><%= link_to 'Show', player %></td>
         <td><%= link_to 'Edit', edit_player_path(player) %></td>
         <td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>

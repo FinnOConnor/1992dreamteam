@@ -1,4 +1,4 @@
-<%= form_for(setup_parent(@parent)) do |f| %>
+<%= form_for(@parent) do |f| %>
   <% if @parent.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@parent.errors.count, "error") %> prohibited this parent from being saved:</h2>
@@ -67,48 +67,11 @@
     <%= f.label :s_email %><br>
     <%= f.text_field :s_email %>
   </div>
-  
-  <h3>Player</h3>
-  <%= f.fields_for :player do |ff| %>
-	  <div class="field">
-		<%= ff.label :first_name %><br>
-		<%= ff.text_field :first_name %>
-	  </div>
-	  <div class="field">
-		<%= ff.label :surname %><br>
-		<%= ff.text_field :surname %>
-	  </div>
-	  <div class="field">
-		<%= ff.label :gender %><br>
-		<%= ff.text_field :gender %>
-	  </div>
-	  <div class="field">
-		<%= ff.label :date_of_birth %><br>
-		<%= ff.date_select :date_of_birth, { :include_blank => false, :start_year => 2010, :end_year => 1995 } %>
-	  </div>
-	  <div class="field">
-		<%= ff.label :school %><br>
-		<%= ff.text_field :school %>
-	  </div>
-	  <div class="field">
-		<%= ff.label :school_year %><br>
-		<%= ff.number_field :school_year %>
-	  </div>
-	  <div class="field">
-		<%= ff.label :school_next_year %><br>
-		<%= ff.text_field :school_next_year %>
-	  </div>
-	  <div class="field">
-		<%= ff.label :grade_last_season %><br>
-		<%= ff.text_field :grade_last_season %>
-	  </div>
-	  <div class="field">
-		<%= ff.label :notes %><br>
-		<%= ff.text_area :notes %>
-	  </div>
-<% end %>
-  
+  <div class="field">
+    <%= f.label :coach_id %><br>
+    <%= f.number_field :coach_id %>
+  </div>
   <div class="actions">
-	<%= f.submit %>
+    <%= f.submit %>
   </div>
 <% end %>

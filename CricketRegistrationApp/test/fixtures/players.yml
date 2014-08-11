@@ -4,14 +4,14 @@ one:
   first_name: MyString
   surname: MyString
   gender: MyString
-  date_of_birth: 2014-08-05
+  date_of_birth: 2014-08-12
   address: MyString
   contact_phone: 1
   email: MyString
-  school: MyString
-  school_year: 1
+  school_year: MyString
   school_next_year: MyString
   grade_last_season: MyString
+  team_id_last_season: MyString
   senior: false
   notes: MyText
   team_id: 1
@@ -21,14 +21,14 @@ two:
   first_name: MyString
   surname: MyString
   gender: MyString
-  date_of_birth: 2014-08-05
+  date_of_birth: 2014-08-12
   address: MyString
   contact_phone: 1
   email: MyString
-  school: MyString
-  school_year: 1
+  school_year: MyString
   school_next_year: MyString
   grade_last_season: MyString
+  team_id_last_season: MyString
   senior: false
   notes: MyText
   team_id: 1

@@ -15,6 +15,7 @@ class CreateParents < ActiveRecord::Migration
       t.integer :s_home_phone
       t.integer :s_mobile_phone
       t.string :s_email
+      t.integer :coach_id
 
       t.timestamps
     end

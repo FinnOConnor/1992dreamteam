@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140804214713) do
+ActiveRecord::Schema.define(version: 20140811230035) do
 
   create_table "coaches", force: true do |t|
     t.string   "first_name"
@@ -40,6 +40,17 @@ ActiveRecord::Schema.define(version: 20140804214713) do
     t.integer  "s_home_phone"
     t.integer  "s_mobile_phone"
     t.string   "s_email"
+    t.integer  "coach_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "payments", force: true do |t|
+    t.integer  "season"
+    t.decimal  "amount_due"
+    t.decimal  "amount_paid"
+    t.boolean  "paid"
+    t.integer  "player_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -52,10 +63,10 @@ ActiveRecord::Schema.define(version: 20140804214713) do
     t.string   "address"
     t.integer  "contact_phone"
     t.string   "email"
-    t.string   "school"
-    t.integer  "school_year"
+    t.string   "school_year"
     t.string   "school_next_year"
     t.string   "grade_last_season"
+    t.string   "team_id_last_season"
     t.boolean  "senior"
     t.text     "notes"
     t.integer  "team_id"

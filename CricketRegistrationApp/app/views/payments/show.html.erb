@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Season:</strong>
+  <%= @payment.season %>
+</p>
+
+<p>
+  <strong>Amount due:</strong>
+  <%= @payment.amount_due %>
+</p>
+
+<p>
+  <strong>Amount paid:</strong>
+  <%= @payment.amount_paid %>
+</p>
+
+<p>
+  <strong>Paid:</strong>
+  <%= @payment.paid %>
+</p>
+
+<p>
+  <strong>Player:</strong>
+  <%= @payment.player_id %>
+</p>
+
+<%= link_to 'Edit', edit_payment_path(@payment) %> |
+<%= link_to 'Back', payments_path %>

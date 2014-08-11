@@ -18,7 +18,7 @@ class PlayersControllerTest < ActionController::TestCase
 
   test "should create player" do
     assert_difference('Player.count') do
-      post :create, player: { address: @player.address, contact_phone: @player.contact_phone, date_of_birth: @player.date_of_birth, email: @player.email, first_name: @player.first_name, gender: @player.gender, grade_last_season: @player.grade_last_season, notes: @player.notes, parent_id: @player.parent_id, school: @player.school, school_next_year: @player.school_next_year, school_year: @player.school_year, senior: @player.senior, surname: @player.surname, team_id: @player.team_id }
+      post :create, player: { address: @player.address, contact_phone: @player.contact_phone, date_of_birth: @player.date_of_birth, email: @player.email, first_name: @player.first_name, gender: @player.gender, grade_last_season: @player.grade_last_season, notes: @player.notes, parent_id: @player.parent_id, school_next_year: @player.school_next_year, school_year: @player.school_year, senior: @player.senior, surname: @player.surname, team_id: @player.team_id, team_id_last_season: @player.team_id_last_season }
     end
 
     assert_redirected_to player_path(assigns(:player))
@@ -35,7 +35,7 @@ class PlayersControllerTest < ActionController::TestCase
   end
 
   test "should update player" do
-    patch :update, id: @player, player: { address: @player.address, contact_phone: @player.contact_phone, date_of_birth: @player.date_of_birth, email: @player.email, first_name: @player.first_name, gender: @player.gender, grade_last_season: @player.grade_last_season, notes: @player.notes, parent_id: @player.parent_id, school: @player.school, school_next_year: @player.school_next_year, school_year: @player.school_year, senior: @player.senior, surname: @player.surname, team_id: @player.team_id }
+    patch :update, id: @player, player: { address: @player.address, contact_phone: @player.contact_phone, date_of_birth: @player.date_of_birth, email: @player.email, first_name: @player.first_name, gender: @player.gender, grade_last_season: @player.grade_last_season, notes: @player.notes, parent_id: @player.parent_id, school_next_year: @player.school_next_year, school_year: @player.school_year, senior: @player.senior, surname: @player.surname, team_id: @player.team_id, team_id_last_season: @player.team_id_last_season }
     assert_redirected_to player_path(assigns(:player))
   end
 
