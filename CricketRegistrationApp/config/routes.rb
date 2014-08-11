@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
+  resources :players
+
   resources :payments
 
   resources :parents
-
-  resources :players
 
   get 'admin/index'
 

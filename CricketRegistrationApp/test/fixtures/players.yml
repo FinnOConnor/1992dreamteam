@@ -8,7 +8,7 @@ one:
   address: MyString
   contact_phone: 1
   email: MyString
-  school_year: MyString
+  school_year: 1
   school_next_year: MyString
   grade_last_season: MyString
   team_id_last_season: MyString
@@ -25,7 +25,7 @@ two:
   address: MyString
   contact_phone: 1
   email: MyString
-  school_year: MyString
+  school_year: 1
   school_next_year: MyString
   grade_last_season: MyString
   team_id_last_season: MyString

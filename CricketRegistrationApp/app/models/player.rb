@@ -1,7 +1,6 @@
 class Player < ActiveRecord::Base
     belongs_to :team, :class_name => 'Team', :foreign_key =>'team_id'
 	belongs_to :parent, :class_name => 'Parent', :foreign_key =>'parent_id'
-    belongs_to :payment, :class_name => 'Payment'
 	
 	#Validation checks
 	validates :email, uniqueness: {
@@ -11,5 +10,4 @@ class Player < ActiveRecord::Base
 	def senior_member?
 		senior != true
 	end
-	
 end

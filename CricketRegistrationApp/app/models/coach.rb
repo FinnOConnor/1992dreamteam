@@ -1,6 +1,6 @@
 class Coach < ActiveRecord::Base
 	has_one :team
-    belongs_to :parent, :class_name =>'Parent'
+    has_one :parent
 	
 	#Validation checks
 	validates :email, :confirmation => true
