@@ -28,21 +28,27 @@
             $('.register').click(function(e) {
                 slide(this);    
             });
+			
+			/* Load the admin page to reduce animation lag later */                
+            $("#administration_container").load("../admin/index");
+			
+			/* For return to homepage */
+			var chml = (window.getComputedStyle(document.getElementById("container_header"))).marginLeft;
             
             function slide(page){
-                /* Load the external HTML file */
-                console.log($("#registration_container").attr("right"));
+                /* Load the external HTML file */ 
                 $("#registration_container").animate({right: 0},400);
-                $("#home_container").animate({right: "200%"},400);  
+                $("#home_container").animate({right: "200%"},400);
+				$("#registration_container").animate({height: "500px"},400);
 				if($(page).attr("id")== "junior"){
 					$("#registration_container").load("../parents/new");
 				}		
-				if($(page).attr("id") =="senior"){
+				if($(page).attr("id") == "senior"){
 					$("#registration_container").load("../players/new");
 				}
 				if($(page).attr("id")== "volunteer"){
 					$("#registration_container").load("../coaches/new");
-				}				
+				}
             }
 
             /* Loads Home page */
@@ -53,19 +59,28 @@
             
             $('.admin').click(function(e) {
                 
-                /* Load the admin page */                
-                $("#administration_container").load("../admin/index");
+				console.log( "top: " + $("#administration_container").position().top );
+				
+                /* Loading the admin page moved to homepage load to reduce animation lag */
+				
+				/* If admin displayed, go back */
+				if($("#administration_container").position().top == 0) {
+					$("#administration_container").animate({top: "-200%", height: height-100 + "px"}, 600, function(){
+                    $("#wrapper_header").animate({marginTop: "0px"},400, function(){
+					$("#container_header").animate({marginLeft: chml}, 400, function(){
+					$("#home_container").animate({right: "0"},400);});});});
+				
+				} else {
 
                 /* Hides the other containers */
                 $("#home_container").animate({right: "200%"},400);
                 $("#registration_container").animate({right: "200%"},400);       
          
-                
                 /*Gets rid of the header and slides the admin pane in  */          
                 $("#container_header").animate({marginLeft: "-667px"}, 400, function(){
-                    $("#wrapper_header").animate({marginTop: "-125px"},400, function(){                $("#administration_container").animate({top: "0", marginTop: "100px",height: height-100 + "px"},600);});});
-                
-                
+                    $("#wrapper_header").animate({marginTop: "-125px"},400, function(){
+						$("#administration_container").animate({top: "0", marginTop: "100px", height: height-100 + "px"}, 600);});});
+				}
             });
 			
 			/* facebook link */
@@ -73,10 +88,8 @@
 				window.location="http://www.facebook.com/NorthCityCricket";
 			});
     
-
         });
     </script>
-
 
 </head>
 
@@ -132,26 +145,17 @@
 
             <div id="home_container" class="container">
                 <h3>You there, welcome!</h3>
-                
-
 
                 <p>HI! Welcome to the Tawa Cricket registration website. Here you can register yourself or your child into a cricket team. What a thing!<br><br>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                
             </div>
             
-            <div id="registration_container" class="container">
-			
-			</div>
-
+            <div id="registration_container" class="container"> </div>
 
         </div>
 
-        <div id="administration_wrapper">    
-            <div id="administration_container" class="container">
-                   
-			</div>
-        </div>
+        <div id="administration_wrapper"> <div id="administration_container" class="container"> </div> </div>
 
 </body>
 

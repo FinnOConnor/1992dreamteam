@@ -250,6 +250,30 @@ h2 {
     width: 900px;
 }
 
+#junior_registration_container {
+    right: 200%; 
+    top: 26px;
+    background: #fcfcfc;
+    padding: 50px;
+    width: 900px;
+}
+
+#senior_registration_container {
+    right: 200%; 
+    top: 26px;
+    background: #fcfcfc;
+    padding: 50px;
+    width: 900px;
+}
+
+#volunteer_registration_container {
+    right: 200%; 
+    top: 26px;
+    background: #fcfcfc;
+    padding: 50px;
+    width: 900px;
+}
+
 #registration_container h3{
     color: #84ff99;
     text-shadow: 1px 1px #777;    
