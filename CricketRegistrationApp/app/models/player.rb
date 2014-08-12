@@ -6,7 +6,21 @@ class Player < ActiveRecord::Base
 	validates :email, uniqueness: {
 	message: "is already in use. There is already a player registered with this email address."}
 	validates :parent_id, presence: true, if: :senior_member?
-	
+    validates :first_name, :length => {maximum: 50}, presence: true
+    validates :surname, :length => {maximum: 50}, presence: true
+    validates :address, :length => {maximum: 50}, presence: true
+    validates :contact_phone, :length => {maximum: 50}, presence: true
+    validates :email, confirmation: true
+    validates :email_confirmation, presence: true
+    validates :school, :length => {maximum: 50}, presence: true
+    validates :school_year, :numericality => {:greater_than => 0}, presence: true
+    validates :school_next_year, :length => {maximum: 50}, presence: true
+    validates :grade_last_season, :length => {maximum: 50}, presence: true
+    validates :notes, :length => {maximum: 500}
+    #validates :team_id_last_season
+	#validates :team_id
+    #validates :parent_id
+    
 	def senior_member?
 		senior != true
 	end

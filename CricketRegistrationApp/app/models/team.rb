@@ -3,7 +3,6 @@ class Team < ActiveRecord::Base
 	has_many :players
 	
 	# Validation checks
-	validates :name, uniqueness: {case_sensitive: false}
-	validates :name, :length => {:minimum => 2}
-	validates :grade, presence: true
+	validates :name, uniqueness: {case_sensitive: false}, :length => {maximum: 50}, presence: true
+    validates :grade, :length => {maximum: 50}, :uniqueness => true, presence: true
 end
