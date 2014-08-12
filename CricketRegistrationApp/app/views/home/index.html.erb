@@ -20,6 +20,8 @@
             var height = $(window).height();
             var home_height = $('#home_container').height() + 70;
             var selectedPage = null;
+			
+			var transitionSpeed = 400;
             
             /* Puts the registration form at the same y position as the Home page */
             $("#registration_container").css("margin-top", -home_height +"px"); 
@@ -37,9 +39,8 @@
             
             function slide(page){
                 /* Load the external HTML file */ 
-                $("#registration_container").animate({right: 0},400);
-                $("#home_container").animate({right: "200%"},400);
-				$("#registration_container").animate({height: "500px"},400);
+                $("#registration_container").animate({right: 0}, transitionSpeed);
+                $("#home_container").animate({right: "200%"}, transitionSpeed);
 				if($(page).attr("id")== "junior"){
 					$("#registration_container").load("../parents/new");
 				}		
@@ -53,10 +54,11 @@
 
             /* Loads Home page */
             $('.home').click(function(e) {
-                $("#home_container").animate({right: "0"},400);
-                $("#registration_container").animate({right: "200%"},400);                
+                $("#home_container").animate({right: "0"}, transitionSpeed);
+                $("#registration_container").animate({right: "200%"}, transitionSpeed);                
             });
             
+			/* Function to control admin transitions */
             $('.admin').click(function(e) {
                 
 				console.log( "top: " + $("#administration_container").position().top );
@@ -65,21 +67,25 @@
 				
 				/* If admin displayed, go back */
 				if($("#administration_container").position().top == 0) {
-					$("#administration_container").animate({top: "-200%", height: height-100 + "px"}, 600, function(){
-                    $("#wrapper_header").animate({marginTop: "0px"},400, function(){
-					$("#container_header").animate({marginLeft: chml}, 400, function(){
-					$("#home_container").animate({right: "0"},400);});});});
-				
+					$("#administration_container").animate({top: "-200%", height: height-100 + "px"}, transitionSpeed + 200, function(){
+                    	$("#wrapper_header").animate({marginTop: "0px"}, transitionSpeed, function(){
+							$("#container_header").animate({marginLeft: chml}, transitionSpeed);
+							$("#home_container").animate({right: "0"}, transitionSpeed);
+						});
+					});
+					
 				} else {
-
-                /* Hides the other containers */
-                $("#home_container").animate({right: "200%"},400);
-                $("#registration_container").animate({right: "200%"},400);       
-         
-                /*Gets rid of the header and slides the admin pane in  */          
-                $("#container_header").animate({marginLeft: "-667px"}, 400, function(){
-                    $("#wrapper_header").animate({marginTop: "-125px"},400, function(){
-						$("#administration_container").animate({top: "0", marginTop: "100px", height: height-100 + "px"}, 600);});});
+					
+                	/* Hides the other containers */
+                	$("#home_container").animate({right: "200%"}, transitionSpeed);
+                	$("#registration_container").animate({right: "200%"}, transitionSpeed);       
+					
+                	/*Gets rid of the header and slides the admin pane in  */          
+               		$("#container_header").animate({marginLeft: "-667px"}, transitionSpeed, function(){
+						$("#wrapper_header").animate({marginTop: "-125px"}, transitionSpeed, function(){
+							$("#administration_container").animate({top: "0", marginTop: "100px", height: height-100 + "px"}, transitionSpeed + 200);
+						});
+					});
 				}
             });
 			

@@ -1,26 +1,92 @@
-
+<head>
+	<!-- JQuery -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script>
+		/* Script for admin page here */
+		$(document).ready(function() {
+			
+			var loggedIn = false;
+			
+			/* for testing only, remove later */
+			$('#user').val('admin');
+			$('#pass').val('admin');
+			
+			var transitionSpeed = 350;
+		
+			/* On page load, show only login div */
+			$(".adminContainer").css("width", $(window).width() - 333);
+			$(".adminContainer").css("left", "-200%");
+			$("#loginDiv").css("left", 333);
+		
+			/* Menu items functions */
+			$('.mi1').click(function(e) {
+				if (loggedIn == true && $("#mi1").position().left != 333) {
+					$(".adminContainer").animate({left: "-200%"}, transitionSpeed);
+					$("#mi1").animate({left: "333px"}, transitionSpeed);
+				}
+			});
+			$('.mi2').click(function(e) {
+				if (loggedIn == true && $("#mi2").position().left != 333) {
+					$(".adminContainer").animate({left: "-200%"}, transitionSpeed);
+					$("#mi2").animate({left: "333px"}, transitionSpeed);
+				}
+			});
+			$('.mi3').click(function(e) {
+				if (loggedIn == true && $("#mi3").position().left != 333) {
+					$(".adminContainer").animate({left: "-200%"}, transitionSpeed);
+					$("#mi3").animate({left: "333px"}, transitionSpeed);
+				}
+			});
+			$('.mi4').click(function(e) {
+				if (loggedIn == true && $("#mi4").position().left != 333) {
+					$(".adminContainer").animate({left: "-200%"}, transitionSpeed);
+					$("#mi4").animate({left: "333px"}, transitionSpeed);
+				}
+			});
+		
+			/* Logout function */
+			$('.logout').click(function(e) {
+				if ($("#loginDiv").position().left != 333){
+					loggedIn = false;
+					$(".adminContainer").animate({left: "-200%"}, transitionSpeed);
+					$("#loginDiv").animate({left: "333px"}, transitionSpeed);
+				}
+			});
+			
+			/* Login button function */
+			$('#login').click(function(e) {
+				if (($('#user').val()=="admin")&&($('#pass').val()=="admin")){
+					loggedIn = true;
+					$(".adminContainer").animate({left: "-200%"}, transitionSpeed);
+					$("#mi1").animate({left: "333px"}, transitionSpeed);
+				}
+			});
+			
+		});
+	</script>
+</head>
 <body>
-
-    <h3> hi!</h3>
-    
-    <div id="admin_sidebar">
-        
-        <ul>
-            <li><h4>Menu Item 1</h4></li>
-        
-            <li><h4>Menu Item 2</h4></li>
-        
-            <li><h4>Menu Item 3</h4></li>
-        
-            <li><h4>Menu Item 4</h4></li>
-        
+	<div id="admin_sidebar">
+		<ul>
+            <li class="mi1"><h4>Menu Item 1</h4></li>
+            <li class="mi2"><h4>Menu Item 2</h4></li>
+            <li class="mi3"><h4>Menu Item 3</h4></li>
+            <li class="mi4"><h4>Menu Item 4</h4></li>
         </ul>
-    
         <div class="logout"><center><h4>Log out</h4></center></div> 
-  
-        
-    </div>
-    
+  	</div>
+	
+	<div class="adminContainer" id="loginDiv">
+		<div class=loginDiv><center>
+			Username: <input type="text" id="user"/><br>
+			Password: <input type="password" id="pass"/><br>
+			<button type="button" id="login">Login</button>
+		</center></div>
+	</div>
+	<div class="adminContainer" id="mi1"><!-- TODO --></div>
+	<div class="adminContainer" id="mi2"><!-- TODO --></div>
+	<div class="adminContainer" id="mi3"><!-- TODO --></div>
+	<div class="adminContainer" id="mi4"><!-- TODO --></div>
     
 </body>
 

@@ -14,6 +14,8 @@
  *= require_self
  */
 
+#tidy{} /* Ignore this */
+
 #admin_sidebar{
     position: absolute;
     float: left;
@@ -21,6 +23,7 @@
     width: 333px;
     height: 100%;
     background: #d6855c;
+	z-index: 1;
 }
 
 #admin_sidebar ul {
@@ -60,6 +63,7 @@
 .logout:hover {
     background: #ff9e6e;
     color: #a76543;
+	z-index: 2;
 }
 
 .logout {
@@ -103,4 +107,34 @@
 
 submit {
     padding: 100px;
+}
+
+.adminContainer {
+	position: absolute;
+	top: 0;
+	height: 100%;
+}
+
+#mi1 {
+	background-color: #1d18d8;
+}
+
+#mi2 {
+	background-color: #e32222;
+}
+
+#mi3 {
+	background-color: #0ddd47;
+}
+
+#mi4 {
+	background-color: #fff500;
+}
+
+.loginDiv {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-top: -100px;
+	margin-left: -200px;
 }
