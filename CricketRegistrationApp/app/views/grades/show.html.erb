@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Grade name:</strong>
+  <%= @grade.grade_name %>
+</p>
+
+<p>
+  <strong>Min size:</strong>
+  <%= @grade.min_size %>
+</p>
+
+<p>
+  <strong>Max size:</strong>
+  <%= @grade.max_size %>
+</p>
+
+<p>
+  <strong>Min age:</strong>
+  <%= @grade.min_age %>
+</p>
+
+<p>
+  <strong>Max age:</strong>
+  <%= @grade.max_age %>
+</p>
+
+<%= link_to 'Edit', edit_grade_path(@grade) %> |
+<%= link_to 'Back', grades_path %>

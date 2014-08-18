@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140812014612) do
+ActiveRecord::Schema.define(version: 20140818224724) do
 
   create_table "coaches", force: true do |t|
     t.string   "first_name"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 20140812014612) do
     t.integer  "home_phone"
     t.integer  "mobile_phone"
     t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "grades", force: true do |t|
+    t.string   "grade_name"
+    t.integer  "min_size"
+    t.integer  "max_size"
+    t.integer  "min_age"
+    t.integer  "max_age"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -78,10 +88,10 @@ ActiveRecord::Schema.define(version: 20140812014612) do
 
   create_table "teams", force: true do |t|
     t.string   "name"
-    t.string   "grade"
     t.integer  "coach_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "grade_id"
   end
 
 end

@@ -13,23 +13,19 @@
   </div>
   <div class="field">
     <%= f.label :date_of_birth %>
-    <%= f.date_select :date_of_birth, { :include_blank => false, :start_year => Time.now.year - 4, :end_year => Time.now.year - 20, order: [:day, :month, :year] }  %>
+    <%= f.date_select :date_of_birth, { :include_blank => false, :start_year => Time.now.year - 4, :end_year => Time.now.year - 12, order: [:day, :month, :year] }  %>
   </div>
   <div class="field">
-    <%= f.label :address %>
-    <%= f.text_field :address %>
+    <%= f.hidden_field :address %>
   </div>
   <div class="field">
-    <%= f.label :contact_phone %>
-    <%= f.number_field :contact_phone %>
+    <%= f.hidden_field :contact_phone %>
   </div>
   <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
+    <%= f.hidden_field :email %>
   </div>
   <div class="field">
-    <%= f.label :email_confirmation %>
-    <%= f.text_field :email_confirmation %>
+    <%= f.hidden_field :email_confirmation %>
   </div>
   <div class="field">
     <%= f.label :school %>

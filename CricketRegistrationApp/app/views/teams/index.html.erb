@@ -14,7 +14,7 @@
     <% @teams.each do |team| %>
       <tr>
         <td><%= team.name %></td>
-        <td><%= team.grade %></td>
+        <td><%= team.try(:grade).try(:grade_name) %></td>
         <td><%= team.try(:coach).try(:first_name) %></td>
         <td><%= link_to 'Show', team %></td>
         <td><%= link_to 'Edit', edit_team_path(team) %></td>
