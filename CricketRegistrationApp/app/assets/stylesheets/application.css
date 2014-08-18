@@ -14,127 +14,297 @@
  *= require_self
  */
 
-#tidy{} /* Ignore this */
+tidy{} /* ignore this */
 
-#admin_sidebar{
-    position: absolute;
-    float: left;
-    top: 0;
-    width: 333px;
-    height: 100%;
-    background: #d6855c;
-	z-index: 1;
+body {
+    font-family: 'Lato', sans-serif;
+    background: #444;
+    margin: 0;
+    overflow-x: hidden;
+}
+h1,
+h2 {
+    text-shadow: 2px 2px #333;
+	margin-left: 40px;
+}
+h1 {
+    color: #81c161;
+    font-size: 60pt;
+    
+}
+h1 span {
+    color: #aaa;
+    font-weight: 300;
+
+}
+h2 {
+    color: #ccc;
+    font-size: 30pt;
+    line-height: 10%;
+    font-weight: 300;
 }
 
-#admin_sidebar ul {
-    list-style:none;
-    padding-left:0;
-}
 
-#admin_sidebar ul li{
-    margin: 0px auto;
-    width: 90%;
-    display: block;
-    border-bottom: 1px solid #cb7d56;
-    padding: 10px 0px 10px 0px;
-    left: 0;
-    transition: 0.4s
-}
-
-#admin_sidebar ul li:hover{
-    color: #cba38e;
-    background: #cb7d56;
-}
-
-#admin_sidebar ul li h4{
-    vertical-align: middle;
-    color: #84533a;
-    margin-left: 30px;
-    font-size: 12pt;
-}
-
-.logout h4 {
-    vertical-align: middle;
-    color: #84533a;
-    margin-left: 0px;
-    font-size: 12pt;
-}
-
-.logout:hover {
-    background: #ff9e6e;
-    color: #a76543;
-	z-index: 2;
-}
-
-.logout {
-    height: 60px;
-    position:absolute;
-    background: #cb7d56;
-    padding: 10px 0px 10px 0px;
-    left: 0;
+#wrapper_header {
     width: 100%;
-    bottom: 0;
-    margin-bottom: 0px;
-    z-index: 2;
+    margin: 0;
+    height: 226px;
+    background: #555;
+    top: 0;
+    position: absolute;
 }
 
-.field input {
-    background: #fff;
-    padding: 15px;
-    width: 400px;
-    border: 6px solid #ededed;
-    font-size: 12pt;
+#container_header {
+    width: 1000px;
+    margin: 0px auto;
+}  
+
+#facebook {
+    float: right;
+    width: 200px;
+    top:0;
+    margin-top: -75px;
+    opacity: 0.5;
+    cursor: pointer;
 }
 
-.field input:hover , input:focus {
-    border: 6px solid #afffac;
+#facebook:hover{
+    opacity: 1;
+    transition: 0.4s;
 }
 
-.field {
-    font-size: 14pt;
-    color: #444;
-    line-height: 250%;
+#facebook img{
+    position: absolute;
+    margin-top: -5px;
 }
 
-.field label {
-    display: inline-block;
-    font-size: 14pt;
-    color: #628959;
-    margin-right: 70px;
-    text-align: right;
-    width: 250px;
+#facebook span {
+    color: #777;
+    margin-left: 45px;
+    font-variant: small-caps;    
 }
 
-submit {
-    padding: 100px;
-}
 
-.adminContainer {
-	position: absolute;
-	top: 0;
-	height: 100%;
-}
-
-#mi1 {
-	background-color: #1d18d8;
-}
-
-#mi2 {
-	background-color: #e32222;
-}
-
-#mi3 {
-	background-color: #0ddd47;
-}
-
-#mi4 {
-	background-color: #fff500;
-}
-
-.loginDiv {
+.wrapper {
+	width: 1000px;
 	position: absolute;
 	left: 50%;
-	top: 50%;
-	margin-top: -100px;
-	margin-left: -200px;
+	margin-left: -500px;
+    margin-top: 226px;
+    top: 0;
+}
+
+.menu {
+    width: 100%;
+    position: relative;
+    height: 100px;
+    background: #fff;
+    padding: 0;
+    overflow: hidden;
+    top: 0;
+    float: left;  
+}
+
+
+.menu ul {
+    display: table;
+    height: 100px;    
+    margin: 0px auto;   
+    width: 100%;
+    margin-left: -40px;   
+    overflow: hidden;
+    top: 0;
+    float: left;
+}
+
+
+.menu li {
+    display: table-cell;
+    width: 33%;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.menu ul li h3 {
+    text-align: center;
+    font-size: 16pt;
+    font-weight: lighter;
+}
+
+
+<!-- register --> 
+
+.menu ul li:nth-child(2) {
+    background: #84ff99;
+    color: #478852;
+}
+
+.menu li.register{
+    background: #84ff99;
+    color: #478852;
+}
+
+.menu li.register:hover {
+    background: #5eff72;
+    transition: 0.4s;
+}
+.menu li.register:active {
+    background: #20ff3d;
+    transition: 0.4s;
+}
+
+
+<!-- home --> 
+
+.menu ul li:nth-child(1) {
+    background: #90ddff;
+    color: #57859a;
+}
+    
+.menu li.home {
+    background: #90ddff;
+    color: #57859a;
+}
+.menu li.home:hover {
+    background: #6dd1ff;
+    transition: 0.4s;
+}
+.menu li.home:active {
+    background: #3bc5ff;
+    transition: 0.4s;
+}
+
+
+<!-- Admin -->
+
+.menu ul li:nth-child(3) {
+    background: #ff9e6e;
+    color: #a76543;
+}
+.menu li.admin {
+    background: #ff9e6e;
+    color: #a76543;
+}
+.menu li.admin:hover {
+    background: #ff8345;
+    transition: 0.4s;
+}
+.menu li.admin:active {
+    background: #ff5b08;
+    transition: 0.4s;
+}
+
+
+#sub_menu {
+    width: 333px;
+    padding-top: 100px;
+    position: absolute;
+    height: 100px;
+    float: left;    
+    transition: 0.5s;
+    background-color:transparent;
+}
+
+#sub_menu:hover {
+    margin-top: -100px;
+}
+
+#sub_menu ul {
+    display: table;
+    margin: 0px auto;   
+    width: 100%;
+    padding: 0px;
+    height: 100px;
+}
+
+#sub_menu li {
+    background: #52ff77;
+    transition: 0.2s;    
+}
+
+#sub_menu li:hover {
+    background: #42d361;
+    color:  #a0edb0;
+}
+
+#sub_menu ul li h3 {
+    text-align: center;
+    font-size: 12pt;
+    font-weight: lighter;
+}
+
+.container {
+	position: relative;
+	clear: both;
+    margin-top: 25px;
+	width: 100%;
+	top: 0;      
+}
+
+.container h3 {
+    font-size: 50px;
+    color: #99c6f0;
+    line-height: 150%;
+    text-shadow: 1px 1px #222;
+    margin-top: 0px;
+}
+
+.container p {
+    color: #dbdbdb;
+    text-shadow: 2px 2px #333;   
+    font-family: georgia;
+    font-size: 14pt;
+    margin-top: -30px;
+    line-height: 200%;
+    font-weight: 100;
+}
+
+#registration_container {
+    right: 200%; 
+    top: 26px;
+    background: #fcfcfc;
+    padding: 50px;
+    width: 900px;
+}
+
+#junior_registration_container {
+    right: 200%; 
+    top: 26px;
+    background: #fcfcfc;
+    padding: 50px;
+    width: 900px;
+}
+
+#senior_registration_container {
+    right: 200%; 
+    top: 26px;
+    background: #fcfcfc;
+    padding: 50px;
+    width: 900px;
+}
+
+#volunteer_registration_container {
+    right: 200%; 
+    top: 26px;
+    background: #fcfcfc;
+    padding: 50px;
+    width: 900px;
+}
+
+#registration_container h3{
+    color: #84ff99;
+    text-shadow: 1px 1px #777;    
+}
+
+#home_container {
+
+}
+
+#administration_container {
+    top: -200%; 
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
 }

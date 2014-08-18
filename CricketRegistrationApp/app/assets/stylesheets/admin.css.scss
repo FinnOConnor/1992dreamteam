@@ -1,3 +1,128 @@
 // Place all the styles related to the admin controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+tidy{} /* ignore this */
+
+#admin_sidebar{
+    position: absolute;
+    float: left;
+    top: 0;
+    width: 333px;
+    height: 100%;
+    background: #d6855c;
+	z-index: 1;
+}
+
+#admin_sidebar ul {
+    list-style:none;
+    padding-left:0;
+}
+
+#admin_sidebar ul li{
+    margin: 0px auto;
+    width: 90%;
+    display: block;
+    border-bottom: 1px solid #cb7d56;
+    padding: 10px 0px 10px 0px;
+    left: 0;
+    transition: 0.4s
+}
+
+#admin_sidebar ul li:hover{
+    color: #cba38e;
+    background: #cb7d56;
+}
+
+#admin_sidebar ul li h4{
+    vertical-align: middle;
+    color: #84533a;
+    margin-left: 30px;
+    font-size: 12pt;
+}
+
+.logout h4 {
+    vertical-align: middle;
+    color: #84533a;
+    margin-left: 0px;
+    font-size: 12pt;
+}
+
+.logout:hover {
+    background: #ff9e6e;
+    color: #a76543;
+	z-index: 2;
+}
+
+.logout {
+    height: 60px;
+    position:absolute;
+    background: #cb7d56;
+    padding: 10px 0px 10px 0px;
+    left: 0;
+    width: 100%;
+    bottom: 0;
+    margin-bottom: 0px;
+    z-index: 2;
+}
+
+.field input {
+    background: #fff;
+    padding: 15px;
+    width: 400px;
+    border: 6px solid #ededed;
+    font-size: 12pt;
+}
+
+.field input:hover , input:focus {
+    border: 6px solid #afffac;
+}
+
+.field {
+    font-size: 14pt;
+    color: #444;
+    line-height: 250%;
+}
+
+.field label {
+    display: inline-block;
+    font-size: 14pt;
+    color: #628959;
+    margin-right: 70px;
+    text-align: right;
+    width: 250px;
+}
+
+submit {
+    padding: 100px;
+}
+
+.adminContainer {
+	position: absolute;
+	top: 0;
+	height: 100%;
+}
+
+#mi1 {
+	background-color: #1d18d8;
+}
+
+#mi2 {
+	background-color: #e32222;
+}
+
+#mi3 {
+	background-color: #0ddd47;
+}
+
+#mi4 {
+	background-color: #fff500;
+}
+
+.loginDiv {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-top: -100px;
+	margin-left: -200px;
+}
