@@ -1,4 +1,4 @@
-<%= form_for(setup_parent(@parent)) do |f| %>
+<%= form_for (@parent) do |f| %>
   <% if @parent.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@parent.errors.count, "error") %> prohibited this parent from being saved:</h2>
@@ -12,114 +12,87 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :p_first_name %><br>
+    <%= f.label :p_first_name %>
     <%= f.text_field :p_first_name %>
   </div>
   <div class="field">
-    <%= f.label :p_surname %><br>
+    <%= f.label :p_surname %>
     <%= f.text_field :p_surname %>
   </div>
   <div class="field">
-    <%= f.label :p_gender %><br>
-    <%= f.text_field :p_gender %>
+    <%= f.label :p_gender %>
+    <%= f.select( :p_gender, options_for_select([["Male", "male"],["Female","female"]]),:class => "p_genderSelect") %>
   </div>
   <div class="field">
-    <%= f.label :p_address %><br>
+    <%= f.label :p_address %>
     <%= f.text_field :p_address %>
   </div>
   <div class="field">
-    <%= f.label :p_home_phone %><br>
+    <%= f.label :p_home_phone %>
     <%= f.number_field :p_home_phone %>
   </div>
   <div class="field">
-    <%= f.label :p_mobile_phone %><br>
+    <%= f.label :p_mobile_phone %>
     <%= f.number_field :p_mobile_phone %>
   </div>
   <div class="field">
-    <%= f.label :p_email %><br>
+    <%= f.label :p_email %>
     <%= f.text_field :p_email %>
   </div>
+<% if false %>
   <div class="field">
-    <%= f.label :p_email_confirmation %><br>
+    <%= f.label :p_email_confirmation %>
     <%= f.text_field :p_email_confirmation %>
   </div>
+<% end %>
   <div class="field">
-    <%= f.label :s_first_name %><br>
+    <%= f.label :s_first_name %>
     <%= f.text_field :s_first_name %>
   </div>
   <div class="field">
-    <%= f.label :s_surname %><br>
+    <%= f.label :s_surname %>
     <%= f.text_field :s_surname %>
   </div>
   <div class="field">
-    <%= f.label :s_gender %><br>
-    <%= f.text_field :s_gender %>
+    <%= f.label :s_gender %>
+    <%= f.select( :s_gender, options_for_select([["Male", "male"],["Female","female"]]),:class => "s_genderSelect") %>
   </div>
   <div class="field">
-    <%= f.label :s_address %><br>
+    <%= f.label :s_address %>
     <%= f.text_field :s_address %>
   </div>
   <div class="field">
-    <%= f.label :s_home_phone %><br>
+    <%= f.label :s_home_phone %>
     <%= f.number_field :s_home_phone %>
   </div>
   <div class="field">
-    <%= f.label :s_mobile_phone %><br>
+    <%= f.label :s_mobile_phone %>
     <%= f.number_field :s_mobile_phone %>
   </div>
   <div class="field">
-    <%= f.label :s_email %><br>
+    <%= f.label :s_email %>
     <%= f.text_field :s_email %>
   </div>
+<% if false %>
 <div class="field">
-    <%= f.label :s_email_confirmation %><br>
+    <%= f.label :s_email_confirmation %>
     <%= f.text_field :s_email_confirmation %>
   </div>
+<% end %>
   <div class="field">
-    <%= f.label :coach_id %><br>
-    <%= f.number_field :coach_id %>
+    <%= f.hidden_field :coach_id %>
   </div>
   
   <h3>Player</h3>
-  <%= f.fields_for :player do |ff| %>
-	  <div class="field">
-		<%= ff.label :first_name %><br>
-		<%= ff.text_field :first_name %>
-	  </div>
-	  <div class="field">
-		<%= ff.label :surname %><br>
-		<%= ff.text_field :surname %>
-	  </div>
-	  <div class="field">
-		<%= ff.label :gender %><br>
-		<%= ff.text_field :gender %>
-	  </div>
-	  <div class="field">
-		<%= ff.label :date_of_birth %><br>
-		<%= ff.date_select :date_of_birth, { :include_blank => false, :start_year => 2010, :end_year => 1995 } %>
-	  </div>
-	  <div class="field">
-		<%= ff.label :school %><br>
-		<%= ff.text_field :school %>
-	  </div>
-	  <div class="field">
-		<%= ff.label :school_year %><br>
-		<%= ff.number_field :school_year %>
-	  </div>
-	  <div class="field">
-		<%= ff.label :school_next_year %><br>
-		<%= ff.text_field :school_next_year %>
-	  </div>
-	  <div class="field">
-		<%= ff.label :grade_last_season %><br>
-		<%= ff.text_field :grade_last_season %>
-	  </div>
-	  <div class="field">
-		<%= ff.label :notes %><br>
-		<%= ff.text_area :notes %>
-	  </div>
+<div id="player">
+  <%= f.fields_for :players do |player| %>
+	<%= render "player_fields", :f => player %>
 <% end %>
-  
+<div class="links">
+    <%= link_to_add_association 'Add Player', f, :players %>
+</div>
+</div>
+
   <div class="actions">
 	<%= f.submit %>
   </div>

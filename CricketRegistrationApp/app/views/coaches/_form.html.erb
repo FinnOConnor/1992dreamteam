@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :gender %>
-    <%= f.text_field :gender %>
+    <%= f.select( :gender, options_for_select([["Male", "male"],["Female","female"]])) %>
   </div>
   <div class="field">
     <%= f.label :address %>
@@ -29,11 +29,11 @@
   </div>
   <div class="field">
     <%= f.label :home_phone %>
-    <%= f.number_field :home_phone %>
+    <%= f.telephone_field :home_phone %>
   </div>
   <div class="field">
     <%= f.label :mobile_phone %>
-    <%= f.number_field :mobile_phone %>
+    <%= f.telephone_field :mobile_phone %>
   </div>
   <div class="field">
     <%= f.label :email %>

@@ -12,72 +12,65 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :first_name %><br>
+    <%= f.label :first_name %>
     <%= f.text_field :first_name %>
   </div>
   <div class="field">
-    <%= f.label :surname %><br>
+    <%= f.label :surname %>
     <%= f.text_field :surname %>
   </div>
   <div class="field">
-    <%= f.label :gender %><br>
-    <%= f.text_field :gender %>
+    <%= f.label :gender %>
+    <%= f.select( :gender, options_for_select([["Male", "male"],["Female","female"]])) %>
   </div>
   <div class="field">
-    <%= f.label :date_of_birth %><br>
-    <%= f.date_select :date_of_birth %>
+    <%= f.label :date_of_birth %>
+    <%= f.date_select :date_of_birth, { :include_blank => false, :start_year => Time.now.year - 20, :end_year => 1950 , order: [:day, :month, :year] } %>
   </div>
   <div class="field">
-    <%= f.label :address %><br>
+    <%= f.label :address %>
     <%= f.text_field :address %>
   </div>
   <div class="field">
-    <%= f.label :contact_phone %><br>
+    <%= f.label :contact_phone %>
     <%= f.number_field :contact_phone %>
   </div>
   <div class="field">
-    <%= f.label :email %><br>
+    <%= f.label :email %>
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :email_confirmation %><br>
+    <%= f.label :email_confirmation %>
     <%= f.text_field :email_confirmation %>
   </div>
   <div class="field">
-    <%= f.label :school %><br>
-    <%= f.text_field :school %>
+    <%= f.hidden_field :school %>
   </div>
   <div class="field">
-    <%= f.label :school_year %><br>
-    <%= f.number_field :school_year %>
+    <%= f.hidden_field :school_year %>
   </div>
   <div class="field">
-    <%= f.label :school_next_year %><br>
-    <%= f.text_field :school_next_year %>
+    <%= f.hidden_field :school_next_year %>
   </div>
   <div class="field">
-    <%= f.label :grade_last_season %><br>
-    <%= f.text_field :grade_last_season %>
+    <%= f.label :grade_last_season %>
+    <%= f.select( :grade_last_season, options_for_select([["None","none"],["JuniorConvenor", "juniorcovenor"],["Year 3","year3"],["Year 4","year4"],["Year 5","year5"],["Year 6","year6"],["Year 7","year7"],["Year 8","year8"],["Junior Blaze","juniorblaze"],["Colts","colts"],["Premier","premier"]])) %>
   </div>
   <div class="field">
-    <%= f.label :team_id_last_season %><br>
-    <%= f.text_field :team_id_last_season %>
+    <%= f.hidden_field :team_id_last_season %>
   </div>
   <div class="field">
-    <%= f.label :senior %><br>
-    <%= f.check_box :senior %>
+    <%= f.hidden_field :senior, :value =>true %>
   </div>
   <div class="field">
-    <%= f.label :notes %><br>
+    <%= f.label :notes %>
     <%= f.text_area :notes %>
   </div>
   <div class="field">
-    <%= f.label :team_id %><br>
-    <%= f.number_field :team_id %>
+    <%= f.hidden_field :team_id %>
   </div>
   <div class="field">
-    <%= f.label :parent_id %><br>
-    <%= f.number_field :parent_id %>
+    <%= f.hidden_field :parent_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

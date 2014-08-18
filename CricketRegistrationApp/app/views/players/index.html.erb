@@ -38,8 +38,8 @@
         <td><%= player.team_id_last_season %></td>
         <td><%= player.senior %></td>
         <td><%= player.notes %></td>
-        <td><%= player.team.name %></td>
-        <td><%= player.parent.p_first_name %></td>
+        <td><%= player.try(:team).try(:name) %></td>
+        <td><%= player.try(:parent).try(:p_first_name) %></td>
         <td><%= link_to 'Show', player %></td>
         <td><%= link_to 'Edit', edit_player_path(player) %></td>
         <td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -15,6 +15,7 @@ class ParentsController < ApplicationController
   # GET /parents/new
   def new
     @parent = Parent.new
+            
   end
 
   # GET /parents/1/edit
@@ -41,6 +42,7 @@ class ParentsController < ApplicationController
   # PATCH/PUT /parents/1.json
   def update
     respond_to do |format|
+        
       if @parent.update(parent_params)
         format.html { redirect_to @parent, notice: 'Parent was successfully updated.' }
         format.json { render :show, status: :ok, location: @parent }
@@ -69,6 +71,7 @@ class ParentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def parent_params
-      params.require(:parent).permit(:p_first_name, :p_surname, :p_gender, :p_address, :p_home_phone, :p_mobile_phone, :p_email, :s_first_name, :s_surname, :s_gender, :s_address, :s_home_phone, :s_mobile_phone, :s_email, :coach_id)
+      params.require(:parent).permit(:p_first_name, :p_surname, :p_gender, :p_address, :p_home_phone, :p_mobile_phone, :p_email, :p_email_confirmation, :s_first_name, :s_surname, :s_gender, :s_address, :s_home_phone, :s_mobile_phone, :s_email, :s_email_confirmation, :coach_id,
+          players_attributes: [:id, :first_name, :surname, :gender, :date_of_birth, :address, :contact_phone, :email, :email_confirmation, :school, :school_year, :school_next_year, :grade_last_season, :senior, :notes, :team_id_last_season, :team_id, :parent_id])
     end
 end

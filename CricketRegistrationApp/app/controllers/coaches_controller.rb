@@ -69,6 +69,6 @@ class CoachesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def coach_params
-      params.require(:coach).permit(:first_name, :surname, :gender, :address, :home_phone, :mobile_phone, :email)
+      params.require(:coach).permit(:first_name, :surname, :gender, :address, :home_phone, :mobile_phone, :email, :email_confirmation)
     end
 end
