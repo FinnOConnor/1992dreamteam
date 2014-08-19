@@ -56,7 +56,6 @@
             
             /* Loads Home page */
             $('.home').click(function(e) {
-                console.log($(this).attr("id"));
                 $("#home_container").animate({right: "0"}, transitionSpeed);
                 $("#senior_container").animate({right: "200%"}, transitionSpeed);
                 $("#junior_container").animate({right: "200%"}, transitionSpeed);  
@@ -65,9 +64,37 @@
             });
             
             
+            var inAdmin = false;
             
-            $('.admin').click(function(){
-            
+            $('.admin').click(function(){  
+                if(inAdmin){
+                    $("#menu").animate({width: "100%", left: '0px'}, transitionSpeed, function(){
+                            $("#menu").animate({top: "40%"}, transitionSpeed);
+                            $("#home_container").animate({right: 0}, transitionSpeed);  
+                            $("#title").animate({right: 0}, transitionSpeed);      
+                            $("#colour_block").animate({right: 0}, transitionSpeed);    
+                            $("#title_container").animate({right: 0}, transitionSpeed);                    
+                            $("#background_image").animate({right: 0}, transitionSpeed);                                                        });                    
+
+                    inAdmin = false;
+                }
+                    
+                else{
+                    $("#home_container").animate({right: "200%"}, transitionSpeed);
+                    $("#senior_container").animate({right: "200%"}, transitionSpeed);
+                    $("#junior_container").animate({right: "200%"}, transitionSpeed);  
+                    $("#volunteer_container").animate({right: "200%"}, transitionSpeed);       
+                    $("#title").animate({right: "200%"}, transitionSpeed);      
+                    $("#colour_block").animate({right: "200%"}, transitionSpeed);    
+                    $("#title_container").animate({right: "200%"}, transitionSpeed);                    
+                    $("#background_image").animate({right: "200%"}, transitionSpeed); 
+                    $("#menu").animate({width: "1050px", left: '-700px'}, transitionSpeed, function(){
+                            $("#menu").animate({top: "0px"}, transitionSpeed);
+                    });
+
+                    inAdmin = true;
+                }
+            });     
             
 			
         });
