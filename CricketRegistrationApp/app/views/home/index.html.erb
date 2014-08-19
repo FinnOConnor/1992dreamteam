@@ -66,6 +66,8 @@
             
             var inAdmin = false;
             
+            
+            /* When the admin button is pressed */
             $('.admin').click(function(){  
                 if(inAdmin){
                     $("#menu").animate({width: "100%", left: '0px'}, transitionSpeed, function(){
@@ -74,7 +76,9 @@
                             $("#title").animate({right: 0}, transitionSpeed);      
                             $("#colour_block").animate({right: 0}, transitionSpeed);    
                             $("#title_container").animate({right: 0}, transitionSpeed);                    
-                            $("#background_image").animate({right: 0}, transitionSpeed);                                                        });                    
+                            $("#background_image").animate({right: 0}, transitionSpeed);      
+                            $("#administration_container").animate({top: "-200%"}, transitionSpeed);
+                    });                    
 
                     inAdmin = false;
                 }
@@ -89,7 +93,10 @@
                     $("#title_container").animate({right: "200%"}, transitionSpeed);                    
                     $("#background_image").animate({right: "200%"}, transitionSpeed); 
                     $("#menu").animate({width: "1050px", left: '-700px'}, transitionSpeed, function(){
-                            $("#menu").animate({top: "0px"}, transitionSpeed);
+                            $("#menu").animate({top: "0px"}, transitionSpeed, function(){
+                                $("#administration_container").animate({top: 0}, transitionSpeed);
+                            
+                            });
                     });
 
                     inAdmin = true;
@@ -175,7 +182,7 @@
 
         </div>
 
-        <div id="administration_wrapper"> <div id="administration_container" class="container"> </div> </div>
+       <div id="administration_container" class="container"><iframe class="adminIframe" src="../admin/index" scrolling="no"></iframe></div>
 
 </body>
 
