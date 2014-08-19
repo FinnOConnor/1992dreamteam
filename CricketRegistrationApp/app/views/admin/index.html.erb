@@ -4,12 +4,13 @@
 	<script>
 		$(document).ready(function() {
 			
-			var loggedIn = false;
-			
 			/* for testing only, remove later */
 			$('#user').val('admin');
-			$('#pass').val('admin');
+			$('#pass').val('temppass');
+			console.log((CryptoJS.SHA3("temppass",{outputLength:224})).toString(CryptoJS.enc.Hex)); // for calculating new passwords */
 			
+			/* page wide variables on load */
+			var loggedIn = false;
 			var transitionSpeed = 350;
 		
 			/* On page load, show only login div */
@@ -22,25 +23,25 @@
 				if (loggedIn == true && $("#mi1").position().left != 333) {
 					$(".adminContainer").animate({left: "-200%"}, transitionSpeed);
 					$("#mi1").animate({left: "333px"}, transitionSpeed);
-				}
+				} else loginWobble();
 			});
 			$('.mi2').click(function(e) {
 				if (loggedIn == true && $("#mi2").position().left != 333) {
 					$(".adminContainer").animate({left: "-200%"}, transitionSpeed);
 					$("#mi2").animate({left: "333px"}, transitionSpeed);
-				}
+				} else loginWobble();
 			});
 			$('.mi3').click(function(e) {
 				if (loggedIn == true && $("#mi3").position().left != 333) {
 					$(".adminContainer").animate({left: "-200%"}, transitionSpeed);
 					$("#mi3").animate({left: "333px"}, transitionSpeed);
-				}
+				} else loginWobble();
 			});
 			$('.mi4').click(function(e) {
 				if (loggedIn == true && $("#mi4").position().left != 333) {
 					$(".adminContainer").animate({left: "-200%"}, transitionSpeed);
 					$("#mi4").animate({left: "333px"}, transitionSpeed);
-				}
+				} else loginWobble(1);
 			});
 		
 			/* Logout function */
@@ -54,12 +55,23 @@
 			
 			/* Login button function */
 			$('#login').click(function(e) {
-				if (($('#user').val()=="admin")&&($('#pass').val()=="admin")){
+				var pass = ((CryptoJS.SHA3($('#pass').val(),{outputLength:224})).toString(CryptoJS.enc.Hex));
+				if (($('#user').val()=="admin")&&(pass=="30b699db62136c65fa9dff7910505eabb69da8c43db6ac5ed0fb2af8")){
 					loggedIn = true;
 					$(".adminContainer").animate({left: "-200%"}, transitionSpeed);
 					$("#mi1").animate({left: "333px"}, transitionSpeed);
-				}
+				} else loginWobble();
 			});
+			
+			function loginWobble() {
+				var wobbleSpeed = 50;
+				$(".loginDiv").animate({marginLeft: "-195px"},wobbleSpeed/2,function(){
+				$(".loginDiv").animate({marginLeft: "-205px"},wobbleSpeed,function(){
+				$(".loginDiv").animate({marginLeft: "-195px"},wobbleSpeed,function(){
+				$(".loginDiv").animate({marginLeft: "-205px"},wobbleSpeed,function(){
+				$(".loginDiv").animate({marginLeft: "-195px"},wobbleSpeed,function(){
+				$(".loginDiv").animate({marginLeft: "-200px"},wobbleSpeed/2);});});});});});
+			}
 			
 		});
 	</script>
