@@ -163,13 +163,13 @@ h2 {
 <!-- register --> 
 
 .menu ul li:nth-child(2) {
-    background: #6a9f5a;
+    background: #8dc685;
     color: #537c46;
 }
 
 .menu li.rego{
-    background: #93ce8a;
-    color: #478852;
+    background: #8dc685;
+    color: #537c46;
 }
 
 .menu li.rego:hover {
@@ -310,7 +310,17 @@ h2 {
 #administration_container {
     top: -200%; 
     position: absolute;
+    margin-top: 0px;
+    right: 0;
+    padding: 0;
     height: 100%;
     width: 100%;
     z-index: -1;
+}
+
+.adminIframe {
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    left: 0;
 }
