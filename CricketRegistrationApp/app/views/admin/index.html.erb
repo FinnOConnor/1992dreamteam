@@ -50,11 +50,11 @@
 					loggedIn = false;
 					$(".adminContainer").animate({left: "-200%"}, transitionSpeed);
 					$("#loginDiv").animate({left: "333px"}, transitionSpeed);
-				}
+				} else loginWobble();
 			});
 			
 			/* Login button function */
-			$('#loginButton').click(function(e) {
+			$('.loginButton').click(function(e) {
 				var pass = ((CryptoJS.SHA3($('#pass').val(),{outputLength:224})).toString(CryptoJS.enc.Hex));
 				if (($('#user').val()=="admin")&&(pass=="30b699db62136c65fa9dff7910505eabb69da8c43db6ac5ed0fb2af8")){
 					loggedIn = true;
@@ -77,27 +77,34 @@
 	</script>
 </head>
 <body>
-	<div id="admin_sidebar">
-		<ul>
-            <li class="mi1"><h4>Player Profiles</h4></li>
-            <li class="mi2"><h4>Manage Teams</h4></li>
-            <li class="mi3"><h4>Menu Item 3</h4></li>
-            <li class="mi4"><h4>Menu Item 4</h4></li>
-        </ul>
-        <div class="logout"><center><h4>Log out</h4></center></div> 
-  	</div>
-	
-	<div class="adminContainer" id="loginDiv">
-		<div class=loginDiv><center>
-			 <span>Username: </span><input type="text" class="inputBox" id="user"/><br>
-			 <span>Password: </span><input type="password" class="inputBox" id="pass"/><br>
-			<div id="loginButton"><span>Log In</span></div>
-		</center></div>
+	<div class="headerBar"></div>
+	<div class="bodyContainer">
+		<div id="admin_sidebar">
+			<ul>
+    	        <li class="mi1"><h4>Player Profiles</h4></li>
+    	        <li class="mi2"><h4>Manage Teams</h4></li>
+    	        <li class="mi3"><h4>Menu Item 3</h4></li>
+    	        <li class="mi4"><h4>Menu Item 4</h4></li>
+    	    </ul>
+    	    <div class="logout"><center><span>Log out</span></center></div> 
+  		</div>
+		
+		<div class="adminContainer" id="loginDiv">
+			<div class=loginDiv>
+				<center>
+					<div class="loginInputs">
+						<span>Username: </span><input type="text" class="inputBox" id="user"/><br>
+						<span>Password: </span><input type="password" class="inputBox" id="pass"/><br>
+					</div>
+					<div class="loginButton"><span>Log In</span></div>
+				</center>
+			</div>
+		</div>
+		<div class="adminContainer" id="mi1">Player Profiles<!-- TODO --></div>
+		<div class="adminContainer" id="mi2">Manage Teams<!-- TODO --></div>
+		<div class="adminContainer" id="mi3">Menu Item 3<!-- TODO --></div>
+		<div class="adminContainer" id="mi4">Menu Item 4<!-- TODO --></div>
 	</div>
-	<div class="adminContainer" id="mi1">Player Profiles<!-- TODO --></div>
-	<div class="adminContainer" id="mi2">Manage Teams<!-- TODO --></div>
-	<div class="adminContainer" id="mi3">Menu Item 3<!-- TODO --></div>
-	<div class="adminContainer" id="mi4">Menu Item 4<!-- TODO --></div>
     
 </body>
 
