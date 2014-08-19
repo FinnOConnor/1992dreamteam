@@ -2,41 +2,58 @@
     
     <!-- Automatically sets the height of all the iframes -->
     <script>
-        function resizeIframe(obj) {
-                obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
-        }
+            function resizeIframe(obj) {
+                return obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+            }    
 
     </script>
     
 
     
     <script>
-        $(document).ready(function() {      
+        $(document).ready(function() {     
+            
+
                       
             var height = $(window).height();
             var home_height = $('#home_container').height() + 70;
             var selectedPage = null;
-
+            var home_width = $('#home_container').width();
+            
 			var transitionSpeed = 400;
 
+            
+            var home_width = $('#home_container').width();
+            $("#home_container").animate({marginLeft: -(home_width/2)+"px"});
+            
+            $( window ).resize(function() {
+                var home_width = $('#home_container').width();
+                $("#home_container").css({marginLeft: -(home_width/2)+"px"});
+            });
+
+            
             /* Loads Registration page */
             $('.register').click(function(e) {
                 slideOn(this);   
             });
 
+            
             function slideOn(page){
                 /* Send the home page off */
-                $("#home_container").animate({right: "200%"}, transitionSpeed);
-
+                $("#home_container").animate({left: "-200%"}, transitionSpeed);
+                $(".iframe").css({height: 0});
                 if($(page).attr("id") == "junior"){
-                    $("#junior_container").animate({right: 0}, transitionSpeed);
+                    $("#junior_container").animate({left: "50%", marginLeft: "-450px"}, transitionSpeed);
+                    $("#juniorIframe").animate({height: resizeIframe(document.getElementById("juniorIframe")) +"px"}, transitionSpeed);
                 }
                 if($(page).attr("id") == "senior"){
-                    $("#senior_container").animate({right: 0}, transitionSpeed);
+                    $("#senior_container").animate({left: "50%", marginLeft: "-450px"}, transitionSpeed);
+                    $("#seniorIframe").animate({height: resizeIframe(document.getElementById("seniorIframe")) +"px"}, transitionSpeed);
                 }
                 if($(page).attr("id") == "volunteer"){
-                    $("#volunteer_container").animate({right: 0}, transitionSpeed);
-                    
+                    $("#volunteer_container").animate({left: "50%", marginLeft: "-450px"}, transitionSpeed);
+                    $(".iframe").css({height: 0});
+                    $("#volunteerIframe").animate({height: resizeIframe(document.getElementById("volunteerIframe")) +"px"}, transitionSpeed);              
                 }   
                 slideOff(page);
                 
@@ -44,23 +61,23 @@
             
             function slideOff(page){
                 switch($(page).attr("id")){
-                        case "junior" : $("#senior_container").animate({right: "200%"}, transitionSpeed);
-                                        $("#volunteer_container").animate({right: "200%"}, transitionSpeed); break;
-                        case "senior" : $("#junior_container").animate({right: "200%"}, transitionSpeed);
-                                        $("#volunteer_container").animate({right: "200%"}, transitionSpeed);break;
-                        case "volunteer" : $("#senior_container").animate({right: "200%"}, transitionSpeed);
-                                        $("#junior_container").animate({right: "200%"}, transitionSpeed);
+                        case "junior" : $("#senior_container").animate({left: "-200%"}, transitionSpeed);
+                                        $("#volunteer_container").animate({left: "-200%"}, transitionSpeed); break;
+                        case "senior" : $("#junior_container").animate({left: "-200%"}, transitionSpeed);
+                                        $("#volunteer_container").animate({left: "-200%"}, transitionSpeed);break;
+                        case "volunteer" : $("#senior_container").animate({left: "-200%"}, transitionSpeed);
+                                        $("#junior_container").animate({left: "-200%"}, transitionSpeed);
                 };
             }
             
             
             /* Loads Home page */
             $('.home').click(function(e) {
-                $("#home_container").animate({right: "0"}, transitionSpeed);
-                $("#senior_container").animate({right: "200%"}, transitionSpeed);
-                $("#junior_container").animate({right: "200%"}, transitionSpeed);  
-                $("#volunteer_container").animate({right: "200%"}, transitionSpeed);             
-                
+                $("#home_container").animate({left: "50%"}, transitionSpeed);
+                $("#senior_container").animate({left: "-200%"}, transitionSpeed);
+                $("#junior_container").animate({left: "-200%"}, transitionSpeed);  
+                $("#volunteer_container").animate({left: "-200%"}, transitionSpeed);             
+                $(".iframe").css({height: 0});
             });
             
             
@@ -72,26 +89,27 @@
                 if(inAdmin){
                     $("#menu").animate({width: "100%", left: '0px'}, transitionSpeed, function(){
                             $("#menu").animate({top: "40%"}, transitionSpeed);
-                            $("#home_container").animate({right: 0}, transitionSpeed);  
-                            $("#title").animate({right: 0}, transitionSpeed);      
-                            $("#colour_block").animate({right: 0}, transitionSpeed);    
-                            $("#title_container").animate({right: 0}, transitionSpeed);                    
-                            $("#background_image").animate({right: 0}, transitionSpeed);      
+                            $("#home_container").animate({left: "50%"}, transitionSpeed);  
+                            $("#title").animate({left: 0}, transitionSpeed);      
+                            $("#colour_block").animate({left: 0}, transitionSpeed);    
+                            $("#title_container").animate({left: 0}, transitionSpeed);                    
+                            $("#background_image").animate({left: 0}, transitionSpeed);      
                             $("#administration_container").animate({top: "-200%"}, transitionSpeed);
                     });                    
+                $(".iframe").css({height: 0});
 
                     inAdmin = false;
                 }
                     
                 else{
-                    $("#home_container").animate({right: "200%"}, transitionSpeed);
-                    $("#senior_container").animate({right: "200%"}, transitionSpeed);
-                    $("#junior_container").animate({right: "200%"}, transitionSpeed);  
-                    $("#volunteer_container").animate({right: "200%"}, transitionSpeed);       
-                    $("#title").animate({right: "200%"}, transitionSpeed);      
-                    $("#colour_block").animate({right: "200%"}, transitionSpeed);    
-                    $("#title_container").animate({right: "200%"}, transitionSpeed);                    
-                    $("#background_image").animate({right: "200%"}, transitionSpeed); 
+                    $("#home_container").animate({left: "-200%"}, transitionSpeed);
+                    $("#senior_container").animate({left: "-200%"}, transitionSpeed);
+                    $("#junior_container").animate({left: "-200%"}, transitionSpeed);  
+                    $("#volunteer_container").animate({left: "-200%"}, transitionSpeed);       
+                    $("#title").animate({left: "-200%"}, transitionSpeed);      
+                    $("#colour_block").animate({left: "-200%"}, transitionSpeed);    
+                    $("#title_container").animate({left: "-200%"}, transitionSpeed);                    
+                    $("#background_image").animate({left: "-200%"}, transitionSpeed); 
                     $("#menu").animate({width: "1050px", left: '-700px'}, transitionSpeed, function(){
                             $("#menu").animate({top: "0px"}, transitionSpeed, function(){
                                 $("#administration_container").animate({top: 0}, transitionSpeed);
@@ -176,9 +194,9 @@
                
             </div>
             
-            <div id="junior_container" class="container"><h3>~ junior registration ~</h3><iframe class="iframe" src="../parents/new" scrolling="no" onload="javascript:resizeIframe(this);"></iframe></div>
-            <div id="senior_container" class="container"><h3>~ senior registration ~</h3><iframe class="iframe" src="../players/new" scrolling="no" onload="javascript:resizeIframe(this);"></iframe></div>
-            <div id="volunteer_container" class="container"><h3>~ coach registration ~</h3><iframe class="iframe" src="../coaches/new" scrolling="no" onload="javascript:resizeIframe(this);"></iframe></div>
+            <div id="junior_container" class="container"><h3>~ junior registration ~</h3><iframe class="iframe" id="juniorIframe" src="../parents/new" scrolling="no"></iframe></div>
+            <div id="senior_container" class="container"><h3>~ senior registration ~</h3><iframe class="iframe" id="seniorIframe" src="../players/new" scrolling="no"></iframe></div>
+            <div id="volunteer_container" class="container"><h3>~ coach registration ~</h3><iframe class="iframe" id="volunteerIframe" src="../coaches/new" scrolling="no""></iframe></div>
 
         </div>
 
