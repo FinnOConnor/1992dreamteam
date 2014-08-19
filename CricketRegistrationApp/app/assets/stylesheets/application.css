@@ -167,16 +167,16 @@ h2 {
     color: #537c46;
 }
 
-.menu li.register{
+.menu li.rego{
     background: #93ce8a;
     color: #478852;
 }
 
-.menu li.register:hover {
+.menu li.rego:hover {
     background: #aae5a1;
     transition: 0.4s;
 }
-.menu li.register:active {
+.menu li.rego:active {
     background: #20ff3d;
     transition: 0.4s;
 }
@@ -266,6 +266,12 @@ h2 {
 }
 
 
+iframe {
+    width: 1000px;
+    border: 0;
+    
+}
+
 
 .container h3 {
     font-size: 34pt;
@@ -286,41 +292,22 @@ h2 {
     font-weight: 100;
 }
 
-#registration_container {
+.container{
+    position: absolute;
     right: 200%; 
-    top: 0px;
+    margin-top: -30px;
     padding: 50px;
     width: 900px;
+    z-index: 10;
 }
 
-#junior_registration_container {
-    right: 200%; 
-    top: 0px;
-    padding: 50px;
-    width: 900px;
-}
-
-#senior_registration_container {
-    right: 200%; 
-    top: 26px;
-    padding: 50px;
-    width: 900px;
-}
-
-#volunteer_registration_container {
-    right: 200%; 
-    top: 26px;
-    background: #fcfcfc;
-    padding: 50px;
-    width: 900px;
-}
-
-#registration_container h3{
-    color: #84ff99;
-}
 
 #home_container {
-
+    position: absolute; 
+    top: 0;
+    right: 0%; 
+    padding: 50px;
+    width: 900px;
 }
 
 #administration_container {

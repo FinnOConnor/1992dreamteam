@@ -1,84 +1,69 @@
-<!doctype html>
-<html>
-
 <head>
+    
+    <!-- Automatically sets the height of all the iframes -->
     <script>
-        $(document).ready(function() {                
+        function resizeIframe(obj) {
+                obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+        }
+        
+    </script>
+    
+    <script>
+        $(document).ready(function() {      
+                      
             var height = $(window).height();
             var home_height = $('#home_container').height() + 70;
             var selectedPage = null;
-			
+
 			var transitionSpeed = 400;
-            
-            /* Puts the registration form at the same y position as the Home page */
-            $("#registration_container").css("margin-top", -home_height +"px"); 
 
             /* Loads Registration page */
             $('.register').click(function(e) {
-                slide(this);    
+                slideOn(this);   
             });
-			
-			/* Load the admin page to reduce animation lag later */                
-            $("#administration_container").load("../admin/index");
-			
-			/* For return to homepage */
-			var chml = (window.getComputedStyle(document.getElementById("title"))).marginLeft;
-            
-            function slide(page){
-                /* Load the external HTML file */ 
-                $("#registration_container").animate({right: 0}, transitionSpeed);
-                $("#home_container").animate({right: "200%"}, transitionSpeed);
-				if($(page).attr("id")== "junior"){
-					$("#registration_container").load("../parents/new");
-				}		
-				if($(page).attr("id") == "senior"){
-					$("#registration_container").load("../players/new");
-				}
-				if($(page).attr("id")== "volunteer"){
-					$("#registration_container").load("../coaches/new");
-				}
-            }
 
+            function slideOn(page){
+                /* Send the home page off */
+                $("#home_container").animate({right: "200%"}, transitionSpeed);
+
+                if($(page).attr("id") == "junior"){
+                    $("#junior_container").animate({right: 0}, transitionSpeed);
+                }
+                if($(page).attr("id") == "senior"){
+                    $("#senior_container").animate({right: 0}, transitionSpeed);
+                }
+                if($(page).attr("id") == "volunteer"){
+                    $("#volunteer_container").animate({right: 0}, transitionSpeed);
+                }   
+                slideOff(page);
+                
+            }
+            
+            function slideOff(page){
+                switch($(page).attr("id")){
+                        case "junior" : $("#senior_container").animate({right: "200%"}, transitionSpeed);
+                                        $("#volunteer_container").animate({right: "200%"}, transitionSpeed); break;
+                        case "senior" : $("#junior_container").animate({right: "200%"}, transitionSpeed);
+                                        $("#volunteer_container").animate({right: "200%"}, transitionSpeed);break;
+                        case "volunteer" : $("#senior_container").animate({right: "200%"}, transitionSpeed);
+                                        $("#junior_container").animate({right: "200%"}, transitionSpeed);
+                };
+            }
+            
+            
             /* Loads Home page */
             $('.home').click(function(e) {
+                console.log($(this).attr("id"));
                 $("#home_container").animate({right: "0"}, transitionSpeed);
-                $("#registration_container").animate({right: "200%"}, transitionSpeed);                
+                $("#senior_container").animate({right: "200%"}, transitionSpeed);
+                $("#junior_container").animate({right: "200%"}, transitionSpeed);  
+                $("#volunteer_container").animate({right: "200%"}, transitionSpeed);             
+                
             });
             
-			/* Function to control admin transitions */
-            $('.admin').click(function(e) {
-				
-                /* Loading the admin page moved to homepage load to reduce animation lag */
-				
-				/* If admin displayed, go back */
-				if($("#administration_container").position().top == 0) {
-					$("#administration_container").animate({top: "-200%", height: height-100 + "px"}, transitionSpeed + 200, function(){
-                    	$("#wrapper_header").animate({marginTop: "0px"}, transitionSpeed, function(){
-							$("#container_header").animate({marginLeft: chml}, transitionSpeed);
-							$("#home_container").animate({right: "0"}, transitionSpeed);
-						});
-					});
-					
-				} else {
-					
-                	/* Hides the other containers */
-                	$("#home_container").animate({right: "200%"}, transitionSpeed);
-                	$("#registration_container").animate({right: "200%"}, transitionSpeed);       
-					
-                	/*Gets rid of the header and slides the admin pane in  */          
-               		$("#container_header").animate({marginLeft: "-667px"}, transitionSpeed, function(){
-						$("#wrapper_header").animate({marginTop: "-125px"}, transitionSpeed, function(){
-							$("#administration_container").animate({top: "0", marginTop: "100px", height: height-100 + "px"}, transitionSpeed + 200);
-						});
-					});
-				}
-            });
+            
+            
 			
-			/* facebook link */
-			$('#facebook').click(function(e) {
-				window.location="http://www.facebook.com/NorthCityCricket";
-			});
-    
         });
     </script>
 
@@ -107,11 +92,12 @@
                 <li class="home">
                     <h3>Home</h3>
                 </li>
-                <li class="register">
+                <li class="rego">
                     <h3>Register</h3>
                     
-                    <!-- Sub menu goes here -->
+                <!-- Sub menu goes here -->
                 <div id="sub_menu" class="menu">
+                    
                         <ul class="registration">
                             <li id="junior" class="register">
                                 <h3>Junior</h3>
@@ -148,7 +134,9 @@
                
             </div>
             
-            <div id="registration_container" class="container"> </div>
+            <div id="junior_container" class="container"><h3>~ junior registration ~</h3><iframe src="../parents/new" scrolling="no" onload="javascript:resizeIframe(this);"></iframe></div>
+            <div id="senior_container" class="container"><h3>~ senior registration ~</h3><iframe src="../players/new" scrolling="no" onload="javascript:resizeIframe(this);"></iframe></div>
+            <div id="volunteer_container" class="container"><h3>~ coach registration ~</h3><iframe src="../coaches/new" scrolling="no" onload="javascript:resizeIframe(this);"></iframe></div>
 
         </div>
 
@@ -156,4 +144,4 @@
 
 </body>
 
-</html>
+
