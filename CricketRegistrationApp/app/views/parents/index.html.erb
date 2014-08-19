@@ -49,7 +49,7 @@
         <td><%= parent.s_mobile_phone %></td>
         <td><%= parent.s_email %></td>
         <td><%= parent.try(:coach).try(:first_name) %></td>
-        <td><%= parent.try(:players).try(:first) %></td>
+        <td><%= parent.try(:players).try(:first).try(:first_name) %></td>
         <td><%= link_to 'Show', parent %></td>
         <td><%= link_to 'Edit', edit_parent_path(parent) %></td>
         <td><%= link_to 'Destroy', parent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
