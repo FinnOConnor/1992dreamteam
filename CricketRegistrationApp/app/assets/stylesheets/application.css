@@ -265,11 +265,9 @@ h2 {
     font-weight: lighter;
 }
 
-
-iframe {
+.iframe {
     width: 1000px;
     border: 0;
-    
 }
 
 
