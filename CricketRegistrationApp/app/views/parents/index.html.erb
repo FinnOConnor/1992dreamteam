@@ -1,18 +1,33 @@
 <h1>Listing parents</h1>
 
+<%= search_form_for @search do |f| %>
+  <%= f.condition_fields do |c| %>
+  <div class="field">
+    <%= c.attribute_fields do |a| %>
+      <%= a.attribute_select %>
+    <% end %>
+    <%= c.predicate_select %>
+    <%= c.value_fields do |v| %>
+      <%= v.text_field :value %>
+    <% end %>
+    </div>
+  <% end %>
+  <div class="actions"><%= f.submit "Search" %></div>
+<% end %>
+
 <table>
   <thead>
     <tr>
-      <th>P first name</th>
-      <th>P surname</th>
-      <th>P gender</th>
+      <th><%= sort_link(@search, :p_first_name , "P first name") %></th>
+      <th><%= sort_link(@search, :p_surname , "P surname") %></th>
+      <th><%= sort_link(@search, :p_gender , "P gender") %></th>
       <th>P address</th>
       <th>P home phone</th>
       <th>P mobile phone</th>
       <th>P email</th>
-      <th>S first name</th>
-      <th>S surname</th>
-      <th>S gender</th>
+      <th><%= sort_link(@search, :s_first_name , "S first name") %></th>
+      <th><%= sort_link(@search, :s_surname , "S surname") %></th>
+      <th><%= sort_link(@search, :s_gender , "S gender") %></th>
       <th>S address</th>
       <th>S home phone</th>
       <th>S mobile phone</th>

@@ -4,7 +4,9 @@ class CoachesController < ApplicationController
   # GET /coaches
   # GET /coaches.json
   def index
-    @coaches = Coach.all
+    #@coaches = Coach.all
+	 @search = Coach.search(params[:q])
+     @coaches = @search.result
   end
 
   # GET /coaches/1
