@@ -4,10 +4,15 @@ class ParentsController < ApplicationController
   # GET /parents
   # GET /parents.json
   def index
+<<<<<<< HEAD
     #@parents = Parent.all
 	@search = Parent.search(params[:q])
      @parents = @search.result
 	 @search.build_condition
+=======
+      @search = Parent.search(params[:q])
+      @parents = @search.result
+>>>>>>> origin/master
   end
 
   # GET /parents/1

@@ -10,7 +10,7 @@ tidy{} /* ignore this */
     top: 0;
     width: 333px;
     height: 100%;
-    background: #d6855c;
+    background: #81cb72;
 	z-index: 1;
 }
 
@@ -23,41 +23,40 @@ tidy{} /* ignore this */
     margin: 0px auto;
     width: 90%;
     display: block;
-    border-bottom: 1px solid #cb7d56;
+    border-bottom: 1px solid #649d58;
     padding: 10px 0px 10px 0px;
     left: 0;
     transition: 0.4s
 }
 
 #admin_sidebar ul li:hover{
-    color: #cba38e;
-    background: #cb7d56;
+    background: #91ed80;
 }
 
 #admin_sidebar ul li h4{
     vertical-align: middle;
-    color: #84533a;
+    color: inherit;
     margin-left: 30px;
     font-size: 12pt;
 }
 
-.logout h4 {
-    vertical-align: middle;
-    color: #84533a;
-    margin-left: 0px;
-    font-size: 12pt;
+.logout span {
+    color: inherit;
+	display: inline-block;
+	font-size: 18px;
+	font-weight: bold;
+    text-align: center;
+	padding: 20px;
 }
 
 .logout:hover {
-    background: #ff9e6e;
-    color: #a76543;
+    background: #91ed80;
 	z-index: 2;
 }
 
 .logout {
-    height: 60px;
     position:absolute;
-    background: #cb7d56;
+    background: #649d58;
     padding: 10px 0px 10px 0px;
     left: 0;
     width: 100%;
@@ -69,7 +68,7 @@ tidy{} /* ignore this */
 .field input {
     background: #fff;
     padding: 15px;
-    width: 400px;
+    width: 500px;
     border: 6px solid #ededed;
     font-size: 12pt;
 }
@@ -90,7 +89,13 @@ tidy{} /* ignore this */
     color: #628959;
     margin-right: 70px;
     text-align: right;
-    width: 250px;
+    width: 180px;
+}
+
+select {
+    padding: 10px;
+    background: #fff;
+    border: 5px solid #ededed;
 }
 
 submit {
@@ -119,10 +124,56 @@ submit {
 	background-color: #fff500;
 }
 
+#loginDiv {
+	background-color: inherit;
+}
+
 .loginDiv {
 	position: absolute;
 	left: 50%;
 	top: 50%;
 	margin-top: -100px;
 	margin-left: -200px;
+	background-color: #81cb72;
+}
+
+.loginDiv span {
+	display: inline-block;
+	font-size: 16px;
+	font-weight: bold;
+	color: inherit;
+	margin-right: 10px;
+    text-align: right;
+    width: 75px;
+}
+
+.loginInputs {
+	padding: 20px;
+}
+
+.inputBox {
+	border: 6px solid #a0ba93;
+	width: 200px;
+	margin-left: 0px;
+	padding: 5px;
+}
+
+#pass {
+	margin-top: 10px;
+}
+
+.loginButton {
+	background-color: #649d58;
+}
+
+.loginButton:hover {
+	background-color: #91ed80;
+}
+
+.loginButton span {
+	display: inline-block;
+	font-size: 18px;
+	font-weight: bold;
+    text-align: center;
+	padding: 20px;
 }

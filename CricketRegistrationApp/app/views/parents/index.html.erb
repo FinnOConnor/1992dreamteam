@@ -1,4 +1,12 @@
-<h1>Listing parents</h1>
+
+
+<%= search_form_for @search do |f| %>
+  <div class="field">
+    <%= f.label :p_first_name_cont, "Name contains" %>
+    <%= f.text_field :p_first_name_cont %>
+  </div>
+  <div class="actions"><%= f.submit "Search" %></div>
+<% end %>
 
 <%= search_form_for @search do |f| %>
   <%= f.condition_fields do |c| %>
@@ -56,7 +64,7 @@
         <td><%= parent.s_mobile_phone %></td>
         <td><%= parent.s_email %></td>
         <td><%= parent.try(:coach).try(:first_name) %></td>
-        <td><%= parent.try(:players).try(:first) %></td>
+        <td><%= parent.try(:players).try(:first).try(:first_name) %></td>
         <td><%= link_to 'Show', parent %></td>
         <td><%= link_to 'Edit', edit_parent_path(parent) %></td>
         <td><%= link_to 'Destroy', parent, method: :delete, data: { confirm: 'Are you sure?' } %></td>

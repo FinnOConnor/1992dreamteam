@@ -16,16 +16,16 @@
     <%= f.date_select :date_of_birth, { :include_blank => false, :start_year => Time.now.year - 4, :end_year => Time.now.year - 12, order: [:day, :month, :year] }  %>
   </div>
   <div class="field">
-    <%= f.hidden_field :address %>
+    <%= f.hidden_field :address, :value => "a" %>
   </div>
   <div class="field">
-    <%= f.hidden_field :contact_phone %>
+    <%= f.hidden_field :contact_phone, :value => 0 %>
   </div>
   <div class="field">
-    <%= f.hidden_field :email %>
+    <%= f.hidden_field :email, :value => "1"  %>
   </div>
   <div class="field">
-    <%= f.hidden_field :email_confirmation %>
+    <%= f.hidden_field :email_confirmation, :value => "1"  %>
   </div>
   <div class="field">
     <%= f.label :school %>
