@@ -87,15 +87,16 @@
             /* When the admin button is pressed */
             $('.admin').click(function(){  
                 if(inAdmin){
-                    $("#menu").animate({width: "100%", left: '0px'}, transitionSpeed, function(){
+					$("#administration_container").animate({top: "-200%"}, transitionSpeed, function(){
+                    	$("#menu").animate({width: "100%", left: '0px'}, transitionSpeed, function(){
                             $("#menu").animate({top: "40%"}, transitionSpeed);
                             $("#home_container").animate({left: "50%"}, transitionSpeed);  
                             $("#title").animate({left: 0}, transitionSpeed);      
                             $("#colour_block").animate({left: 0}, transitionSpeed);    
                             $("#title_container").animate({left: 0}, transitionSpeed);                    
-                            $("#background_image").animate({left: 0}, transitionSpeed);      
-                            $("#administration_container").animate({top: "-200%"}, transitionSpeed);
-                    });                    
+                            $("#background_image").animate({left: 0}, transitionSpeed);
+						});
+					});                
                 $(".iframe").css({height: 0});
 
                     inAdmin = false;
