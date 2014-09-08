@@ -11,7 +11,7 @@ class Player < ActiveRecord::Base
     validates :first_name, :length => {maximum: 50}, presence: true
     validates :surname, :length => {maximum: 50}, presence: true
     validates :address, :length => {maximum: 50}, presence: true
-    validates :contact_phone, :length => {maximum: 50}, presence: true
+    validates :contact_phone, :length => {in: 7..50}, presence: true
     validates :email, confirmation: true
     validates :email_confirmation, presence: true
     validates :school, :length => {maximum: 50}, presence: true, if: :senior_member?
@@ -26,4 +26,6 @@ class Player < ActiveRecord::Base
 	def senior_member?
 		senior != true
 	end
+    
+    
 end
