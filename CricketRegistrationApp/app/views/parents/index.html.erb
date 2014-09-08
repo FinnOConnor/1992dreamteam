@@ -1,13 +1,4 @@
 
-
-<%= search_form_for @search do |f| %>
-  <div class="field">
-    <%= f.label :p_first_name_cont, "Name contains" %>
-    <%= f.text_field :p_first_name_cont %>
-  </div>
-  <div class="actions"><%= f.submit "Search" %></div>
-<% end %>
-
 <%= search_form_for @search do |f| %>
   <%= f.condition_fields do |c| %>
   <div class="field">
