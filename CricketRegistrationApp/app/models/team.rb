@@ -5,5 +5,5 @@ class Team < ActiveRecord::Base
 	
 	# Validation checks
 	validates :name, uniqueness: {case_sensitive: false}, :length => {maximum: 50}, presence: true
-    validates :grade, :length => {maximum: 50}, :uniqueness => true, presence: true
+    validates :grade, :numericality => {:greater_than => 0}
 end
