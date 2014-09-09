@@ -1,3 +1,12 @@
+<script>
+
+$('div.links').click(function(){
+    alert("HI!");
+});
+
+</script>
+
+
 <%= form_for (@parent) do |f| %>
   <% if @parent.errors.any? %>
     <div id="error_explanation">
@@ -88,9 +97,9 @@
   <%= f.fields_for :players do |player| %>
 	<%= render "player_fields", :f => player %>
 <% end %>
-<div class="links">
-    <%= link_to_add_association 'Add Player', f, :players %>
-</div>
+    <div class="links">
+        <%= link_to_add_association 'Add Player', f, :players %>
+    </div>
 </div>
 
   <div class="actions">

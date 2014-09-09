@@ -4,24 +4,35 @@
     <script>
             function resizeIframe(obj) {
                 return obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
-            }    
+            }   
+        
+        
+        
+
 
     </script>
     
 
     
     <script>
-        $(document).ready(function() {     
+        $(document).ready(function() {                 
             
-
-                      
+            
+            
             var height = $(window).height();
             var home_height = $('#home_container').height() + 70;
             var selectedPage = null;
             var home_width = $('#home_container').width();
             
 			var transitionSpeed = 400;
-
+            
+            
+            
+            function goMan(){
+             alert("hi");
+                
+            }
+            
             
             var home_width = $('#home_container').width();
             $("#home_container").animate({marginLeft: -(home_width/2)+"px"});
@@ -32,10 +43,10 @@
             });
 
             
-            /* Loads Registration page */
-            $('.register').click(function(e) {
-                slideOn(this);   
-            });
+//            /* Loads Registration page */
+//            $('.register').click(function(e) {
+//                slideOn(this);   
+//            });
 
             
             function slideOn(page){
@@ -46,15 +57,22 @@
                     $("#junior_container").animate({left: "50%", marginLeft: "-450px"}, transitionSpeed);
                     $("#juniorIframe").animate({height: resizeIframe(document.getElementById("juniorIframe")) +"px"}, transitionSpeed);
                 }
-                if($(page).attr("id") == "senior"){
+                else if($(page).attr("id") == "senior"){
                     $("#senior_container").animate({left: "50%", marginLeft: "-450px"}, transitionSpeed);
                     $("#seniorIframe").animate({height: resizeIframe(document.getElementById("seniorIframe")) +"px"}, transitionSpeed);
                 }
-                if($(page).attr("id") == "volunteer"){
+                else if($(page).attr("id") == "volunteer"){
                     $("#volunteer_container").animate({left: "50%", marginLeft: "-450px"}, transitionSpeed);
                     $(".iframe").css({height: 0});
                     $("#volunteerIframe").animate({height: resizeIframe(document.getElementById("volunteerIframe")) +"px"}, transitionSpeed);              
-                }   
+                }      
+                
+                else if($(page).attr("class") == "admin"){
+                    $("#admin_container").animate({left: "50%", marginLeft: "-450px"}, transitionSpeed);
+                    $(".iframe").css({height: 0});
+                    $(".adminIframe").animate({height: resizeIframe(document.getElementById("adminIframe")) +"px"}, transitionSpeed);              
+                }                  
+     
                 slideOff(page);
                 
             }
@@ -67,6 +85,7 @@
                                         $("#volunteer_container").animate({left: "-200%"}, transitionSpeed);break;
                         case "volunteer" : $("#senior_container").animate({left: "-200%"}, transitionSpeed);
                                         $("#junior_container").animate({left: "-200%"}, transitionSpeed);
+              
                 };
             }
             
@@ -97,11 +116,14 @@
                             $("#administration_container").animate({top: "-200%"}, transitionSpeed);
                     });                    
                 $(".iframe").css({height: 0});
-
                     inAdmin = false;
                 }
                     
                 else{
+                    
+                    /* Set page height */
+
+
                     $("#home_container").animate({left: "-200%"}, transitionSpeed);
                     $("#senior_container").animate({left: "-200%"}, transitionSpeed);
                     $("#junior_container").animate({left: "-200%"}, transitionSpeed);  
@@ -113,77 +135,24 @@
                     $("#menu").animate({width: "1050px", left: '-700px'}, transitionSpeed, function(){
                             $("#menu").animate({top: "0px"}, transitionSpeed, function(){
                                 $("#administration_container").animate({top: 0}, transitionSpeed);
-                            
                             });
                     });
+                    
+                   
 
                     inAdmin = true;
                 }
-            });     
+            });  
             
-			
+            
         });
     </script>
 
 </head>
 
 <body>
-        <div id="title_container"><div id="title">  
-            <p class="title">
-                    <span class="title">TAWA</span><br>
-                         _____<br><br>
-                        cricket website
-                    </p >
-            </div>
-        </div>
-    
-        <div id="colour_block"></div>
-            
-
-            <!--<div id="facebook"><img src=<%= asset_path 'facebook.png' %>><span>check out our page!</span></div>-->
-
-        
-        <div id="background_image" style="background: url(<%= asset_path 'cricket.jpg' %>);"></div>
-    
-        <div id="menu" class="menu">
-            <ul>
-                <li class="home">
-                    <h3>Home</h3>
-                </li>
-                <li class="rego">
-                    <h3>Register</h3>
-                    
-                <!-- Sub menu goes here -->
-                <div id="sub_menu" class="menu">
-                    
-                        <ul class="registration">
-                            <li id="junior" class="register">
-                                <h3>Junior</h3>
-                            </li>
-                                
-                            <li id ="senior" class="register">
-                                <h3>Senior</h3>
-                            </li>    
-
-                            <li id="volunteer" class="register">
-                                <h3>Volunteer</h3>
-                            </li>    
-                                
-                        </ul>
-                        
-                </div>       
-                        
-                </li>
-                <li class="admin">
-                    <h3>Admin</h3>
-                </li>
-                </ul>
-            </div>
-   
 
 
-           
-        <div class="wrapper">
 
             <div id="home_container" class="container">
                 <h3>~ you there, welcome! ~</h3>
@@ -193,14 +162,9 @@
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                
             </div>
-            
-            <div id="junior_container" class="container"><h3>~ junior registration ~</h3><iframe class="iframe" id="juniorIframe" src="../parents/new" scrolling="no"></iframe></div>
-            <div id="senior_container" class="container"><h3>~ senior registration ~</h3><iframe class="iframe" id="seniorIframe" src="../players/new" scrolling="no"></iframe></div>
-            <div id="volunteer_container" class="container"><h3>~ coach registration ~</h3><iframe class="iframe" id="volunteerIframe" src="../coaches/new" scrolling="no""></iframe></div>
 
-        </div>
-
-       <div id="administration_container" class="container"><iframe class="adminIframe" src="../admin/index" scrolling="no"></iframe></div>
+   
+  
 
 </body>
 
