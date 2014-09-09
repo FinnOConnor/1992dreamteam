@@ -27,11 +27,11 @@
             if(pathname != "/"){
                 $('html, body').stop().animate({
                         scrollTop: title_container + "px"
-                }, 1000); 
+                }, 600); 
             }
             
            $(window).scroll(function(){
-                if ($(window).scrollTop() > title_container){
+                if ($(window).scrollTop() >= title_container){
                     $("#menu").css("top", $(window).scrollTop() +"px");
                 }
                else {
