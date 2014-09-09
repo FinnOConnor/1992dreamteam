@@ -10,24 +10,43 @@
   <style>
   h1 { padding: .2em; margin: 0; }
   #products { float:left; width: 500px; margin-right: 2em; }
-  #cart { width: 200px; float: left; margin-top: 1em; }
+  #cart { width: 500px; float: left; margin-top: 1em; }
   /* style the list to maximize the droppable hitarea */
   #cart ol { margin: 0; padding: 1em 0 1em 3em; }
+  #product ol { margin: 0; padding: 1em 0 1em 3em; }
   </style>
   <script>
   $(function() {
-    $( "#catalog" ).accordion();
-    $( "#catalog li" ).draggable({
+    $( "#cart li" ).draggable({
       appendTo: "body",
       helper: "clone"
     });
-    $( "#cart ol" ).droppable({
+    $( "#catalog" ).accordion({heightStyle: 'panel'});
+    $( "#catalog li" ).draggable({
+      appendTo: "body",
+      helper: "clone"
+    }).addClass('dropped');
+    
+    
+    $( "#catalog ol" ).droppable({
+      out: function (event, ui) {
+            var self = ui;
+            ui.helper.off('mouseup').on('mouseup', function () {
+                $(this).remove();
+                self.draggable.remove();
+            });
+        },
       activeClass: "ui-state-default",
       hoverClass: "ui-state-hover",
+      accept: "#cart li",
       accept: ":not(.ui-sortable-helper)",
       drop: function( event, ui ) {
+          if (ui.draggable.is('.dropped')) return false;
         $( this ).find( ".placeholder" ).remove();
-        $( "<li></li>" ).text( ui.draggable.text() ).appendTo( this );
+         $("<li></li>").text(ui.draggable.text()).appendTo(this).draggable({
+                appendTo: "body",
+                helper: "clone"
+            }).addClass('dropped');
       }
     }).sortable({
       items: "li:not(.placeholder)",
@@ -47,13 +66,15 @@
   <div id="catalog">
     <% @teams.each do |team| %>
       <h2><a href="#"><%= team.name %></a></h2>
+      <ol>
     <div>
-      <ul>
+        
         <% team.players.each do |player| %>
           <li><%= [player.first_name, player.surname].join(" ") %> </li>
         <% end %>
-      </ul>
+        
     </div>
+          </ol>
     <% end %>
   </div>
 </div>
@@ -62,65 +83,12 @@
   <h1 class="ui-widget-header">Players</h1>
   <div class="ui-widget-content">
     <ol>
-      <li class="placeholder">Add your items here</li>
+      <% @players.each do |player| %>
+        <li><%= [player.first_name, player.surname].join(" ") %> </li>
+      <% end %>
     </ol>
   </div>
 </div>
  
  
 </body>
-
-<%= select_tag 'search_topic', 
-  options_from_collection_for_select(Team.all, :id, :name) %>
-
-<table class="inlineTable">
-  <thead>
-    <tr>
-      <th>Player Number</th>
-      <th>Player Name</th>
-      <th></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @teams.each do |team| %>
-      <tr>
-        <td><%= params['search_topic'] %></td>
-        <td><%= team.try(:grade).try(:grade_name) %></td>
-        <td><%= team.try(:coach).try(:first_name) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<table class="inlineTable">
-  <thead>
-    <tr>
-      <th><%= sort_link(@search, :first_name, "First name") %></th>
-      <th><%= sort_link(@search, :surname, "Surname") %></th>
-      <th><%= sort_link(@search, :gender , "Gender") %></th>
-      <th><%= sort_link(@search, :date_of_birth , "Date of birth") %></th>
-      <th><%= sort_link(@search, :school_year , "School year") %></th>
-      <th><%= sort_link(@search, :school_next_year , "School next year") %></th>
-      <th><%= sort_link(@search, :grade_last_season , "Grade last season") %></th>
-      <th><%= sort_link(@search, :senior , "Senior") %></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @players.each do |player| %>
-      <tr>
-        <td><%= link_to player.first_name, player %></td>
-        <td><%= player.surname %></td>
-        <td><%= player.gender %></td>
-        <td><%= player.date_of_birth %></td>
-        <td><%= player.school_year %></td>
-        <td><%= player.school_next_year %></td>
-        <td><%= player.grade_last_season %></td>
-        <td><%= player.senior %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
