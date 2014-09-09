@@ -14,42 +14,42 @@
 			var transitionSpeed = 350;
 		
 			/* On page load, show only login div */
-			$(".adminContainer").css("width", $(window).width() - 333);
+			$(".adminContainer").css("width", $(window).width() - 350);
 			$(".adminContainer").css("left", "-200%");
-			$("#loginDiv").css("left", 333);
+			$("#loginDiv").css("left", 350);
 		
 			/* Menu items functions */
 			$('.mi1').click(function(e) {
-				if (loggedIn == true && $("#mi1").position().left != 333) {
+				if (loggedIn == true && $("#mi1").position().left != 350) {
 					$(".adminContainer").animate({left: "-200%"}, transitionSpeed);
-					$("#mi1").animate({left: "333px"}, transitionSpeed);
+					$("#mi1").animate({left: "350px"}, transitionSpeed);
 				} else loginWobble();
 			});
 			$('.mi2').click(function(e) {
-				if (loggedIn == true && $("#mi2").position().left != 333) {
+				if (loggedIn == true && $("#mi2").position().left != 350) {
 					$(".adminContainer").animate({left: "-200%"}, transitionSpeed);
-					$("#mi2").animate({left: "333px"}, transitionSpeed);
+					$("#mi2").animate({left: "350px"}, transitionSpeed);
 				} else loginWobble();
 			});
 			$('.mi3').click(function(e) {
-				if (loggedIn == true && $("#mi3").position().left != 333) {
+				if (loggedIn == true && $("#mi3").position().left != 350) {
 					$(".adminContainer").animate({left: "-200%"}, transitionSpeed);
-					$("#mi3").animate({left: "333px"}, transitionSpeed);
+					$("#mi3").animate({left: "350px"}, transitionSpeed);
 				} else loginWobble();
 			});
 			$('.mi4').click(function(e) {
-				if (loggedIn == true && $("#mi4").position().left != 333) {
+				if (loggedIn == true && $("#mi4").position().left != 350) {
 					$(".adminContainer").animate({left: "-200%"}, transitionSpeed);
-					$("#mi4").animate({left: "333px"}, transitionSpeed);
+					$("#mi4").animate({left: "350px"}, transitionSpeed);
 				} else loginWobble();
 			});
 		
 			/* Logout function */
 			$('.logout').click(function(e) {
-				if ($("#loginDiv").position().left != 333){
+				if ($("#loginDiv").position().left != 350){
 					loggedIn = false;
 					$(".adminContainer").animate({left: "-200%"}, transitionSpeed);
-					$("#loginDiv").animate({left: "333px"}, transitionSpeed);
+					$("#loginDiv").animate({left: "350px"}, transitionSpeed);
 				} else loginWobble();
 			});
 			
@@ -59,7 +59,7 @@
 				if (($('#user').val()=="admin")&&(pass=="30b699db62136c65fa9dff7910505eabb69da8c43db6ac5ed0fb2af8")){
 					loggedIn = true;
 					$(".adminContainer").animate({left: "-200%"}, transitionSpeed);
-					$("#mi1").animate({left: "333px"}, transitionSpeed);
+					$("#mi1").animate({left: "350px"}, transitionSpeed);
 				} else loginWobble();
 			});
 			
@@ -98,10 +98,10 @@
 			</center>
 		</div>
 	</div>
-	<div class="adminContainer" id="mi1">Player Profiles<!-- TODO --></div>
-	<div class="adminContainer" id="mi2">Manage Teams<!-- TODO --></div>
-	<div class="adminContainer" id="mi3">Menu Item 3<!-- TODO --></div>
-	<div class="adminContainer" id="mi4">Menu Item 4<!-- TODO --></div>
+	<div class="adminContainer" id="mi1"><iframe class="miIframe" id="mi1Iframe" src="../players" scrolling="no"></iframe></div>
+	<div class="adminContainer" id="mi2"><iframe class="miIframe" id="mi2Iframe" src="../teams" scrolling="no"></iframe></div>
+	<div class="adminContainer" id="mi3"><!--iframe class="miIframe" id="mi3Iframe" src="../" scrolling="no"></iframe--></div>
+	<div class="adminContainer" id="mi4"><!--iframe class="miIframe" id="mi4Iframe" src="../" scrolling="no"></iframe--></div>
 </body>
 
 </html>
