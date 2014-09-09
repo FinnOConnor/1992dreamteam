@@ -32,10 +32,11 @@
             
            $(window).scroll(function(){
                 if ($(window).scrollTop() >= title_container){
-                    $("#menu").css({top: $(window).scrollTop() + "px"});
+                    $("#menu").css({position: "fixed", top: 0});
                 }
                else {
-                    $("#menu").css({top: title_container + "px"});
+                    $("#menu").css({position: "absolute", top: title_container + "px"});
+                   
                 }
            });
   
