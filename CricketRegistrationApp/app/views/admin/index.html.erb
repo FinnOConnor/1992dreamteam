@@ -84,39 +84,41 @@
 	
 <body>
 
-    
-<%= render :template => 'layouts/menu' %>
-
-<div class="wrapper">
-	<div id="admin_sidebar">
-		<ul>
-            <li class="menuItem" id="item1"><h4>Player Profiles</h4></li>
-            <li class="menuItem" id="item2"><h4>Manage Teams</h4></li>
-            <li class="menuItem" id="item3"><h4>Menu Item 3</h4></li>
-            <li class="menuItem" id="item4"><h4>Menu Item 4</h4></li>
-            <li class="menuItem" id="item5"><h4>Menu Item 5</h4></li>
-            <li class="menuItem" id="item6"><h4>Menu Item 6</h4></li>
-        </ul>
-        <div class="logout"><center><span>Log out</span></center></div> 
-  	</div>
-	<div class="adminContainer" id="loginDiv">
-		<div class=loginDiv>
-			<center>
-				<div class="loginInputs">
-					<span>Username: </span><input type="text" class="inputBox" id="user"/><br>
-					<span>Password: </span><input type="password" class="inputBox" id="pass"/><br>
-				</div>
-				<div class="loginButton"><center><span>Log In</span></center></div>
-			</center>
+	<%= render :template => 'layouts/menu' %>
+	<div class="wrapper">
+		
+		<div id="admin_sidebar">
+			<ul>
+				<li class="menuItem" id="item1"><h4>Player Profiles</h4></li>
+				<li class="menuItem" id="item2"><h4>Manage Teams</h4></li>
+				<li class="menuItem" id="item3"><h4>Menu Item 3</h4></li>
+				<li class="menuItem" id="item4"><h4>Menu Item 4</h4></li>
+				<li class="menuItem" id="item5"><h4>Menu Item 5</h4></li>
+				<li class="menuItem" id="item6"><h4>Menu Item 6</h4></li>
+			</ul>
+			<div class="logout"><center><span>Log out</span></center></div> 
 		</div>
+		
+		<div class="adminContainer" id="loginDiv">
+			<div class=loginDiv>
+				<center>
+					<div class="loginInputs">
+						<span>Username: </span><input type="text" class="inputBox" id="user"/><br>
+						<span>Password: </span><input type="password" class="inputBox" id="pass"/><br>
+					</div>
+					<div class="loginButton"><center><span>Log In</span></center></div>
+				</center>
+			</div>
+		</div>
+		
+		<div class="adminContainer" id="mi1"><iframe class="miIframe" id="mi1Iframe" src="../players" scrolling="no"></iframe></div>
+		<div class="adminContainer" id="mi2"><iframe class="miIframe" id="mi2Iframe" src="../manage/index" scrolling="no"></iframe></div>
+		<div class="adminContainer" id="mi3"><!--iframe class="miIframe" id="mi3Iframe" src="../" scrolling="no"></iframe--></div>
+		<div class="adminContainer" id="mi4"><!--iframe class="miIframe" id="mi4Iframe" src="../" scrolling="no"></iframe--></div>
+		<div class="adminContainer" id="mi5"><!--iframe class="miIframe" id="mi5Iframe" src="../" scrolling="no"></iframe--></div>
+		<div class="adminContainer" id="mi6"><!--iframe class="miIframe" id="mi6Iframe" src="../" scrolling="no"></iframe--></div>
+		
 	</div>
-	<div class="adminContainer" id="mi1"><iframe class="miIframe" id="mi1Iframe" src="../players" scrolling="no"></iframe></div>
-	<div class="adminContainer" id="mi2"><!--iframe class="miIframe" id="mi2Iframe" src="../teams" scrolling="no"></iframe--></div>
-	<div class="adminContainer" id="mi3"><!--iframe class="miIframe" id="mi3Iframe" src="../" scrolling="no"></iframe--></div>
-	<div class="adminContainer" id="mi4"><!--iframe class="miIframe" id="mi4Iframe" src="../" scrolling="no"></iframe--></div>
-	<div class="adminContainer" id="mi5"><!--iframe class="miIframe" id="mi5Iframe" src="../" scrolling="no"></iframe--></div>
-	<div class="adminContainer" id="mi6"><!--iframe class="miIframe" id="mi6Iframe" src="../" scrolling="no"></iframe--></div>
-</div>
     
 </body>
 
