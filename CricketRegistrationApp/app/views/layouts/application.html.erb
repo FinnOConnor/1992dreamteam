@@ -32,10 +32,10 @@
             
            $(window).scroll(function(){
                 if ($(window).scrollTop() >= title_container){
-                    $("#menu").css("top", $(window).scrollTop() +"px");
+                    $("#menu").css({top: $(window).scrollTop() + "px"});
                 }
                else {
-                    $("#menu").css("top", title_container+"px");
+                    $("#menu").css({top: title_container + "px"});
                 }
            });
   
