@@ -17,69 +17,12 @@
 	<!-- SHA3 CryptoJS Hash Function -->
 	<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha3.js"></script>
 
-    
 
-    
-    
     
 </head>
 <body>
-    
-        <!--  Menu and header for all pages  -->
-    
-    <div id="background_image" style="background: url(<%= asset_path 'cricket.jpg' %>);"></div>
-    
-        <div id="title_container"><div id="title">  
-            <p class="title">
-                    <span class="title">TAWA</span><br>
-                         _____<br><br>
-                        cricket website
-                    </p >
-            </div>
-        </div>
-    
-        <div id="colour_block"></div>
-    
-        <div id="menu" class="menu">
-            <ul>
-                <li class="home" onClick="self.location='../'">
-                    <h3>Home</h3>
-                </li>
-                <li class="rego">
-                    <h3>Register</h3>
-                    
-                <!-- Sub menu goes here -->
-                <div id="sub_menu" class="menu">
-                    
-                        <ul class="registration">
-                            <li id="junior" class="register" onClick="self.location='../parents/new'">
-                                <h3>Junior</h3>
-                            </li>
-                                
-                            <li id ="senior" class="register" onClick="self.location='../players/new'">
-                                <h3>Senior</h3>
-                            </li>    
 
-                            <li id="volunteer" class="register" onClick="self.location='../coaches/new'">
-                                <h3>Volunteer</h3>
-                            </li>    
-                                
-                        </ul>
-                        
-                </div>       
-                        
-                </li>
-                    <li class="admin" onClick="self.location='../admin/index'">
-                        <h3>Admin</h3>
-                    </li>
-                </ul>
-            </div>
-   
-        <div class="wrapper">
-
-                <%= yield %>
-            
-        </div>
+<%= yield %>
 
 </body>
 </html>
