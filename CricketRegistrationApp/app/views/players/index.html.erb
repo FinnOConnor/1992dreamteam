@@ -1,32 +1,12 @@
-<div id="playerSearch">
+<div>
 	<%= search_form_for @search do |f| %><%= f.condition_fields do |c| %>
 	<table><tr>
 		<td><%= c.attribute_fields do |a| %><%= a.attribute_select %><% end %></td>
 		<td><%= c.predicate_select %><%= c.value_fields do |v| %></td>
-		<td><div class="field"><%= v.text_field :value %></div><% end %><% end %></td>
+		<td><%= v.text_field :value %><% end %><% end %></td>
 		<td><%= f.submit "Search for a Player" %><% end %></td>
 	</tr></table>
 </div>
-
-<div class="playerWrapper">
-
-<<<<<<< HEAD
-<%= search_form_for @search do |f| %>
-  <%= f.condition_fields do |c| %>
-  <div class="field">
-    <%= c.attribute_fields do |a| %>
-      <%= a.attribute_select %>
-    <% end %>
-    <%= c.predicate_select %>
-    <%= c.value_fields do |v| %>
-      <%= v.text_field :value %>
-    <% end %>
-    </div>
-  <% end %>
-  <div class="actions"><%= f.submit "Search" %></div>
-<% end %>
-
-
 
 <table>
   <thead>
@@ -77,60 +57,5 @@
 </table>
 
 <br>
-
+	
 <%= link_to 'New Player', new_player_path %>
-=======
-	<h1>Manage Players</h1>
-	
-	<table>
-		<thead>
-			<tr>
-				<th><%= sort_link(@search, :first_name, "First name") %></th>
-				<th><%= sort_link(@search, :surname, "Surname") %></th>
-				<th><%= sort_link(@search, :gender , "Gender") %></th>
-				<th><%= sort_link(@search, :date_of_birth , "Date of birth") %></th>
-				<th>Address</th>
-				<th>Contact phone</th>
-				<th>Email</th>
-				<th><%= sort_link(@search, :school_year , "School year") %></th>
-				<th><%= sort_link(@search, :school_next_year , "School next year") %></th>
-				<th><%= sort_link(@search, :grade_last_season , "Grade last season") %></th>
-				<th><%= sort_link(@search, :team_id_last_season , "Team id last season") %></th>
-				<th><%= sort_link(@search, :senior , "Senior") %></th>
-				<th><%= sort_link(@search, :team , "Team") %></th>
-				<th><%= sort_link(@search, :parent , "Parent") %></th>
-				<th colspan="3"></th>
-			</tr>
-		</thead>
-		
-		<tbody>
-			<% @players.each do |player| %>
-			<tr>
-				<td><%= link_to player.first_name, player %></td>
-				<td><%= player.surname %></td>
-				<td><%= player.gender %></td>
-				<td><%= player.date_of_birth %></td>
-				<td><%= player.address %></td>
-				<td><%= player.contact_phone %></td>
-				<td><%= player.email %></td>
-				<td><%= player.school_year %></td>
-				<td><%= player.school_next_year %></td>
-				<td><%= player.grade_last_season %></td>
-				<td><%= player.team_id_last_season %></td>
-				<td><%= player.senior %></td>
-				<td><%= link_to player.try(:team).try(:name), player.try(:team) %></td>
-				<td><%= link_to player.try(:parent).try(:p_first_name), player.try(:parent) %></td>
-				<td><%= link_to 'Show', player %></td>
-				<td><%= link_to 'Edit', edit_player_path(player) %></td>
-				<td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-			</tr>
-			<% end %>
-		</tbody>
-	</table>
-	
-	<br>
-	
-	<%= link_to 'New Player', new_player_path %>
-	
-</div>
->>>>>>> FETCH_HEAD
