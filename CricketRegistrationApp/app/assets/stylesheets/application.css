@@ -275,13 +275,21 @@ h2 {
     padding-top: 40px;
 }
 
+#home_container {
+    position: absolute; 
+    width: 60%;    
+    left: 50%;
+    min-width: 600px;
+}
 
 #administration_container {
+    top: -200%; 
     position: absolute;
     margin-top: 0px;
     left: 0;
     padding: 0;
     height: 100%;
+    background: #000;
     width: 100%;
     z-index: 1;
 }
