@@ -1,9 +1,16 @@
-<div class="container" id="volunteer_container">
+<%= render :template => 'layouts/menu' %>
+
+<div class="wrapper">
+
+    <div class="container" id="volunteer_container">
     
     <h3>~ new coach ~</h3>
-
+    
     <%= render 'form' %>
 
     <%= link_to 'Back', coaches_path %>
+    
 
+    </div>
+            
 </div>
