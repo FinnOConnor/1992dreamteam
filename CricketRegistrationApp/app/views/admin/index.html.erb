@@ -13,55 +13,58 @@
 			var loggedIn = false;
 			var transitionSpeed = 350;
 		
+			/* On page load, set sidebar height to 100% - top menu height */
+			var pageHeight = ($(window).height()-100) + "px"
+			$("#admin_sidebar").css({height: pageHeight});
+			$(".adminContainer").css({height: pageHeight});
+			
 			/* On page load, show only login div */
 			$(".adminContainer").css("width", $(window).width() - 350);
 			$(".adminContainer").css("left", "-200%");
 			$("#loginDiv").css("left", 350);
 		
 			/* Menu items functions */
-			$('.mi1').click(function(e) {
-				if (loggedIn == true && $("#mi1").position().left != 350) {
-					$(".adminContainer").animate({left: "-200%"}, transitionSpeed);
-					$("#mi1").animate({left: "350px"}, transitionSpeed);
-				} else loginWobble();
+			
+			var id;
+			
+			$('.menuItem').click(function(e) {
+				switch ($(this).attr("id")) {
+					case ("item1"): id = "#mi1"; break;
+					case ("item2"): id = "#mi2"; break;
+					case ("item3"): id = "#mi3"; break;
+					case ("item4"): id = "#mi4"; break;
+				} slide(id);
 			});
-			$('.mi2').click(function(e) {
-				if (loggedIn == true && $("#mi2").position().left != 350) {
+								 
+			function slide(id) {
+				if (loggedIn == true && $(id).position().left != 350) {
 					$(".adminContainer").animate({left: "-200%"}, transitionSpeed);
-					$("#mi2").animate({left: "350px"}, transitionSpeed);
+					$(id).animate({left: "350px"}, transitionSpeed);
 				} else loginWobble();
-			});
-			$('.mi3').click(function(e) {
-				if (loggedIn == true && $("#mi3").position().left != 350) {
-					$(".adminContainer").animate({left: "-200%"}, transitionSpeed);
-					$("#mi3").animate({left: "350px"}, transitionSpeed);
-				} else loginWobble();
-			});
-			$('.mi4').click(function(e) {
-				if (loggedIn == true && $("#mi4").position().left != 350) {
-					$(".adminContainer").animate({left: "-200%"}, transitionSpeed);
-					$("#mi4").animate({left: "350px"}, transitionSpeed);
-				} else loginWobble();
-			});
+			}
 		
 			/* Logout function */
 			$('.logout').click(function(e) {
-				if ($("#loginDiv").position().left != 350){
+				if (loggedIn){
 					loggedIn = false;
 					$(".adminContainer").animate({left: "-200%"}, transitionSpeed);
 					$("#loginDiv").animate({left: "350px"}, transitionSpeed);
-				} else loginWobble();
+				} else logginWobble();
 			});
 			
 			/* Login button function */
 			$('.loginButton').click(function(e) {
+				loggin();
+			});
+			
+			function loggin() {
 				var pass = ((CryptoJS.SHA3($('#pass').val(),{outputLength:224})).toString(CryptoJS.enc.Hex));
 				if (($('#user').val()=="admin")&&(pass=="30b699db62136c65fa9dff7910505eabb69da8c43db6ac5ed0fb2af8")){
 					loggedIn = true;
 					$(".adminContainer").animate({left: "-200%"}, transitionSpeed);
 					$("#mi1").animate({left: "350px"}, transitionSpeed);
 				} else loginWobble();
-			});
+			}
 			
 			function loginWobble() {
 				var wobbleSpeed = 50;
@@ -76,17 +79,17 @@
 		});
 	</script>
 </head>
+	
 <body>
 	<div id="admin_sidebar">
 		<ul>
-            <li class="mi1"><h4>Player Profiles</h4></li>
-            <li class="mi2"><h4>Manage Teams</h4></li>
-            <li class="mi3"><h4>Menu Item 3</h4></li>
-            <li class="mi4"><h4>Menu Item 4</h4></li>
+            <li class="menuItem" id="item1"><h4>Player Profiles</h4></li>
+            <li class="menuItem" id="item2"><h4>Manage Teams</h4></li>
+            <li class="menuItem" id="item3"><h4>Menu Item 3</h4></li>
+            <li class="menuItem" id="item4"><h4>Menu Item 4</h4></li>
         </ul>
         <div class="logout"><center><span>Log out</span></center></div> 
   	</div>
-	
 	<div class="adminContainer" id="loginDiv">
 		<div class=loginDiv>
 			<center>
@@ -98,8 +101,8 @@
 			</center>
 		</div>
 	</div>
-	<div class="adminContainer" id="mi1"><iframe class="miIframe" id="mi1Iframe" src="../players" scrolling="no"></iframe></div>
-	<div class="adminContainer" id="mi2"><iframe class="miIframe" id="mi2Iframe" src="../teams" scrolling="no"></iframe></div>
+	<div class="adminContainer" id="mi1"><!--iframe class="miIframe" id="mi1Iframe" src="../players" scrolling="no"></iframe--></div>
+	<div class="adminContainer" id="mi2"><!--iframe class="miIframe" id="mi2Iframe" src="../teams" scrolling="no"></iframe--></div>
 	<div class="adminContainer" id="mi3"><!--iframe class="miIframe" id="mi3Iframe" src="../" scrolling="no"></iframe--></div>
 	<div class="adminContainer" id="mi4"><!--iframe class="miIframe" id="mi4Iframe" src="../" scrolling="no"></iframe--></div>
 </body>
