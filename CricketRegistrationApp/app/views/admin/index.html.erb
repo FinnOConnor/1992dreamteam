@@ -4,17 +4,26 @@
 	<script>
 		$(document).ready(function() {
 			
+            /* On document resize, refit content */
+            $(window).resize(function(){
+                			var pageHeight = ($(window).height()-100) + "px";
+			$("#admin_sidebar").css({height: pageHeight});
+			$(".adminContainer").css({height: pageHeight});
+                			$(".adminContainer").css("width", $(window).width() - 350);
+            });
+            
+            
 			/* for testing only, remove later */
 			$('#user').val('admin');
 			$('#pass').val('temppass');
-			console.log((CryptoJS.SHA3("temppass",{outputLength:224})).toString(CryptoJS.enc.Hex)); // for calculating new passwords */
+			//console.log((CryptoJS.SHA3("temppass",{outputLength:224})).toString(CryptoJS.enc.Hex)); // for calculating new passwords */
 			
 			/* page wide variables on load */
 			var loggedIn = false;
 			var transitionSpeed = 600;
 		
 			/* On page load, set sidebar height to 100% - top menu height */
-			var pageHeight = ($(window).height()-100) + "px"
+			var pageHeight = ($(window).height()-100) + "px";
 			$("#admin_sidebar").css({height: pageHeight});
 			$(".adminContainer").css({height: pageHeight});
 			
@@ -86,7 +95,7 @@
     
     <!-- Render menu only in this admin page -->
 
-     <div id="menu" class="menu">
+     <div id="menu" class="menu" style="top: 0%;">
                 <ul>
                     <li class="home" onClick="self.location='../'">
                         <h3>Home</h3>
@@ -122,17 +131,19 @@
                 </div>
 
     
-	<div class="wrapper">
+	<div class="admin_wrapper">
 		
 		<div id="admin_sidebar">
-			<ul>
-				<li class="menuItem" id="item1"><h4>Player Profiles</h4></li>
-				<li class="menuItem" id="item2"><h4>Manage Teams</h4></li>
-				<li class="menuItem" id="item3"><h4>Create Teams</h4></li>
-				<li class="menuItem" id="item4"><h4>Manage Prices</h4></li>
-				<li class="menuItem" id="item5"><h4>Send Messages</h4></li>
+            <div id="admin_menu">
+                <ul>
+                    <li class="menuItem" id="item1"><h4>Player Profiles</h4></li>
+                    <li class="menuItem" id="item2"><h4>Manage Teams</h4></li>
+                    <li class="menuItem" id="item3"><h4>Create Teams</h4></li>
+                    <li class="menuItem" id="item4"><h4>Manage Prices</h4></li>
+                    <li class="menuItem" id="item5"><h4>Send Messages</h4></li>
 
-			</ul>
+                </ul>
+            </div>
 			<div class="logout"><center><span>Log out</span></center></div> 
 		</div>
 		
@@ -148,8 +159,8 @@
 			</div>
 		</div>
 		
-		<div class="adminContainer" id="mi1"><iframe class="miIframe" id="mi1Iframe" src="../players" scrolling="no"></iframe></div>
-		<div class="adminContainer" id="mi2"><iframe class="miIframe" id="mi2Iframe" src="../manage/index" scrolling="no"></iframe></div>
+		<div class="adminContainer" id="mi1"><iframe class="miIframe" id="mi1Iframe" src="../players" scrolling="no" border="0"></iframe></div>
+		<div class="adminContainer" id="mi2"><iframe class="miIframe" id="mi2Iframe" src="../manage/index" scrolling="no" border="0"></iframe></div>
 		<div class="adminContainer" id="mi3"><!--iframe class="miIframe" id="mi3Iframe" src="../" scrolling="no"></iframe--></div>
 		<div class="adminContainer" id="mi4"><iframe class="miIframe" id="mi4Iframe" src="../costs" scrolling="no"></iframe></div>
 		
