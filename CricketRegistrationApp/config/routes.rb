@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :costs
 
+  resources :costs
+
   get 'manage/index'
 
   resources :grades

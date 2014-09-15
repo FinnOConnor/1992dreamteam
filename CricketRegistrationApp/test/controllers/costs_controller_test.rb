@@ -18,7 +18,7 @@ class CostsControllerTest < ActionController::TestCase
 
   test "should create cost" do
     assert_difference('Cost.count') do
-      post :create, cost: { cost: @cost.cost, description: @cost.description, name: @cost.name }
+      post :create, cost: { description: @cost.description, name: @cost.name, price: @cost.price }
     end
 
     assert_redirected_to cost_path(assigns(:cost))
@@ -35,7 +35,7 @@ class CostsControllerTest < ActionController::TestCase
   end
 
   test "should update cost" do
-    patch :update, id: @cost, cost: { cost: @cost.cost, description: @cost.description, name: @cost.name }
+    patch :update, id: @cost, cost: { description: @cost.description, name: @cost.name, price: @cost.price }
     assert_redirected_to cost_path(assigns(:cost))
   end
 

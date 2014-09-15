@@ -69,6 +69,6 @@ class CostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cost_params
-      params.require(:cost).permit(:name, :description, :cost)
+      params.require(:cost).permit(:name, :description, :price)
     end
 end

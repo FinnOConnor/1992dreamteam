@@ -3,7 +3,7 @@ class CreateCosts < ActiveRecord::Migration
     create_table :costs do |t|
       t.string :name
       t.string :description
-      t.double :cost
+      t.decimal :price
 
       t.timestamps
     end
