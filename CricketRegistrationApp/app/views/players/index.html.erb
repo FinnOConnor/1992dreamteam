@@ -1,6 +1,9 @@
-<div>
+<div class="search_players">
+    <h3>~ search players ~</h3>
+    
+    
 	<%= search_form_for @search do |f| %><%= f.condition_fields do |c| %>
-	<table><tr>
+	<table class="search_players_table"><tr>
 		<td><%= c.attribute_fields do |a| %><%= a.attribute_select %><% end %></td>
 		<td><%= c.predicate_select %><%= c.value_fields do |v| %></td>
 		<td><%= v.text_field :value %><% end %><% end %></td>
@@ -8,16 +11,17 @@
 	</tr></table>
 </div>
 
-<table>
+<table class="players_table">
   <thead>
     <tr>
-      <th><%= sort_link(@search, :first_name, "First name") %></th>
-      <th><%= sort_link(@search, :surname, "Surname") %></th>
-      <th><%= sort_link(@search, :gender , "Gender") %></th>
-      <th><%= sort_link(@search, :date_of_birth , "Date of birth") %></th>
-      <th>Address</th>
-      <th>Contact phone</th>
-      <th>Email</th>
+      <th><%= sort_link(@search, :first_name, "first name") %></th>
+      <th><%= sort_link(@search, :surname, "surname") %></th>
+<!--     <th><%= sort_link(@search, :gender , "gender") %></th> -->
+      <th><%= sort_link(@search, :date_of_birth , "date of birth") %></th>
+      <th>address</th>
+      <th>contact phone</th>
+      <th>email</th>
+<!--
       <th><%= sort_link(@search, :school_year , "School year") %></th>
       <th><%= sort_link(@search, :school_next_year , "School next year") %></th>
       <th><%= sort_link(@search, :grade_last_season , "Grade last season") %></th>
@@ -26,7 +30,7 @@
       <th>Notes</th>
       <th><%= sort_link(@search, :team , "Team") %></th>
       <th><%= sort_link(@search, :parent , "Parent") %></th>
-      <th colspan="3"></th>
+-->
     </tr>
   </thead>
 
@@ -58,4 +62,3 @@
 
 <br>
 	
-<%= link_to 'New Player', new_player_path %>

@@ -5,11 +5,6 @@
 tidy{} /* ignore this */
 
 
-/* Prevent strange scrolling; not a permanent fix */
-body{
-    overflow: hidden;
-}
-
 .admin_wrapper{
     width: 100%;
     position: absolute;
@@ -86,33 +81,6 @@ body{
     color: #94dd7e;
 }
 
-
-.field input {
-    background: #fff;
-    padding: 15px;
-    width: 500px;
-    border: 6px solid #ededed;
-    font-size: 12pt;
-}
-
-.field input:hover , input:focus {
-    border: 6px solid #afffac;
-}
-
-.field {
-    font-size: 14pt;
-    color: #444;
-    line-height: 250%;
-}
-
-.field label {
-    display: inline-block;
-    font-size: 14pt;
-    color: #628959;
-    margin-right: 70px;
-    text-align: right;
-    width: 180px;
-}
 
 .adminContainer {
 	position: absolute;
