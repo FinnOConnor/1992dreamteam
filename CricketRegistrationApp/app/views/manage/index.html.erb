@@ -6,17 +6,101 @@
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+  <script type='text/javascript' src='jquery.facets.js'></script>
   <link rel="stylesheet" href="/resources/demos/style.css">
   <style>
-  h1 { padding: .2em; margin: 0; }
-  #products { float:left; width: 500px; margin-right: 2em; }
-  #cart { width: 500px; float: left; margin-top: 1em; }
+
+#container
+{
+width: 100%;
+height: 100%;
+overflow: hidden;
+position: absolute;
+margin: 10px auto;
+background-color: #fff;
+color: #333;
+border: 1px solid gray;
+line-height: 130%;
+}
+
+#leftnav
+{
+float: left;
+width: 160px;
+    height: 100%;
+    position: relative;
+margin: 0;
+padding: 1em;
+    padding-bottom: 5000px;
+    margin-bottom: -5000px;
+}
+
+#rightnav
+{
+float: right;
+width: 160px;
+    height: 100%;
+margin: 0;
+padding: 1em;
+    padding-bottom: 5000px;
+    margin-bottom: -5000px;
+}
+
+.content
+{
+margin-left: 200px;
+border-left: 1px solid gray;
+margin-right: 200px;
+border-right: 1px solid gray;
+padding: 1em;
+max-width: 75%;
+    height: 100%;
+
+}
+.teamsContent
+{
+float: left;
+border-right: 1px solid gray;
+width: 50%;
+    height: 100%;
+
+}
+.playersContent
+{
+float: right;
+border-left: 1px solid gray;
+width: 50%;
+    height: 100%;
+}
+.teamsContent, .playersContent{
+    display:table-cell;
+}
+.innerTeam{
+    position:relative;
+    margin: auto;
+    width: 100%;
+}
+
+
+
+      
+h1 { padding: .2em; margin: 0; }
+  #products { width:90%; margin: 0px auto;}
+
+  #cart  { padding-top: 40px;width:90%; margin: 0px auto;}
   /* style the list to maximize the droppable hitarea */
   #cart ol { margin: 0; padding: 1em 0 1em 3em; }
   #product ol { margin: 0; padding: 1em 0 1em 3em; }
+
+#leftnav p, #rightnav p { margin: 0 0 1em 0; }
+#leftnav h2 { margin: 0 0 .5em 0; }
+#leftnav {list-style-type: none;}
+#leftnav dt { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
+#rightnav h2 { margin: 0 0 .5em 0; }
   </style>
+    
   <script>
-  $(function() {
+      $(function() {
     $( "#cart li" ).draggable({
       appendTo: "body",
       helper: "clone"
@@ -59,36 +143,74 @@
   });
   </script>
 </head>
+
 <body>
- 
-<div id="products">
-  <h1 class="ui-widget-header">Team</h1>
-  <div id="catalog">
-    <% @teams.each do |team| %>
-      <h2><a href="#"><%= team.name %></a></h2>
-      <ol>
-    <div>
+<div id="container">
+    <div id="leftnav">
+        <h2>Grades</h2>
+        <dl>
+            <% @grades.each do |grade| %>
+                <dt><%= grade.grade_name %></dt>
+                    <% grade.teams.each do |team| %>
+                        <dd><%= team.name %></dd>
+                    <% end %>
+            <% end %>
+        </dl>
+    </div>
+    <div id="rightnav">
+        <h2>Players</h2>
         
-        <% team.players.each do |player| %>
-          <li><%= [player.first_name, player.surname].join(" ") %> </li>
-        <% end %>
+        <%= search_form_for @search1 do |f| %>
+
+  <%= f.label :first_name_or_surname_cont %>
+  <%= f.search_field :first_name_or_surname_cont %>
+
+  <%= f.submit %>
+<% end %>
+    </div>
+        <div class="content">
+
+            <div class="teamsContent">
+                <div class="innerTeam">
+                    <div id="products">
+                        <h1 class="ui-widget-header">Team</h1>
+                        <div id="catalog">
+                            <% @teams.each do |team| %>
+                            <h2><a href="#"><%= team.name %></a></h2>
+                            <ol>
+                            <div>
+                                <% team.players.each do |player| %>
+                                    <li><%= [player.first_name, player.surname].join(" ") %> </li>
+                                <% end %>
+
+                            </div>
+                            </ol>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+                <div class="innerTeam">
+                        <div id="cart">
+      <h1 class="ui-widget-header">Players</h1>
+      <div class="ui-widget-content">
+        <ol>
+          <% @players.each do |player| %>
+            <li><%= [player.first_name, player.surname].join(" ") %> </li>
+          <% end %>
+        </ol>
+      </div>
+    </div> 
+                </div>
+                
+            </div> 
+        
+        <div class="playersContent">
+                    
+        </div>
+        
+
+           
         
     </div>
-          </ol>
-    <% end %>
-  </div>
 </div>
- 
-<div id="cart">
-  <h1 class="ui-widget-header">Players</h1>
-  <div class="ui-widget-content">
-    <ol>
-      <% @players.each do |player| %>
-        <li><%= [player.first_name, player.surname].join(" ") %> </li>
-      <% end %>
-    </ol>
-  </div>
-</div>
- 
- 
 </body>
