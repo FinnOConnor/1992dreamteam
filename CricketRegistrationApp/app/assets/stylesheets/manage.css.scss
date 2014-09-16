@@ -81,13 +81,17 @@
     background: #9cc185;
     color: #e0f4d3;
     padding: 15px;
+    margin-bottom: 0px;
     font-variant: small-caps;
     text-align: center;
 }
 
 
-.ui-widget-content {
+div.ui-widget-content {
     border: 1px solid #d8d8cc; 
+    top: 0;
+    color: #67765c;
+    font-size: 14pt;
 }
 
       
