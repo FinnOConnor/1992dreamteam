@@ -1,3 +1,4 @@
+<h3>~ Search Parents ~</h3>
 
 <%= search_form_for @search do |f| %>
   <%= f.condition_fields do |c| %>
@@ -14,7 +15,7 @@
   <div class="actions"><%= f.submit "Search" %></div>
 <% end %>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th><%= sort_link(@search, :p_first_name , "P first name") %></th>
