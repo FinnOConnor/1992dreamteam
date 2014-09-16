@@ -36,7 +36,7 @@
 }
 
 .search_players_table th {
-    padding: 10px;
+    height: 300px;
 }
 
 .search_players{
@@ -60,6 +60,7 @@
     font-size: 12pt;
     color: #666;
     width: 100%;
+    min-width: 200px;
 }
 
 .search_players_table input {   
@@ -109,6 +110,12 @@
 
 .players_table th:last-child, th a:last-child {
     border-right: 0;
+}
+
+.players_table td {
+
+    padding-top: 10px;
+
 }
 
 .players_table {
