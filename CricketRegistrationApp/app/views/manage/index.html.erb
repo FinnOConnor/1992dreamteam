@@ -1,5 +1,3 @@
-<h1> Manage Teams</h1>
-
 <head>
   <meta charset="utf-8">
   <title>jQuery UI Droppable - Shopping Cart Demo</title>
@@ -12,68 +10,57 @@
 
 #container
 {
-width: 100%;
-height: 100%;
-overflow: hidden;
-position: absolute;
-margin: 10px auto;
-background-color: #fff;
-color: #333;
-border: 1px solid gray;
-line-height: 130%;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    color: #333;
+    line-height: 130%;
 }
 
 #leftnav
 {
-float: left;
-width: 160px;
+    float: left;
+    width: 160px;
     height: 100%;
     position: relative;
-margin: 0;
-padding: 1em;
-    padding-bottom: 5000px;
-    margin-bottom: -5000px;
+    margin: 0;
+    padding: 1em;
 }
 
 #rightnav
 {
-float: right;
-width: 160px;
+    float: right;
+    width: 160px;
     height: 100%;
-margin: 0;
-padding: 1em;
-    padding-bottom: 5000px;
-    margin-bottom: -5000px;
+    margin: 0;
+    padding: 1em;
 }
 
 .content
 {
-margin-left: 200px;
-border-left: 1px solid gray;
-margin-right: 200px;
-border-right: 1px solid gray;
-padding: 1em;
-max-width: 75%;
+    margin-left: 200px;
+    border-left: 1px solid gray;
+    margin-right: 200px;
+    border-right: 1px solid gray;
+    padding: 1em;
+    max-width: 75%;
     height: 100%;
 
 }
 .teamsContent
 {
-float: left;
-border-right: 1px solid gray;
-width: 50%;
+    position: relative;
+    float: left;
     height: 100%;
-
+    width: 50%;
 }
 .playersContent
 {
-float: right;
-border-left: 1px solid gray;
-width: 50%;
+    position: relative;
+    float: left;
+    width: 50%;
     height: 100%;
-}
-.teamsContent, .playersContent{
-    display:table-cell;
 }
 .innerTeam{
     position:relative;
@@ -87,9 +74,15 @@ width: 50%;
 h1 { padding: .2em; margin: 0; }
   #products { width:90%; margin: 0px auto;}
 
-  #cart  { padding-top: 40px;width:90%; margin: 0px auto;}
+  #playerList  {padding-top: 40px;width:90%; margin: 0px auto;}
   /* style the list to maximize the droppable hitarea */
-  #cart ol { margin: 0; padding: 1em 0 1em 3em; }
+  #playerList ol { margin: 0; padding: 1em 0 1em 3em; }
+      #team1  { padding-top: 40px;width:90%; margin: 0px auto;}
+  /* style the list to maximize the droppable hitarea */
+  #team1 ol { margin: 0; padding: 1em 0 1em 3em; }
+      #team2  { padding-top: 40px;width:90%; margin: 0px auto;}
+  /* style the list to maximize the droppable hitarea */
+  #team2 ol { margin: 0; padding: 1em 0 1em 3em; }
   #product ol { margin: 0; padding: 1em 0 1em 3em; }
 
 #leftnav p, #rightnav p { margin: 0 0 1em 0; }
@@ -101,45 +94,82 @@ h1 { padding: .2em; margin: 0; }
     
   <script>
       $(function() {
-    $( "#cart li" ).draggable({
+    $( "#leftnav dd" ).draggable({
+      appendTo: "body",
+      helper: "clone"
+    });      
+          
+    $( "#playerList li" ).draggable({
       appendTo: "body",
       helper: "clone"
     });
-    $( "#catalog" ).accordion({heightStyle: 'panel'});
-    $( "#catalog li" ).draggable({
-      appendTo: "body",
-      helper: "clone"
-    }).addClass('dropped');
+          
+    $( "#team1" ).droppable({
+        accept: "#leftnav dd",
+        drop: function( event, ui ) {
+            if($("#team2 h1").text() != ui.draggable.text()){
+                $("#team1 h1").text( ui.draggable.text() );
+            }
+        }
+    });
+    
+    $( "#team2" ).droppable({
+        accept: "#leftnav dd",
+        drop: function( event, ui ) {
+            if($("#team1 h1").text() != ui.draggable.text()){
+                $("#team2 h1").text( ui.draggable.text() );
+            }
+        }
+    });      
+          
+    // TEAM 1 HERE
+    $( "#team1 li" ).draggable({
+      appendTo: "body"
+    });
     
     
-    $( "#catalog ol" ).droppable({
-      out: function (event, ui) {
-            var self = ui;
-            ui.helper.off('mouseup').on('mouseup', function () {
-                $(this).remove();
-                self.draggable.remove();
-            });
-        },
+    $( "#team1 ol" ).droppable({
+      
+      greedy: true,
       activeClass: "ui-state-default",
       hoverClass: "ui-state-hover",
-      accept: "#cart li",
+      accept: "#playerList li",
+      accept: "#team2 li",
       accept: ":not(.ui-sortable-helper)",
       drop: function( event, ui ) {
-          if (ui.draggable.is('.dropped')) return false;
-        $( this ).find( ".placeholder" ).remove();
-         $("<li></li>").text(ui.draggable.text()).appendTo(this).draggable({
-                appendTo: "body",
-                helper: "clone"
-            }).addClass('dropped');
+          $( "<li></li>" ).text( ui.draggable.text() ).appendTo( this );
       }
-    }).sortable({
-      items: "li:not(.placeholder)",
-      sort: function() {
-        // gets added unintentionally by droppable interacting with sortable
-        // using connectWithSortable fixes this, but doesn't allow you to customize active/hoverClass options
-        $( this ).removeClass( "ui-state-default" );
-      }
+    })
+          
+    // TEAM 2 HERE      
+    
+    $( "#team2 li" ).draggable({
+      appendTo: "body"
     });
+    
+    
+    $( "#team2 ol" ).droppable({
+      
+      greedy: true,
+      activeClass: "ui-state-default",
+      hoverClass: "ui-state-hover",
+      accept: "#playerList li",
+      accept: "#team1 li",
+      accept: ":not(.ui-sortable-helper)",
+      drop: function( event, ui ) {
+          if($(this).children(".playerLine").size() > 0) {
+              for(i = 0; i < $(this).children(".playerLine").size(); i++){
+                  if($(this).children(".playerLine").text() ==  $(ui.draggable.text())){
+                        alert("cancel");    //Instead want to cancel dragging of item
+                        return false;
+                  }
+              }
+          }
+          $(this).append("<li class='playerLine ui-draggable ui-draggable-handle' style='position: relative;'>"+ui.draggable.html()+"</li>").draggable({appendTo: ("body")});    
+        }
+    });
+          
+          
   });
   </script>
 </head>
@@ -152,7 +182,7 @@ h1 { padding: .2em; margin: 0; }
             <% @grades.each do |grade| %>
                 <dt><%= grade.grade_name %></dt>
                     <% grade.teams.each do |team| %>
-                        <dd><%= team.name %></dd>
+                        <dd><input type="hidden" value="<%= team.id %>" id='h_v' class='h_v'><%= team.name %></dd>
                     <% end %>
             <% end %>
         </dl>
@@ -169,33 +199,27 @@ h1 { padding: .2em; margin: 0; }
 <% end %>
     </div>
         <div class="content">
-
             <div class="teamsContent">
                 <div class="innerTeam">
-                    <div id="products">
-                        <h1 class="ui-widget-header">Team</h1>
-                        <div id="catalog">
-                            <% @teams.each do |team| %>
-                            <h2><a href="#"><%= team.name %></a></h2>
-                            <ol>
-                            <div>
-                                <% team.players.each do |player| %>
-                                    <li><%= [player.first_name, player.surname].join(" ") %> </li>
-                                <% end %>
-
-                            </div>
-                            </ol>
-                            <% end %>
-                        </div>
-                    </div>
-                </div>
-                <div class="innerTeam">
-                        <div id="cart">
-      <h1 class="ui-widget-header">Players</h1>
+                    <div id="team1">
+      <h1 class="ui-widget-header">Team 1</h1>
       <div class="ui-widget-content">
         <ol>
-          <% @players.each do |player| %>
-            <li><%= [player.first_name, player.surname].join(" ") %> </li>
+          <% @teams.first.players.each do |player| %>
+                                    <li class="playerLine"><%= [player.first_name, player.surname].join(" ") %> </li>
+          <% end %>
+        </ol>
+      </div>
+    </div> 
+                    
+                </div>
+                <div class="innerTeam">
+                        <div id="team2">
+      <h1 class="ui-widget-header">Team 2</h1>
+      <div class="ui-widget-content">
+        <ol>
+            <% @teams.first.players.each do |player| %>
+                                    <li class="playerLine"><%= [player.first_name, player.surname].join(" ") %> </li>
           <% end %>
         </ol>
       </div>
@@ -205,7 +229,16 @@ h1 { padding: .2em; margin: 0; }
             </div> 
         
         <div class="playersContent">
-                    
+<div id="playerList">
+      <h1 class="ui-widget-header">Players</h1>
+      <div class="ui-widget-content">
+        <ol>
+            <% @players.each do |player| %>
+                <li class="playerLine"><%= [player.first_name, player.surname].join(" ") %> </li>
+            <% end %>
+        </ol>
+      </div>
+            </div>
         </div>
         
 
