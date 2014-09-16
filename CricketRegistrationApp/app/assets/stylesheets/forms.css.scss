@@ -25,18 +25,74 @@
     width: 180px;
 }
 
-.search_players_table input {   
+
+
+
+/* Search player styles */
+
+.search_players_table{
+    width: 60%;
+    margin: 0px auto;
+}
+
+.search_players_table th {
     padding: 10px;
 }
 
-.search_field input[type=submit] {
-    padding: 10px;
+.search_players{
+    padding-bottom: 20px;
 }
+
+.search_players h3{
+    font-size: 34pt;
+    color: #9cc185;
+    line-height: 150%;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-weight: 100;
+    font-variant: small-caps;
+    text-align: center;
+}
+
+.search_players_table select{
+    padding: 7px;
+    border: 0;
+    font-size: 12pt;
+    color: #666;
+    width: 100%;
+}
+
+.search_players_table input {   
+    background: #fff;
+    padding: 7px;
+    border: 6px solid #ededed;
+    font-size: 12pt;
+    color: #666;
+}
+
+.search_players_table input:hover ,search_players_table input:focus {
+    border: 6px solid #afffac;
+}
+
+.search_players_table input[type=submit] {
+    background: #75985a;
+    color: #eee;
+    font-size: 10pt;
+}
+.search_players_table input[type=submit]:hover {
+    background: #6b8b53;
+    border: 6px solid #ededed;
+}
+
+
+
+
 
 .players_table th, th a {
     text-decoration: none;
     padding: 10px;
     color: #777;
+    font-size: 12pt;
     font-variant: small-caps;
     text-align: center;
     width: 17%;
@@ -63,26 +119,3 @@
     border-top: 1px solid #ccc;    
 }
 
-.search_players_table{
-    width: 60%;
-    margin: 0px auto;
-}
-
-.search_players_table th {
-    padding: 10px;
-}
-
-.search_players{
-    padding-bottom: 20px;
-}
-
-.search_players h3{
-    font-size: 34pt;
-    color: #9cc185;
-    line-height: 150%;
-    margin-top: 0px;
-    margin-bottom: 10px;
-    font-weight: 100;
-    font-variant: small-caps;
-    text-align: center;
-}

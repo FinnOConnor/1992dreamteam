@@ -1,6 +1,5 @@
 <div class="search_players">
-    <h3>~ search players ~</h3>
-    
+    <h3>~ search player ~</h3>
     
 	<%= search_form_for @search do |f| %><%= f.condition_fields do |c| %>
 	<table class="search_players_table"><tr>
@@ -16,8 +15,8 @@
     <tr>
       <th><%= sort_link(@search, :first_name, "first name") %></th>
       <th><%= sort_link(@search, :surname, "surname") %></th>
-<!--     <th><%= sort_link(@search, :gender , "gender") %></th> -->
-      <th><%= sort_link(@search, :date_of_birth , "date of birth") %></th>
+      <th><%= sort_link(@search, :gender , "gender") %></th>
+<!--      <th><%= sort_link(@search, :date_of_birth , "Date of birth") %></th>-->
       <th>address</th>
       <th>contact phone</th>
       <th>email</th>
@@ -30,6 +29,7 @@
       <th>Notes</th>
       <th><%= sort_link(@search, :team , "Team") %></th>
       <th><%= sort_link(@search, :parent , "Parent") %></th>
+      <th colspan="3"></th>
 -->
     </tr>
   </thead>
