@@ -92,7 +92,7 @@
 <body>
 <div id="container">
     <div id="leftnav">
-        <h2>Grades</h2>
+        <h3>grades</h3>
         <dl>
             <% @grades.each do |grade| %>
                 <dt><%= grade.grade_name %></dt>
@@ -103,8 +103,7 @@
         </dl>
     </div>
     <div id="rightnav">
-        <h2>Players</h2>
-        
+        <h3>players</h3>
         <%= search_form_for @search1 do |f| %>
 
   <%= f.label :first_name_or_surname_cont %>
@@ -117,7 +116,7 @@
             <div class="teamsContent">
                 <div class="innerTeam">
                     <div id="team1">
-      <h1 class="ui-widget-header">Team 1</h1>
+      <h2>team 1</h2>
       <div class="ui-widget-content">
         <ol>
             <%=   %>
@@ -132,7 +131,7 @@
                 </div>
                 <div class="innerTeam">
                         <div id="team2">
-      <h1 class="ui-widget-header">Team 2</h1>
+      <h2>team 2</h2>
       <div class="ui-widget-content">
         <ol>
             <% @teams.first.players.each do |player| %>
@@ -146,8 +145,10 @@
             </div> 
         
         <div class="playersContent">
+        
 <div id="playerList">
-      <h1 class="ui-widget-header">Players</h1>
+              <h2>players</h2>
+
       <div class="ui-widget-content">
         <ol>
             <% @players.each do |player| %>
