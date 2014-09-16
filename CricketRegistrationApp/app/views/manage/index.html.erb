@@ -52,7 +52,7 @@
       accept: "#team2 li",
       accept: ":not(.ui-sortable-helper)",
       drop: function( event, ui ) {
-          $( "<li></li>" ).text( ui.draggable.text() ).appendTo( this );
+          $( "<li></li>" ).text( ui.draggable.text() ).appendTo( this ).draggable({appendTo:"body"});
       }
     })
           
@@ -80,7 +80,7 @@
                   }
               }
           }
-          $(this).append("<li class='playerLine ui-draggable ui-draggable-handle' style='position: relative;'>"+ui.draggable.html()+"</li>").draggable({appendTo: ("body")});    
+          $( "<li></li>" ).text( ui.draggable.text() ).appendTo( this ).draggable({appendTo:"body"});    
         }
     });
           
@@ -120,8 +120,7 @@
       <h2>team 1</h2>
       <div class="ui-widget-content">
         <ol>
-            <%=   %>
-            <% end %>
+            
           <% @teams.first.players.each do |player| %>
                                     <li class="playerLine"><%= [player.first_name, player.surname].join(" ") %> </li>
           <% end %>
