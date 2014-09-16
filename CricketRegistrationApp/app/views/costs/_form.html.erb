@@ -1,8 +1,20 @@
 <%= form_for(@cost) do |f| %>
-  <% if @cost.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@cost.errors.count, "error") %> prohibited this cost from being saved:</h2>
 
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :price %>
+    <%= f.text_field :price %>
+  </div>
+
+<% if @cost.errors.any? %>
+    <div id="error_explanation">
       <ul>
       <% @cost.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -11,19 +23,8 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :price %><br>
-    <%= f.text_field :price %>
-  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>
