@@ -1,4 +1,5 @@
 class ManageController < ApplicationController
+	
   def index
       @search = Team.search(params[:q])
       @search1 = Player.search(params[:q])
@@ -6,4 +7,8 @@ class ManageController < ApplicationController
       @players = @search1.result
      @teams = @search.result
   end
+	
+  def generate
+  end
+
 end

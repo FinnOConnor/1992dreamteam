@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get 'admin/index'
 
   get 'home/index'
+	
+  get 'manage/generate'
 
   resources :parents
 
