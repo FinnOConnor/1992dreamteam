@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :coach_id %><br>
-    <%= f.number_field :coach_id %>
+    <%= f.collection_select :coach_id, Coach.all, :id, :first_name, prompt: true %>
   </div>
   <div class="actions">
     <%= f.submit %>
