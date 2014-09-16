@@ -19,20 +19,20 @@
       helper: "clone"
     });
           
-    $( "#team1" ).droppable({
+    $( "#team1 h2" ).droppable({
         accept: "#leftnav dd",
         drop: function( event, ui ) {
-            if($("#team2 h1").text() != ui.draggable.text()){
-                $("#team1 h1").text( ui.draggable.text() );
+            if($("#team2 h2").text() != ui.draggable.text()){
+                $("#team1 h2").text( ui.draggable.text() );
             }
         }
     });
     
-    $( "#team2" ).droppable({
+    $( "#team2 h2" ).droppable({
         accept: "#leftnav dd",
         drop: function( event, ui ) {
-            if($("#team1 h1").text() != ui.draggable.text()){
-                $("#team2 h1").text( ui.draggable.text() );
+            if($("#team1 h2").text() != ui.draggable.text()){
+                $("#team2 h2").text( ui.draggable.text() );
             }
         }
     });      
@@ -54,7 +54,14 @@
       drop: function( event, ui ) {
           $( "<li></li>" ).text( ui.draggable.text() ).appendTo( this ).draggable({appendTo:"body"});
       }
-    })
+    }).sortable({
+      items: "li:not(.placeholder)",
+      sort: function() {
+        // gets added unintentionally by droppable interacting with sortable
+        // using connectWithSortable fixes this, but doesn't allow you to customize active/hoverClass options
+        $( this ).removeClass( "ui-state-default" );
+      }
+    });
           
     // TEAM 2 HERE      
     
@@ -82,6 +89,13 @@
           }
           $( "<li></li>" ).text( ui.draggable.text() ).appendTo( this ).draggable({appendTo:"body"});    
         }
+    }).sortable({
+      items: "li:not(.placeholder)",
+      sort: function() {
+        // gets added unintentionally by droppable interacting with sortable
+        // using connectWithSortable fixes this, but doesn't allow you to customize active/hoverClass options
+        $( this ).removeClass( "ui-state-default" );
+      }
     });
           
           
