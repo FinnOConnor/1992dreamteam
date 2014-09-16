@@ -36,9 +36,9 @@
 .content
 {
     margin-left: 200px;
-    border-left: 1px solid gray;
+    border-left: 1px solid #d8d8cc;
     margin-right: 200px;
-    border-right: 1px solid gray;
+    border-left: 1px solid #d8d8cc;
     padding: 1em;
     max-width: 75%;
     height: 100%;
@@ -65,7 +65,25 @@
     width: 100%;
 }
 
+#container h3{
+    font-size: 26pt;
+    color: #9cc185;
+    line-height: 150%;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-weight: 100;
+    font-variant: small-caps;
+    text-align: center;
+}
 
+#container h2{
+    font-size: 20pt;
+    background: #9cc185;
+    color: #e0f4d3;
+    padding: 15px;
+    font-variant: small-caps;
+    text-align: center;
+}
 
       
 h1 { padding: .2em; margin: 0; }

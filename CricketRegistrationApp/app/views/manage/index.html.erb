@@ -104,6 +104,7 @@
     </div>
     <div id="rightnav">
         <h3>players</h3>
+        
         <%= search_form_for @search1 do |f| %>
 
   <%= f.label :first_name_or_surname_cont %>
@@ -145,10 +146,8 @@
             </div> 
         
         <div class="playersContent">
-        
 <div id="playerList">
-              <h2>players</h2>
-
+      <h2>players</h2>
       <div class="ui-widget-content">
         <ol>
             <% @players.each do |player| %>
