@@ -64,18 +64,53 @@
     border: 6px solid #afffac;
 }
 
+
+
+
+
+
+
+/* Submit buttons styling */
+
 input[type=submit] {
+    padding: 7px;    
     text-decoration: none;
     background: #75985a;
     color: #eee;
+    border: 0;
     font-size: 10pt;
 }
 input[type=submit]:hover {
     background: #6b8b53;
-    border: 6px solid #ededed;
+    border: 0;
 }
 
 
+
+
+
+
+/* Submit buttons styling */
+
+.button th a {
+    padding: 7px;    
+    text-decoration: none;
+    background: #75985a;
+    color: #eee;
+    border: 0;
+    font-size: 10pt;
+}
+.button th a:hover {
+    background: #6b8b53;
+    border: 0;
+}
+
+
+
+
+
+
+/* Table template stying */
 
 .table th, th a {
     text-decoration: none;
@@ -113,18 +148,6 @@ input[type=submit]:hover {
     border-top: 1px solid #ccc;    
 }
 
-.search_table{
-    width: 60%;
-    margin: 0px auto;
-}
-
-.search_table th {
-    padding: 10px;
-}
-
-.search{
-    padding-bottom: 20px;
-}
 
 .index h3{
     font-size: 34pt;
@@ -137,8 +160,3 @@ input[type=submit]:hover {
     text-align: center;
 }
 
-.actions {
-	position: relative;
-	margin: auto;
-	width: auto;
-}
