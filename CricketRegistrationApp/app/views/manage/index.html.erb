@@ -6,92 +6,7 @@
   <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
   <script type='text/javascript' src='jquery.facets.js'></script>
   <link rel="stylesheet" href="/resources/demos/style.css">
-  <style>
-
-#container
-{
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    position: absolute;
-    color: #333;
-    line-height: 130%;
-}
-
-#leftnav
-{
-    float: left;
-    width: 160px;
-    height: 100%;
-    position: relative;
-    margin: 0;
-    padding: 1em;
-}
-
-#rightnav
-{
-    float: right;
-    width: 160px;
-    height: 100%;
-    margin: 0;
-    padding: 1em;
-}
-
-.content
-{
-    margin-left: 200px;
-    border-left: 1px solid gray;
-    margin-right: 200px;
-    border-right: 1px solid gray;
-    padding: 1em;
-    max-width: 75%;
-    height: 100%;
-
-}
-.teamsContent
-{
-    position: relative;
-    float: left;
-    height: 100%;
-    width: 50%;
-}
-.playersContent
-{
-    position: relative;
-    float: left;
-    width: 50%;
-    height: 100%;
-}
-.innerTeam{
-    position:relative;
-    margin: auto;
-    width: 100%;
-}
-
-
-
       
-h1 { padding: .2em; margin: 0; }
-  #products { width:90%; margin: 0px auto;}
-
-  #playerList  {padding-top: 40px;width:90%; margin: 0px auto;}
-  /* style the list to maximize the droppable hitarea */
-  #playerList ol { margin: 0; padding: 1em 0 1em 3em; }
-      #team1  { padding-top: 40px;width:90%; margin: 0px auto;}
-  /* style the list to maximize the droppable hitarea */
-  #team1 ol { margin: 0; padding: 1em 0 1em 3em; }
-      #team2  { padding-top: 40px;width:90%; margin: 0px auto;}
-  /* style the list to maximize the droppable hitarea */
-  #team2 ol { margin: 0; padding: 1em 0 1em 3em; }
-  #product ol { margin: 0; padding: 1em 0 1em 3em; }
-
-#leftnav p, #rightnav p { margin: 0 0 1em 0; }
-#leftnav h2 { margin: 0 0 .5em 0; }
-#leftnav {list-style-type: none;}
-#leftnav dt { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
-#rightnav h2 { margin: 0 0 .5em 0; }
-  </style>
-    
   <script>
       $(function() {
     $( "#leftnav dd" ).draggable({
@@ -205,6 +120,8 @@ h1 { padding: .2em; margin: 0; }
       <h1 class="ui-widget-header">Team 1</h1>
       <div class="ui-widget-content">
         <ol>
+            <%=   %>
+            <% end %>
           <% @teams.first.players.each do |player| %>
                                     <li class="playerLine"><%= [player.first_name, player.surname].join(" ") %> </li>
           <% end %>
