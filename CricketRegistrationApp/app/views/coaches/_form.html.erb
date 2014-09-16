@@ -1,15 +1,4 @@
 <%= form_for(@coach) do |f| %>
-  <% if @coach.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@coach.errors.count, "error") %> prohibited this coach from being saved:</h2>
-
-      <ul>
-      <% @coach.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
 
     <div class="field">
     <%= f.label :first_name %>
@@ -43,7 +32,19 @@
     <%= f.label :email_confirmation %>
     <%= f.text_field :email_confirmation %>
   </div>
+
+  <% if @coach.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+      <% @coach.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>

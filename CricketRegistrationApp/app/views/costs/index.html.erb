@@ -1,29 +1,34 @@
-<h1>Listing costs</h1>
+<div class=costWrap>
+	
+	<div class="costCont">
+	
+		<table>
+			<thead>
+				<tr>
+					<th>Item</th>
+					<th>Price</th>
+					<th>Description</th>
+					<th colspan="2"></th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<% @costs.each do |cost| %>
+				<tr>
+					<td><%= cost.name %></td>
+					<td>$<%= cost.price %>0</td>
+					<td><%= cost.description %></td>
+					<td><%= link_to 'Edit', edit_cost_path(cost) %></td>
+					<td><%= link_to 'Remove', cost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+		
+		<br>
+		
+		<div class="newCost"><%= link_to 'Add New Item', new_cost_path %></div>
+		
+	</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @costs.each do |cost| %>
-      <tr>
-        <td><%= cost.name %></td>
-        <td><%= cost.description %></td>
-        <td><%= cost.price %></td>
-        <td><%= link_to 'Show', cost %></td>
-        <td><%= link_to 'Edit', edit_cost_path(cost) %></td>
-        <td><%= link_to 'Destroy', cost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Cost', new_cost_path %>
+</div>

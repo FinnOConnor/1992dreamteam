@@ -1,4 +1,26 @@
 <%= form_for(@grade) do |f| %>
+
+  <div class="field">
+    <%= f.label :grade_name %>
+    <%= f.text_field :grade_name %>
+  </div>
+  <div class="field">
+    <%= f.label :min_size %>
+    <%= f.number_field :min_size %>
+  </div>
+  <div class="field">
+    <%= f.label :max_size %>
+    <%= f.number_field :max_size %>
+  </div>
+  <div class="field">
+    <%= f.label :min_age %>
+    <%= f.number_field :min_age %>
+  </div>
+  <div class="field">
+    <%= f.label :max_age %>
+    <%= f.number_field :max_age %>
+  </div>
+
   <% if @grade.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@grade.errors.count, "error") %> prohibited this grade from being saved:</h2>
@@ -11,27 +33,8 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :grade_name %><br>
-    <%= f.text_field :grade_name %>
-  </div>
-  <div class="field">
-    <%= f.label :min_size %><br>
-    <%= f.number_field :min_size %>
-  </div>
-  <div class="field">
-    <%= f.label :max_size %><br>
-    <%= f.number_field :max_size %>
-  </div>
-  <div class="field">
-    <%= f.label :min_age %><br>
-    <%= f.number_field :min_age %>
-  </div>
-  <div class="field">
-    <%= f.label :max_age %><br>
-    <%= f.number_field :max_age %>
-  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
+
 <% end %>
