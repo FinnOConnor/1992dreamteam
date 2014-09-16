@@ -1,17 +1,28 @@
 <div class="index">	
 
-	<h3>~ Coaches ~</h3>
+	<div class="search">
+		<h3>~ search coach ~</h3>
+
+		<%= search_form_for @search do |f| %><%= f.condition_fields do |c| %>
+		<table class="search_table"><tr>
+			<td><%= c.attribute_fields do |a| %><%= a.attribute_select %><% end %></td>
+			<td><%= c.predicate_select %><%= c.value_fields do |v| %></td>
+			<td><%= v.text_field :value %><% end %><% end %></td>
+			<td><%= f.submit "Search for a Player" %><% end %></td>
+		</tr></table>
+	</div>
+
 
 	<table class="table">
 	  <thead>
 		<tr>
-		  <th><%= sort_link(@search, :first_name , "First name") %></th>
-		  <th><%= sort_link(@search, :surname , "Surname") %></th>
-		  <th><%= sort_link(@search, :gender , "Gender") %></th>
-		  <th>Address</th>
-		  <th>Home phone</th>
-		  <th>Mobile phone</th>
-		  <th>Email</th>
+		  <th><%= sort_link(@search, :first_name , "first name") %></th>
+		  <th><%= sort_link(@search, :surname , "surname") %></th>
+		  <th><%= sort_link(@search, :gender , "gender") %></th>
+		  <th>address</th>
+		  <th>home phone</th>
+		  <th>mobile phone</th>
+		  <th>email</th>
 		  <th colspan="3"></th>
 		</tr>
 	  </thead>
@@ -36,6 +47,5 @@
 
 	<br>
 
-	<%= link_to 'New Coach', new_coach_path %>
 	
 </div>

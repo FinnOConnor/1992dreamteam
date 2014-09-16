@@ -30,20 +30,20 @@
 
 /* Search player styles */
 
-.search_players_table{
+.search_table{
     width: 60%;
     margin: 0px auto;
 }
 
-.search_players_table th {
+.search_table th {
     height: 300px;
 }
 
-.search_players{
+.search{
     padding-bottom: 20px;
 }
 
-.search_players_table select{
+.search_table select{
     padding: 7px;
     border: 0;
     font-size: 12pt;
@@ -52,7 +52,7 @@
     min-width: 200px;
 }
 
-.search_players_table input {   
+.search_table input {   
     background: #fff;
     padding: 7px;
     border: 6px solid #ededed;
@@ -60,16 +60,16 @@
     color: #666;
 }
 
-.search_players_table input:hover ,search_players_table input:focus {
+.search_table input:hover ,search_players_table input:focus {
     border: 6px solid #afffac;
 }
 
-.search_players_table input[type=submit] {
+.search_table input[type=submit] {
     background: #75985a;
     color: #eee;
     font-size: 10pt;
 }
-.search_players_table input[type=submit]:hover {
+.search_table input[type=submit]:hover {
     background: #6b8b53;
     border: 6px solid #ededed;
 }
@@ -114,16 +114,16 @@
     border-top: 1px solid #ccc;    
 }
 
-.search_players_table{
+.search_table{
     width: 60%;
     margin: 0px auto;
 }
 
-.search_players_table th {
+.search_table th {
     padding: 10px;
 }
 
-.search_players{
+.search{
     padding-bottom: 20px;
 }
 
