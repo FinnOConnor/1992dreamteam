@@ -64,17 +64,16 @@
     border: 6px solid #afffac;
 }
 
-.search_table input[type=submit] {
+input[type=submit] {
+    text-decoration: none;
     background: #75985a;
     color: #eee;
     font-size: 10pt;
 }
-.search_table input[type=submit]:hover {
+input[type=submit]:hover {
     background: #6b8b53;
     border: 6px solid #ededed;
 }
-
-
 
 
 
