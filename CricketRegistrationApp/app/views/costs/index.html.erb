@@ -1,36 +1,32 @@
-<div class=costWrap>
-	
-	<div class="costCont">
+<div class="index">
 		
-		<h3>~ Prices ~</h3>
-	
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Item</th>
-					<th>Price</th>
-					<th>Description</th>
-					<th colspan="2">Modify</th>
-				</tr>
-			</thead>
-			
-			<tbody>
-				<% @costs.each do |cost| %>
-				<tr>
-					<td><%= cost.name %></td>
-					<td>$<%= cost.price %>0</td>
-					<td><%= cost.description %></td>
-					<td><%= link_to 'Edit', edit_cost_path(cost) %></td>
-					<td><%= link_to 'Remove', cost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-				</tr>
-				<% end %>
-			</tbody>
-		</table>
-		
-		<br>
-		
-		<div class="newCost"><%= link_to 'Add New Item', new_cost_path %></div>
-		
-	</div>
+	<h3>~ Prices ~</h3>
 
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Item</th>
+				<th>Price</th>
+				<th>Description</th>
+				<th colspan="2">Modify</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<% @costs.each do |cost| %>
+			<tr>
+				<td><%= cost.name %></td>
+				<td>$<%= cost.price %>0</td>
+				<td><%= cost.description %></td>
+				<td><%= link_to 'Edit', edit_cost_path(cost) %></td>
+				<td><%= link_to 'Remove', cost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+	
+	<br>
+	
+	<div class="newCost"><%= link_to 'Add New Item', new_cost_path %></div>
+		
 </div>

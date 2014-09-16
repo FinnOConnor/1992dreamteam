@@ -1,70 +1,74 @@
-<h3>~ Search Parents ~</h3>
+<div class="index">
 
-<%= search_form_for @search do |f| %>
-  <%= f.condition_fields do |c| %>
-  <div class="field">
-    <%= c.attribute_fields do |a| %>
-      <%= a.attribute_select %>
-    <% end %>
-    <%= c.predicate_select %>
-    <%= c.value_fields do |v| %>
-      <%= v.text_field :value %>
-    <% end %>
-    </div>
-  <% end %>
-  <div class="actions"><%= f.submit "Search" %></div>
-<% end %>
+	<h3>~ Parents ~</h3>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th><%= sort_link(@search, :p_first_name , "P first name") %></th>
-      <th><%= sort_link(@search, :p_surname , "P surname") %></th>
-      <th><%= sort_link(@search, :p_gender , "P gender") %></th>
-      <th>P address</th>
-      <th>P home phone</th>
-      <th>P mobile phone</th>
-      <th>P email</th>
-      <th><%= sort_link(@search, :s_first_name , "S first name") %></th>
-      <th><%= sort_link(@search, :s_surname , "S surname") %></th>
-      <th><%= sort_link(@search, :s_gender , "S gender") %></th>
-      <th>S address</th>
-      <th>S home phone</th>
-      <th>S mobile phone</th>
-      <th>S email</th>
-      <th>Coach</th>
-      <th>Players</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+	<%= search_form_for @search do |f| %>
+	  <%= f.condition_fields do |c| %>
+	  <div class="field">
+		<%= c.attribute_fields do |a| %>
+		  <%= a.attribute_select %>
+		<% end %>
+		<%= c.predicate_select %>
+		<%= c.value_fields do |v| %>
+		  <%= v.text_field :value %>
+		<% end %>
+		</div>
+	  <% end %>
+	  <div class="actions"><%= f.submit "Search" %></div>
+	<% end %>
 
-  <tbody>
-    <% @parents.each do |parent| %>
-      <tr>
-        <td><%= parent.p_first_name %></td>
-        <td><%= parent.p_surname %></td>
-        <td><%= parent.p_gender %></td>
-        <td><%= parent.p_address %></td>
-        <td><%= parent.p_home_phone %></td>
-        <td><%= parent.p_mobile_phone %></td>
-        <td><%= parent.p_email %></td>
-        <td><%= parent.s_first_name %></td>
-        <td><%= parent.s_surname %></td>
-        <td><%= parent.s_gender %></td>
-        <td><%= parent.s_address %></td>
-        <td><%= parent.s_home_phone %></td>
-        <td><%= parent.s_mobile_phone %></td>
-        <td><%= parent.s_email %></td>
-        <td><%= parent.try(:coach).try(:first_name) %></td>
-        <td><%= parent.try(:players).try(:first).try(:first_name) %></td>
-        <td><%= link_to 'Show', parent %></td>
-        <td><%= link_to 'Edit', edit_parent_path(parent) %></td>
-        <td><%= link_to 'Destroy', parent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+	<table class="table">
+	  <thead>
+		<tr>
+		  <th><%= sort_link(@search, :p_first_name , "P first name") %></th>
+		  <th><%= sort_link(@search, :p_surname , "P surname") %></th>
+		  <th><%= sort_link(@search, :p_gender , "P gender") %></th>
+		  <th>P address</th>
+		  <th>P home phone</th>
+		  <th>P mobile phone</th>
+		  <th>P email</th>
+		  <th><%= sort_link(@search, :s_first_name , "S first name") %></th>
+		  <th><%= sort_link(@search, :s_surname , "S surname") %></th>
+		  <th><%= sort_link(@search, :s_gender , "S gender") %></th>
+		  <th>S address</th>
+		  <th>S home phone</th>
+		  <th>S mobile phone</th>
+		  <th>S email</th>
+		  <th>Coach</th>
+		  <th>Players</th>
+		  <th colspan="3"></th>
+		</tr>
+	  </thead>
 
-<br>
+	  <tbody>
+		<% @parents.each do |parent| %>
+		  <tr>
+			<td><%= parent.p_first_name %></td>
+			<td><%= parent.p_surname %></td>
+			<td><%= parent.p_gender %></td>
+			<td><%= parent.p_address %></td>
+			<td><%= parent.p_home_phone %></td>
+			<td><%= parent.p_mobile_phone %></td>
+			<td><%= parent.p_email %></td>
+			<td><%= parent.s_first_name %></td>
+			<td><%= parent.s_surname %></td>
+			<td><%= parent.s_gender %></td>
+			<td><%= parent.s_address %></td>
+			<td><%= parent.s_home_phone %></td>
+			<td><%= parent.s_mobile_phone %></td>
+			<td><%= parent.s_email %></td>
+			<td><%= parent.try(:coach).try(:first_name) %></td>
+			<td><%= parent.try(:players).try(:first).try(:first_name) %></td>
+			<td><%= link_to 'Show', parent %></td>
+			<td><%= link_to 'Edit', edit_parent_path(parent) %></td>
+			<td><%= link_to 'Destroy', parent, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		  </tr>
+		<% end %>
+	  </tbody>
+	</table>
 
-<%= link_to 'New Parent', new_parent_path %>
+	<br>
+
+	<%= link_to 'New Parent', new_parent_path %>
+
+</div>

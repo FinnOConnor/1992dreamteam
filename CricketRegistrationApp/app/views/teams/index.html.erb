@@ -1,29 +1,33 @@
-<h1>Manage Teams</h1>
+<div class="index">
 
-<table class="table">
-  <thead>
-    <tr>
-      <th><%= sort_link(@search, :name , "Name") %></th>
-      <th><%= sort_link(@search, :grade , "Grade") %></th>
-      <th><%= sort_link(@search, :coach , "Coach") %></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+	<h1>Manage Teams</h1>
 
-  <tbody>
-    <% @teams.each do |team| %>
-      <tr>
-        <td><%= team.name %></td>
-        <td><%= team.try(:grade).try(:grade_name) %></td>
-        <td><%= team.try(:coach).try(:first_name) %></td>
-        <td><%= link_to 'Show', team %></td>
-        <td><%= link_to 'Edit', edit_team_path(team) %></td>
-        <td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+	<table class="table">
+	  <thead>
+		<tr>
+		  <th><%= sort_link(@search, :name , "Name") %></th>
+		  <th><%= sort_link(@search, :grade , "Grade") %></th>
+		  <th><%= sort_link(@search, :coach , "Coach") %></th>
+		  <th colspan="3"></th>
+		</tr>
+	  </thead>
 
-<br>
+	  <tbody>
+		<% @teams.each do |team| %>
+		  <tr>
+			<td><%= team.name %></td>
+			<td><%= team.try(:grade).try(:grade_name) %></td>
+			<td><%= team.try(:coach).try(:first_name) %></td>
+			<td><%= link_to 'Show', team %></td>
+			<td><%= link_to 'Edit', edit_team_path(team) %></td>
+			<td><%= link_to 'Destroy', team, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		  </tr>
+		<% end %>
+	  </tbody>
+	</table>
 
-<%= link_to 'New Team', new_team_path %>
+	<br>
+
+	<%= link_to 'New Team', new_team_path %>
+	
+</div>
