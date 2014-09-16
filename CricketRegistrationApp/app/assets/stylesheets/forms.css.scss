@@ -89,7 +89,7 @@
 
 
 
-.players_table th, th a {
+.table th, th a {
     text-decoration: none;
     padding: 10px;
     color: #777;
@@ -99,26 +99,25 @@
     width: 17%;
 }
 
-.players_table th a:hover {
+.table th a:hover {
     color: #364e31;
     background-color: transparent;
 }
 
-.players_table th{
+.table th{
     border-right: 1px solid #ccc;
 }
 
-.players_table th:last-child, th a:last-child {
+.table th:last-child, th a:last-child {
     border-right: 0;
 }
 
-.players_table td {
-
+.table td {
     padding-top: 10px;
 
 }
 
-.players_table {
+.table {
     width: 90%;
     margin: 0px auto;
     text-align: center;
