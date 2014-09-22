@@ -46,10 +46,10 @@
 		  <tr>
 			<td><%= player.first_name %></td>
 			<td><%= player.surname %></td>
-	<!--    
 			<td><%= player.gender %></td>
-	-->
+	<!--    
 			<td><%= player.date_of_birth %></td>
+	-->
 			<td><%= player.address %></td>
 			<td><%= player.contact_phone %></td>
 			<td><%= player.email %></td>
@@ -63,7 +63,7 @@
 			<td><%= player.try(:team).try(:name) %></td>
 			<td><%= player.try(:parent).try(:p_first_name) %></td>
 	-->
-			<td><%= link_to 'Show', player %></td>
+			<td><div class="button"><%= link_to 'Show', player %></div></td>
 	<!--
 			<td><%= link_to 'Edit', edit_player_path(player) %></td>
 			<td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
