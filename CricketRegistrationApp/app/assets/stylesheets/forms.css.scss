@@ -1,14 +1,3 @@
-.index h3{
-    font-size: 34pt;
-    color: #9cc185;
-    line-height: 150%;
-    margin-top: 0px;
-    margin-bottom: 10px;
-    font-weight: 100;
-    font-variant: small-caps;
-    text-align: center;
-}
-
 .field input {
     background: #fff;
     padding: 15px;
@@ -35,6 +24,8 @@
     text-align: right;
     width: 180px;
 }
+
+
 
 
 /* Search player styles */
@@ -74,23 +65,52 @@
 }
 
 
+
+
+
+
+
 /* Submit buttons styling */
 
 input[type=submit] {
-    padding: 6px;
-    background: linear-gradient(#f3f5e8, #dee0d1);
-    color: #888;
-    border: 1px solid #ccc;
-	border-radius: 3px;
-	text-decoration: none;
+    padding: 7px;    
+    text-decoration: none;
+    background: #75985a;
+    color: #eee;
+    border: 0;
     font-size: 10pt;
 	margin: 5px;
 }
 input[type=submit]:hover {
-    background: linear-gradient(#eaeae5, #d7d9cd);
-    border: 1px solid #ccc;
-	border-radius: 3px;
+    background: #6b8b53;
+    border: 0;
 }
+
+
+
+
+
+
+/* Submit buttons styling */
+
+.button a {
+    padding: 7px;    
+    text-decoration: none;
+    background: #75985a;
+    color: #eee;
+    border: 0;
+    font-size: 10pt;
+	margin: 5px;
+}
+.button a:hover {
+    background: #6b8b53;
+    color: #eee;    
+    border: 0;
+}
+
+
+
+
 
 
 /* Table template stying */
@@ -119,7 +139,8 @@ input[type=submit]:hover {
 }
 
 .table td {
-    padding-top: 12px;
+    padding-top: 10px;
+
 }
 
 .table {
@@ -131,25 +152,14 @@ input[type=submit]:hover {
 }
 
 
-/* Submit buttons styling */
-
-.button a {
-    padding: 6px;
-    background: linear-gradient(#f3f5e8, #dee0d1);
-    border: 1px solid #ccc;
-	border-radius: 3px;
-    text-decoration: none;
-    font-size: 10pt;
-	margin: 5px;
+.index h3{
+    font-size: 34pt;
+    color: #9cc185;
+    line-height: 150%;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    font-weight: 100;
+    font-variant: small-caps;
+    text-align: center;
 }
 
-.button a:hover {
-    background: linear-gradient(#eaeae5, #d7d9cd);
-}
-
-.button a,.button a:link,.button a:visited,.button a:hover,.button a:focus,.button a:active {
-	color: #888;
-	text-decoration-color: #888;
-	text-emphasis-color: #888;
-	text-decoration: none;
-}

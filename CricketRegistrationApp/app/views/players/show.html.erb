@@ -1,7 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong><%= @player.first_name %> <%= @player.surname %></strong>
+  <strong>First name:</strong>
+  <%= @player.first_name %>
+</p>
+
+<p>
+  <strong>Surname:</strong>
+  <%= @player.surname %>
 </p>
 
 <p>
@@ -10,7 +16,7 @@
 </p>
 
 <p>
-  <strong>DoB:</strong>
+  <strong>Date of birth:</strong>
   <%= @player.date_of_birth %>
 </p>
 
@@ -69,8 +75,6 @@
   <%= @player.parent_id %>
 </p>
 
-<br>
-
-<br><div class="button"><%= link_to 'Edit Player Information', edit_player_path(@player) %></div>
-<br><div class="button"><%= link_to 'Delete Player from database', @player, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-<br><div class="button"><%= link_to 'Go Back', players_path %></div>
+<%= link_to 'Edit', edit_player_path(@player) %> |
+<%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<%= link_to 'Back', players_path %>
