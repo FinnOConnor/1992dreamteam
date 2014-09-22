@@ -140,6 +140,7 @@ h2 {
 }
 
 .menu li.rego{
+    width: 40%;
     background: #8dc685;
     color: #537c46;
 }
@@ -163,6 +164,7 @@ h2 {
     
 .menu li.admin {
     background: #80b478;
+    width: 30%;    
     color: #9cdb92;
 }
 .menu li.admin:hover {
@@ -185,6 +187,7 @@ h2 {
 .menu li.home {
     background: #9ede93;
     color: #689361;
+    width: 30%;
 }
 .menu li.home:hover {
     background: #80b478;
@@ -198,7 +201,7 @@ h2 {
 
 
 #sub_menu {
-    width: 33.3%;
+    width: 40%;
     padding-top: 100px;
     position: absolute;
     height: 100px;
