@@ -18,13 +18,13 @@
 				<td><%= cost.name %></td>
 				<td>$<%= cost.price %>0</td>
 				<td><%= cost.description %></td>
-				<td><div class="button"><%= link_to 'Edit', edit_cost_path(cost) %></div></td>
-				<td><div class="button"><%= link_to 'Remove', cost, method: :delete, data: { confirm: 'Are you sure?' } %></div></td>
+				<td><div class="button"><%= link_to 'Edit Item', edit_cost_path(cost) %></div></td>
+				<td><div class="button"><%= link_to 'Remove Item', cost, method: :delete, data: { confirm: 'Are you sure?' } %></div></td>
 			</tr>
 			<% end %>
-			<tr><td colspan="4"></td><td>
+			<tr><td>
 				<div class="button"><%= link_to 'Add New Item', new_cost_path %></div>
-			</td></tr>
+			</td><td colspan="4"></td></tr>
 		</tbody>
 	</table>
 		
