@@ -8,6 +8,78 @@
   <link rel="stylesheet" href="/resources/demos/style.css">
 
   <script>
+      
+      
+$(document).ready(function(){      
+    /* Create array to hold team data */
+      
+    var grades = new Array();
+    var players = new Array();
+      
+    var i = 0;
+    
+    /* All players */
+    
+    <% @players.each do |p| %> 
+        var player = new Object();
+        player.id = <%= p.id %>;
+        player.name = "<%= [p.first_name, p.surname].join(" ") %>"; 
+        players[i++] = player;
+    <% end %>      
+        
+    i=0;
+    
+    var j = 0;
+    var k = 0;
+      
+    <% @grades.each do |g| %> 
+        var grade = new Object();
+        grade.name = <%= g.grade_name %>;
+        var teams = new Array();    
+        <% @g.teams each do |t| %>
+            var team = new Object();
+            team.name = <%= t.name %>;
+            var players = new Array();   
+            <% @t.players each do |p| %>
+                var player = new Object();
+                player.id = <%= p.id %>;
+                player.name = "<%= [p.first_name, p.surname].join(" ") %>"; 
+                players[k++] = player; 
+            <% end %>
+            k = 0;
+            team.players = players;
+            teams[j++] = team;
+        <% end %>
+        j = 0;
+        grade.teams = teams; 
+        grades[i++] = grade;            
+    <% end %>      
+      
+    i=0;
+      
+    function load_players(){
+        $('#playerList ol').empty();
+        for(var i=0; i<players.length; i++){
+            $('#playerList ol').append('<li>' + players[i].name + '</li>');    
+        } 
+    }
+    
+    function load_team_nav(){
+        $('#leftnav dl').empty();        
+        for(var i=0; i<grades.length; i++){
+            console.log("hi");
+            $('#leftnav dl').append('<dt>' + grades[i].name + '</dt>');   
+            for(var j=0; i<grades[i].teams.length; j++){
+                $('#leftnav dt').append('<dd>' + grades[i].teams[j].name + '</dd>');    
+            }        
+        }        
+    }
+    
+    load_players();   
+    load_team_nav();   
+    
+        
+        
       $(function() {
           var globalvar = 0;
           
@@ -15,10 +87,8 @@
         var teamid = globalvar;
         $("#team1 ol").empty();
         
-        <% resetCounter %>
         for(i=0;i<teamid;i++){
-            <% incrementCounter %>
-                $( "<li class='playerLine'></li>" ).text(<%= @counter %>).appendTo( "#team1 ol" );
+                $( "<li class='playerLine'></li>" ).text(<%=  %>).appendTo( "#team1 ol" );
         }
         
         <% Team.find(params[:id]) do |team| %>
@@ -137,6 +207,9 @@
           
 
   });
+          
+          
+      });
   </script>
 </head>
 
@@ -179,33 +252,20 @@
     </div> 
 
                 </div>
-                <div class="innerTeam">
-                        <div id="team2">
-      <h2>team 2</h2>
-      <div class="ui-widget-content">
-        <ol>
-            <% @teams.first.players.each do |player| %>
-                <li class="playerLine"><%= [player.first_name, player.surname].join(" ") %> </li>
-          <% end %>
-        </ol>
-      </div>
-    </div> 
-                </div>
+
 
             </div> 
 
         <div class="playersContent">
-<div id="playerList">
-      <h2>players</h2>
-      <div class="ui-widget-content">
-        <ol>
-            <% @players.each do |player| %>
-                <li class="playerLine"><%= [player.first_name, player.surname].join(" ") %> </li>
-            <% end %>
-        </ol>
-      </div>
+            <div id="playerList">
+                <h2>players</h2>
+                <div class="ui-widget-content">
+                <ol>
+                    No players selected!
+                </ol>
             </div>
         </div>
+    </div>
 
 
 
