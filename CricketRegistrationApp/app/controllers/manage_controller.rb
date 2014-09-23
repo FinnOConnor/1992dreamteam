@@ -1,7 +1,4 @@
 class ManageController < ApplicationController
-  helper_method :resetCounter, :incrementCounter
-  counter = 0;
-    
   def index
       @search = Team.search(params[:q])
       @search1 = Player.search(params[:q])
@@ -13,12 +10,7 @@ class ManageController < ApplicationController
       
       
   end
-    
-  def incrementCounter
-      @counter = @counter + 1
-  end 
-    
-  def resetCounter
-      @counter = 0
-  end    
+	
+  def generate
+  end
 end

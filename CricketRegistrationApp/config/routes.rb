@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :schools
+
   resources :costs
 
   resources :costs
@@ -16,6 +18,8 @@ Rails.application.routes.draw do
   get 'admin/index'
 
   get 'home/index'
+	
+  get 'manage/generate'
 
   resources :parents
 

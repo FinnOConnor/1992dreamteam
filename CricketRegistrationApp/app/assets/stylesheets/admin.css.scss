@@ -94,6 +94,10 @@ tidy{} /* ignore this */
 	background-color: inherit;
 }
 
+#mi7 {
+	background-color: inherit;
+}
+
 .loginDiv {
 	position: absolute;
 	left: 50%;
@@ -115,7 +119,6 @@ tidy{} /* ignore this */
 
 .loginInputs {
 	padding: 30px;
-
 }
 
 .inputBox {
@@ -156,8 +159,15 @@ tidy{} /* ignore this */
 	height: inherit;
 }
 
-iframe{
+iframe {
     border: 0;
     height: 100%;
     width: 100%;
+}
+
+.message {
+	position: relative;
+	margin: auto;
+	width: 90%;
+	border-top: 1px solid #ccc;
 }

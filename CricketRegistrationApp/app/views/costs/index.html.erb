@@ -5,10 +5,10 @@
 	<table class="table">
 		<thead>
 			<tr>
-				<th>Item</th>
-				<th>Price</th>
-				<th>Description</th>
-				<th colspan="2">Modify</th>
+				<th>item</th>
+				<th>price</th>
+				<th>description</th>
+				<th colspan="2">modify</th>
 			</tr>
 		</thead>
 		
@@ -18,15 +18,14 @@
 				<td><%= cost.name %></td>
 				<td>$<%= cost.price %>0</td>
 				<td><%= cost.description %></td>
-				<td><%= link_to 'Edit', edit_cost_path(cost) %></td>
-				<td><%= link_to 'Remove', cost, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+				<td><div class="button"><%= link_to 'Edit Item', edit_cost_path(cost) %></div></td>
+				<td><div class="button"><%= link_to 'Remove Item', cost, method: :delete, data: { confirm: 'Are you sure?' } %></div></td>
 			</tr>
 			<% end %>
+			<tr><td>
+				<div class="button"><%= link_to 'Add New Item', new_cost_path %></div>
+			</td><td colspan="4"></td></tr>
 		</tbody>
 	</table>
-	
-	<br>
-	
-	<div class="newCost"><%= link_to 'Add New Item', new_cost_path %></div>
 		
 </div>

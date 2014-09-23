@@ -9,6 +9,10 @@ class PlayersController < ApplicationController
      @players = @search.result
 	 @search.build_condition
   end
+    
+    def full_name
+        "#{first_name}  #{surname}"
+    end
 
   # GET /players/1
   # GET /players/1.json
