@@ -13,7 +13,6 @@
 $(document).ready(function(){      
     /* Create array to hold team data */
       
-    var grades = new Array();
     var players = new Array();
       
     var i = 0;
@@ -31,16 +30,18 @@ $(document).ready(function(){
     
     var j = 0;
     var k = 0;
+    
+    var grades = new Array();    
       
     <% @grades.each do |g| %> 
         var grade = new Object();
-        grade.name = <%= g.grade_name %>;
+        grade.name = "<%= g.grade_name %>";
         var teams = new Array();    
-        <% @g.teams each do |t| %>
+        <% g.teams.each do |t| %>
             var team = new Object();
-            team.name = <%= t.name %>;
+            team.name = "<%= t.name %>";
             var players = new Array();   
-            <% @t.players each do |p| %>
+            <% t.players.each do |p| %>
                 var player = new Object();
                 player.id = <%= p.id %>;
                 player.name = "<%= [p.first_name, p.surname].join(" ") %>"; 
@@ -54,7 +55,7 @@ $(document).ready(function(){
         grade.teams = teams; 
         grades[i++] = grade;            
     <% end %>      
-      
+          
     i=0;
       
     function load_players(){
@@ -65,12 +66,12 @@ $(document).ready(function(){
     }
     
     function load_team_nav(){
-        $('#leftnav dl').empty();        
+        $('#leftnav dl').empty();  
         for(var i=0; i<grades.length; i++){
-            console.log("hi");
             $('#leftnav dl').append('<dt>' + grades[i].name + '</dt>');   
-            for(var j=0; i<grades[i].teams.length; j++){
-                $('#leftnav dt').append('<dd>' + grades[i].teams[j].name + '</dd>');    
+            for(var j=0; j<grades[i].teams.length; j++){
+               // console.log(grades[i].teams[j].name);
+                $('#leftnav dl').append('<dd data-product="'+ i + ' ' + j + '">' + grades[i].teams[j].name + '</dd>');    
             }        
         }        
     }
@@ -78,136 +79,35 @@ $(document).ready(function(){
     load_players();   
     load_team_nav();   
     
-        
-        
-      $(function() {
-          var globalvar = 0;
           
-    function refreshTeam1(id){
-        var teamid = globalvar;
-        $("#team1 ol").empty();
+    function refresh_team(index){    
+        var arr = index.split(" ");
+        var team = grades[arr[0]].teams[arr[1]];
         
-        for(i=0;i<teamid;i++){
-                $( "<li class='playerLine'></li>" ).text(<%=  %>).appendTo( "#team1 ol" );
-        }
-        
-        <% Team.find(params[:id]) do |team| %>
-            <% if(@team.present?) %>
-            <% @team.players.each do |player| %>
-                $( "<li class='playerLine'></li>" ).text( <%= [player.first_name, player.surname].join(" ") %>  ).appendTo( this ).draggable({appendTo:"body",revert: "invalid"}); 
-        <% end %>
-        <% end %>
-            <% end %>   
-    }
-          
-    function refreshTeam2(teamid){
-        $("#team2 ol").empty();
+        $('#team1 ol').empty();
+        for(i=0; i< team.players.length; i++){
+            $('#team1 ol').append('<li>' + team.players[i].name + '</li>');
+        }   
     }  
     
-    function refreshPlayers(){
-        
-    }      
-          
+    
+    
+    $( "#team1 h2" ).droppable({
+        accept: "#leftnav dd",
+        drop: function( event, ui ) {
+            if($("#team2 h2").text() != ui.draggable.text()){
+                $("#team1 h2").text( ui.draggable.text().toLowerCase() );
+                refresh_team(ui.draggable.data("product"));
+            }
+        }
+    });  
+    
     $( "#leftnav dd" ).draggable({
       appendTo: "body",
       helper: "clone"
     });      
 
-    $( "#playerList li" ).draggable({
-      appendTo: "body",
-      helper: "clone"
-    });
-
-    $( "#team1 h2" ).droppable({
-        accept: "#leftnav dd",
-        drop: function( event, ui ) {
-            if($("#team2 h2").text() != ui.draggable.text()){
-                $("#team1 h2").text( ui.draggable.text() );
-                globalvar = ui.draggable.data('product');
-                refreshTeam1(ui.draggable.data('product'));
-            }
-        }
-    });
-
-    $( "#team2 h2" ).droppable({
-        accept: "#leftnav dd",
-        drop: function( event, ui ) {
-            if($("#team1 h2").text() != ui.draggable.text()){
-                $("#team2 h2").text( ui.draggable.text() );
-                globalvar = ui.draggable.data('product');
-                refreshteam2(ui.draggable.data('product'));
-            }
-        }
-    });      
-
-    // TEAM 1 HERE
-    $( "#team1 li" ).draggable({
-      appendTo: "body",
-      revert: "invalid"
-    });
-
-
-    $( "#team1 ol" ).droppable({
-
-      greedy: true,
-      activeClass: "ui-state-default",
-      hoverClass: "ui-state-hover",
-      accept: "#playerList li",
-      accept: "#team2 li",
-      accept: ":not(.ui-sortable-helper)",
-      drop: function( event, ui ) {
-          $( "<li class 'playerLine'></li>" ).text( ui.draggable.text() ).appendTo( this ).draggable({appendTo:"body",revert: "invalid"});
-      }
-    }).sortable({
-      items: "li:not(.placeholder)",
-      sort: function() {
-        // gets added unintentionally by droppable interacting with sortable
-        // using connectWithSortable fixes this, but doesn't allow you to customize active/hoverClass options
-        $( this ).removeClass( "ui-state-default" );
-      }
-    });
-
-    // TEAM 2 HERE      
-
-    $( "#team2 li" ).draggable({
-      appendTo: "body",
-      revert: "invalid"
-    });
-
-
-    $( "#team2 ol" ).droppable({
-
-      greedy: true,
-      activeClass: "ui-state-default",
-      hoverClass: "ui-state-hover",
-      accept: "#playerList li",
-      accept: "#team1 li",
-      accept: ":not(.ui-sortable-helper)",
-      drop: function( event, ui ) {
-          if($(this).children("#team2 ol playerLine").size() > 0) {
-              for(i = 0; i < $(this).children(".playerLine").size(); i++){
-                  if($(this).children(".playerLine").text() ==  $(ui.draggable.text())){
-                        alert("cancel");    //Instead want to cancel dragging of item
-                        return false;
-                  }
-              }
-          }
-          $( "<li class='playerLine'></li>" ).text( ui.draggable.text() ).appendTo( this ).draggable({appendTo:"body",revert: "invalid"});    
-        }
-    }).sortable({
-      items: "li:not(.placeholder)",
-      sort: function() {
-        // gets added unintentionally by droppable interacting with sortable
-        // using connectWithSortable fixes this, but doesn't allow you to customize active/hoverClass options
-        $( this ).removeClass( "ui-state-default" );
-      }
-    });
-
     
-          
-
-  });
-          
           
       });
   </script>
@@ -215,17 +115,20 @@ $(document).ready(function(){
 
 <body>
 <div id="container">
+    
+    
+    
+    
     <div id="leftnav">
         <h3>grades</h3>
         <dl>
-            <% @grades.each do |grade| %>
-                <dt><%= grade.grade_name %></dt>
-                    <% grade.teams.each do |team| %>
-                        <dd data-product="<%= team.id %>"><%= team.name %></dd>
-                    <% end %>
-            <% end %>
+
         </dl>
     </div>
+    
+    
+    
+    
     <div id="rightnav">
         <h3>players</h3>
 
