@@ -2,14 +2,13 @@
 
 	<div class="search">
 		<h3>~ search player ~</h3>
-
-		<%= search_form_for @search do |f| %><%= f.condition_fields do |c| %>
-		<table class="search_table"><tr>
-			<td><%= c.attribute_fields do |a| %><%= a.attribute_select %><% end %></td>
-			<td><%= c.predicate_select %><%= c.value_fields do |v| %></td>
-			<td><%= v.text_field :value %><% end %><% end %></td>
-			<td><%= f.submit "Search for a Player" %><% end %></td>
-		</tr></table>
+		<%= search_form_for @search do |f| %>
+			<table class="search_table"><tr>
+				<td><%= f.label :first_name_or_surname_or_address_or_email_cont, "Keyword:" %></td>
+				<td><%= f.text_field :first_name_or_surname_or_address_or_email_cont %></td>
+				<td><%= f.submit "Search for a Player" %></td>
+			</tr></table>
+		<% end %>
 	</div>
 
 	<table class="table">
@@ -34,7 +33,7 @@
 		  <th><%= sort_link(@search, :team , "Team") %></th>
 		  <th><%= sort_link(@search, :parent , "Parent") %></th>
 	-->
-		  <th>show</th>
+		  <th>show details</th>
 	<!--
 		  <th colspan="2"></th>
 	-->
@@ -63,7 +62,7 @@
 			<td><%= player.try(:team).try(:name) %></td>
 			<td><%= player.try(:parent).try(:p_first_name) %></td>
 	-->
-			<td><div class="button"><%= link_to 'Show', player %></div></td>
+			<td><div class="button"><%= link_to 'Show Player', player %></div></td>
 	<!--
 			<td><%= link_to 'Edit', edit_player_path(player) %></td>
 			<td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>

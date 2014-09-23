@@ -56,10 +56,16 @@
     <%= f.text_area :notes %>
   </div>
   <div class="field">
-    <%= f.number_field :team_id %>
+    <%= f.hidden_field :team_id %>
   </div>
   <div class="field">
     <%= f.hidden_field :parent_id %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :full_name %>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :search %>
   </div>
 
   <% if @player.errors.any? %>

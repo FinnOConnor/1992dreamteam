@@ -1,4 +1,4 @@
-.index h3{
+h3 {
     font-size: 34pt;
     color: #9cc185;
     line-height: 150%;
@@ -39,13 +39,12 @@
 
 /* Search player styles */
 
-.search_table{
-    width: 60%;
+.search_table {
     margin: 0px auto;
 }
 
 .search_table th {
-    height: 300px;
+    height: 250px;
 }
 
 .search{
@@ -86,10 +85,15 @@ input[type=submit] {
     font-size: 10pt;
 	margin: 5px;
 }
+
 input[type=submit]:hover {
     background: linear-gradient(#eaeae5, #d7d9cd);
     border: 1px solid #ccc;
 	border-radius: 3px;
+}
+
+input[type=submit]:active {
+	background: linear-gradient(#dee0d1, #f3f5e8);
 }
 
 
@@ -102,7 +106,6 @@ input[type=submit]:hover {
     font-size: 12pt;
     font-variant: small-caps;
     text-align: center;
-    width: 17%;
 }
 
 .table th a:hover {
@@ -112,10 +115,6 @@ input[type=submit]:hover {
 
 .table th{
     border-right: 1px solid #ccc;
-}
-
-.table th:last-child, th a:last-child {
-    border-right: 0;
 }
 
 .table td {
@@ -145,6 +144,10 @@ input[type=submit]:hover {
 
 .button a:hover {
     background: linear-gradient(#eaeae5, #d7d9cd);
+}
+
+.button a:active {
+	background: linear-gradient(#dee0d1, #f3f5e8);
 }
 
 .button a,.button a:link,.button a:visited,.button a:hover,.button a:focus,.button a:active {

@@ -18,7 +18,7 @@
   </div>
   <div class="field">
     <%= f.label :player_id %>
-    <%= f.collection_select :player_id, Player.all, :id, :full_name, prompt: true %>
+    <%= f.collection_select :player_id, Player.all, :id, :first_name, prompt: true %>
   </div>
 
   <% if @payment.errors.any? %>

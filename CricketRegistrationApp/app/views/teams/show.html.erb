@@ -1,9 +1,6 @@
-<p id="notice"><%= notice %></p>
+<h3>~ <%= @team.name %> ~</h3>
 
-<p>
-  <strong>Name:</strong>
-  <%= @team.name %>
-</p>
+<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Grade:</strong>
@@ -15,5 +12,8 @@
   <%= @team.coach_id %>
 </p>
 
-<%= link_to 'Edit', edit_team_path(@team) %> |
-<%= link_to 'Back', teams_path %>
+<br>
+
+<br><div class="button"><%= link_to 'Edit Team Information', edit_team_path(@team) %></div>
+<br><div class="button"><%= link_to 'Delete Team from Database', @team, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+<br><div class="button"><%= link_to 'Go Back', teams_path %></div>

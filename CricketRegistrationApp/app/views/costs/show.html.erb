@@ -1,9 +1,6 @@
-<p id="notice"><%= notice %></p>
+<h3>~ <%= @cost.name %> ~</h3>
 
-<p>
-  <strong>Name:</strong>
-  <%= @cost.name %>
-</p>
+<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Description:</strong>
@@ -15,5 +12,8 @@
   <%= @cost.price %>
 </p>
 
-<%= link_to 'Edit', edit_cost_path(@cost) %> |
-<%= link_to 'Back', costs_path %>
+<br>
+
+<br><div class="button"><%= link_to 'Edit Item Information', edit_cost_path(@cost) %></div>
+<br><div class="button"><%= link_to 'Delete Item from Database', @cost, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+<br><div class="button"><%= link_to 'Go Back', costs_path %></div>

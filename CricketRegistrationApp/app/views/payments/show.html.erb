@@ -1,9 +1,6 @@
-<p id="notice"><%= notice %></p>
+<h3>~ <%= @payment.player_id %>, <%= @payment.season %> ~</h3>
 
-<p>
-  <strong>Season:</strong>
-  <%= @payment.season %>
-</p>
+<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Amount due:</strong>
@@ -20,10 +17,8 @@
   <%= @payment.paid %>
 </p>
 
-<p>
-  <strong>Player:</strong>
-  <%= @payment.player_id %>
-</p>
+<br>
 
-<%= link_to 'Edit', edit_payment_path(@payment) %> |
-<%= link_to 'Back', payments_path %>
+<br><div class="button"><%= link_to 'Edit Payment Information', edit_payment_path(@payment) %></div>
+<br><div class="button"><%= link_to 'Delete Payment from Database', @payment, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+<br><div class="button"><%= link_to 'Go Back', payments_path %></div>

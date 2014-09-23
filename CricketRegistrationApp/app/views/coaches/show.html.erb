@@ -1,14 +1,6 @@
+<h3>~ <%= @coach.first_name %> <%= @coach.surname %> ~</h3>
+
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>First name:</strong>
-  <%= @coach.first_name %>
-</p>
-
-<p>
-  <strong>Surname:</strong>
-  <%= @coach.surname %>
-</p>
 
 <p>
   <strong>Gender:</strong>
@@ -35,5 +27,8 @@
   <%= @coach.email %>
 </p>
 
-<%= link_to 'Edit', edit_coach_path(@coach) %> |
-<%= link_to 'Back', coaches_path %>
+<br>
+
+<br><div class="button"><%= link_to 'Edit Coach Information', edit_coach_path(@coach) %></div>
+<br><div class="button"><%= link_to 'Delete Coach from Database', @coach, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+<br><div class="button"><%= link_to 'Go Back', coaches_path %></div>

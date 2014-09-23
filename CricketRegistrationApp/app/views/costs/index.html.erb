@@ -1,6 +1,6 @@
 <div class="index">
 		
-	<h3>~ Prices ~</h3>
+	<h3>~ manage prices ~</h3>
 
 	<table class="table">
 		<thead>
@@ -8,7 +8,7 @@
 				<th>item</th>
 				<th>price</th>
 				<th>description</th>
-				<th colspan="2">modify</th>
+				<th>show details</th>
 			</tr>
 		</thead>
 		
@@ -18,13 +18,12 @@
 				<td><%= cost.name %></td>
 				<td>$<%= cost.price %>0</td>
 				<td><%= cost.description %></td>
-				<td><div class="button"><%= link_to 'Edit Item', edit_cost_path(cost) %></div></td>
-				<td><div class="button"><%= link_to 'Remove Item', cost, method: :delete, data: { confirm: 'Are you sure?' } %></div></td>
+				<td><div class="button"><%= link_to 'Show Item', cost %></div></td>
 			</tr>
 			<% end %>
 			<tr><td>
 				<div class="button"><%= link_to 'Add New Item', new_cost_path %></div>
-			</td><td colspan="4"></td></tr>
+			</td><td colspan="3"></td></tr>
 		</tbody>
 	</table>
 		
