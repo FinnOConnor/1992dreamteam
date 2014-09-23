@@ -1,52 +1,92 @@
-<h1> Manage Teams</h1>
-
 <head>
   <meta charset="utf-8">
   <title>jQuery UI Droppable - Shopping Cart Demo</title>
   <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
   <script src="//code.jquery.com/jquery-1.10.2.js"></script>
   <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+  <script type='text/javascript' src='jquery.facets.js'></script>
   <link rel="stylesheet" href="/resources/demos/style.css">
-  <style>
-  h1 { padding: .2em; margin: 0; }
-  #products { float:left; width: 500px; margin-right: 2em; }
-  #cart { width: 500px; float: left; margin-top: 1em; }
-  /* style the list to maximize the droppable hitarea */
-  #cart ol { margin: 0; padding: 1em 0 1em 3em; }
-  #product ol { margin: 0; padding: 1em 0 1em 3em; }
-  </style>
+
   <script>
-  $(function() {
-    $( "#cart li" ).draggable({
+      $(function() {
+          var globalvar = 0;
+          
+    function refreshTeam1(id){
+        var teamid = globalvar;
+        $("#team1 ol").empty();
+        
+        <%  %>
+        for(i=0;i<teamid;i++){
+            <%  %>
+                $( "<li class='playerLine'></li>" ).text(<%=  %>).appendTo( "#team1 ol" );
+        }
+        
+        <% Team.find(params[:id]) do |team| %>
+            <% if(@team.present?) %>
+            <% @team.players.each do |player| %>
+                $( "<li class='playerLine'></li>" ).text( <%= [player.first_name, player.surname].join(" ") %>  ).appendTo( this ).draggable({appendTo:"body",revert: "invalid"}); 
+        <% end %>
+        <% end %>
+            <% end %>   
+    }
+          
+    function refreshTeam2(teamid){
+        $("#team2 ol").empty();
+    }  
+    
+    function refreshPlayers(){
+        
+    }      
+          
+    $( "#leftnav dd" ).draggable({
+      appendTo: "body",
+      helper: "clone"
+    });      
+
+    $( "#playerList li" ).draggable({
       appendTo: "body",
       helper: "clone"
     });
-    $( "#catalog" ).accordion({heightStyle: 'panel'});
-    $( "#catalog li" ).draggable({
+
+    $( "#team1 h2" ).droppable({
+        accept: "#leftnav dd",
+        drop: function( event, ui ) {
+            if($("#team2 h2").text() != ui.draggable.text()){
+                $("#team1 h2").text( ui.draggable.text() );
+                globalvar = ui.draggable.data('product');
+                refreshTeam1(ui.draggable.data('product'));
+            }
+        }
+    });
+
+    $( "#team2 h2" ).droppable({
+        accept: "#leftnav dd",
+        drop: function( event, ui ) {
+            if($("#team1 h2").text() != ui.draggable.text()){
+                $("#team2 h2").text( ui.draggable.text() );
+                globalvar = ui.draggable.data('product');
+                refreshteam2(ui.draggable.data('product'));
+            }
+        }
+    });      
+
+    // TEAM 1 HERE
+    $( "#team1 li" ).draggable({
       appendTo: "body",
-      helper: "clone"
-    }).addClass('dropped');
-    
-    
-    $( "#catalog ol" ).droppable({
-      out: function (event, ui) {
-            var self = ui;
-            ui.helper.off('mouseup').on('mouseup', function () {
-                $(this).remove();
-                self.draggable.remove();
-            });
-        },
+      revert: "invalid"
+    });
+
+
+    $( "#team1 ol" ).droppable({
+
+      greedy: true,
       activeClass: "ui-state-default",
       hoverClass: "ui-state-hover",
-      accept: "#cart li",
+      accept: "#playerList li",
+      accept: "#team2 li",
       accept: ":not(.ui-sortable-helper)",
       drop: function( event, ui ) {
-          if (ui.draggable.is('.dropped')) return false;
-        $( this ).find( ".placeholder" ).remove();
-         $("<li></li>").text(ui.draggable.text()).appendTo(this).draggable({
-                appendTo: "body",
-                helper: "clone"
-            }).addClass('dropped');
+          $( "<li class 'playerLine'></li>" ).text( ui.draggable.text() ).appendTo( this ).draggable({appendTo:"body",revert: "invalid"});
       }
     }).sortable({
       items: "li:not(.placeholder)",
@@ -56,42 +96,120 @@
         $( this ).removeClass( "ui-state-default" );
       }
     });
+
+    // TEAM 2 HERE      
+
+    $( "#team2 li" ).draggable({
+      appendTo: "body",
+      revert: "invalid"
+    });
+
+
+    $( "#team2 ol" ).droppable({
+
+      greedy: true,
+      activeClass: "ui-state-default",
+      hoverClass: "ui-state-hover",
+      accept: "#playerList li",
+      accept: "#team1 li",
+      accept: ":not(.ui-sortable-helper)",
+      drop: function( event, ui ) {
+          if($(this).children("#team2 ol playerLine").size() > 0) {
+              for(i = 0; i < $(this).children(".playerLine").size(); i++){
+                  if($(this).children(".playerLine").text() ==  $(ui.draggable.text())){
+                        alert("cancel");    //Instead want to cancel dragging of item
+                        return false;
+                  }
+              }
+          }
+          $( "<li class='playerLine'></li>" ).text( ui.draggable.text() ).appendTo( this ).draggable({appendTo:"body",revert: "invalid"});    
+        }
+    }).sortable({
+      items: "li:not(.placeholder)",
+      sort: function() {
+        // gets added unintentionally by droppable interacting with sortable
+        // using connectWithSortable fixes this, but doesn't allow you to customize active/hoverClass options
+        $( this ).removeClass( "ui-state-default" );
+      }
+    });
+
+    
+          
+
   });
   </script>
 </head>
+
 <body>
-    <div id="teams">
-    
-    
-    </div>    
-    <div id="products">
-      <h1 class="ui-widget-header">Team</h1>
-      <div id="catalog">
-        <% @teams.each do |team| %>
-          <h2><a href="#"><%= team.name %></a></h2>
-          <ol>
-        <div>
-
-            <% team.players.each do |player| %>
-              <li><%= [player.first_name, player.surname].join(" ") %> </li>
+<div id="container">
+    <div id="leftnav">
+        <h3>grades</h3>
+        <dl>
+            <% @grades.each do |grade| %>
+                <dt><%= grade.grade_name %></dt>
+                    <% grade.teams.each do |team| %>
+                        <dd data-product="<%= team.id %>"><%= team.name %></dd>
+                    <% end %>
             <% end %>
-
-        </div>
-              </ol>
-        <% end %>
-      </div>
+        </dl>
     </div>
+    <div id="rightnav">
+        <h3>players</h3>
 
-    <div id="cart">
-      <h1 class="ui-widget-header">Players</h1>
+        <%= search_form_for @search1 do |f| %>
+
+  <%= f.label :first_name_or_surname_cont %>
+  <%= f.search_field :first_name_or_surname_cont %>
+
+  <%= f.submit %>
+<% end %>
+    </div>
+        <div class="content">
+            <div class="teamsContent">
+                <div class="innerTeam">
+                    <div id="team1">
+      <h2>team 1</h2>
       <div class="ui-widget-content">
         <ol>
-          <% @players.each do |player| %>
-            <li><%= [player.first_name, player.surname].join(" ") %> </li>
+          <% @teams.first.players.each do |player| %>
+                <li class="playerLine"><%= [player.first_name, player.surname].join(" ") %> </li>
           <% end %>
         </ol>
       </div>
+    </div> 
+
+                </div>
+                <div class="innerTeam">
+                        <div id="team2">
+      <h2>team 2</h2>
+      <div class="ui-widget-content">
+        <ol>
+            <% @teams.first.players.each do |player| %>
+                <li class="playerLine"><%= [player.first_name, player.surname].join(" ") %> </li>
+          <% end %>
+        </ol>
+      </div>
+    </div> 
+                </div>
+
+            </div> 
+
+        <div class="playersContent">
+<div id="playerList">
+      <h2>players</h2>
+      <div class="ui-widget-content">
+        <ol>
+            <% @players.each do |player| %>
+                <li class="playerLine"><%= [player.first_name, player.surname].join(" ") %> </li>
+            <% end %>
+        </ol>
+      </div>
+            </div>
+        </div>
+
+
+
+
     </div>
- 
- 
+</div>
 </body>
