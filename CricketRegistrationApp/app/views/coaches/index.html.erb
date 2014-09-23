@@ -1,29 +1,26 @@
 <div class="index">	
-
+	
 	<div class="search">
-		<h3>~ search coach ~</h3>
-
-		<%= search_form_for @search do |f| %><%= f.condition_fields do |c| %>
-		<table class="search_table"><tr>
-			<td><%= c.attribute_fields do |a| %><%= a.attribute_select %><% end %></td>
-			<td><%= c.predicate_select %><%= c.value_fields do |v| %></td>
-			<td><%= v.text_field :value %><% end %><% end %></td>
-			<td><%= f.submit "Search for a Player" %><% end %></td>
-		</tr></table>
+		<h5>~ search coach ~</h5>
+		<%= search_form_for @search do |f| %>
+			<table class="search_table"><tr>
+				<td><%= f.label :first_name_or_surname_or_address_or_email_cont, "Keyword:" %></td>
+				<td><%= f.text_field :first_name_or_surname_or_address_or_email_cont %></td>
+				<td><%= f.submit "Search for a Coach" %></td>
+			</tr></table>
+		<% end %>
 	</div>
-
 
 	<table class="table">
 	  <thead>
 		<tr>
 		  <th><%= sort_link(@search, :first_name , "first name") %></th>
 		  <th><%= sort_link(@search, :surname , "surname") %></th>
-		  <th><%= sort_link(@search, :gender , "gender") %></th>
 		  <th>address</th>
 		  <th>home phone</th>
 		  <th>mobile phone</th>
 		  <th>email</th>
-		  <th colspan="3"></th>
+		  <th>show details</th>
 		</tr>
 	  </thead>
 
@@ -32,14 +29,11 @@
 		  <tr>
 			<td><%= coach.first_name %></td>
 			<td><%= coach.surname %></td>
-			<td><%= coach.gender %></td>
 			<td><%= coach.address %></td>
 			<td><%= coach.home_phone %></td>
 			<td><%= coach.mobile_phone %></td>
 			<td><%= coach.email %></td>
-			<td><%= link_to 'Show', coach %></td>
-			<td><%= link_to 'Edit', edit_coach_path(coach) %></td>
-			<td><%= link_to 'Destroy', coach, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			<td><div class="button"><%= link_to 'Show Coach', coach %></div></td>
 		  </tr>
 		<% end %>
 	  </tbody>

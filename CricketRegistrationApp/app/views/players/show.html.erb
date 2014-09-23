@@ -1,8 +1,6 @@
-<p id="notice"><%= notice %></p>
+<h5>~ <%= @player.first_name %> <%= @player.surname %> ~</h5>
 
-<p>
-  <strong><%= @player.first_name %> <%= @player.surname %></strong>
-</p>
+<p id="notice"><%= notice %></p>
 
 <p>
   <strong>Gender:</strong>
@@ -72,5 +70,5 @@
 <br>
 
 <br><div class="button"><%= link_to 'Edit Player Information', edit_player_path(@player) %></div>
-<br><div class="button"><%= link_to 'Delete Player from database', @player, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+<br><div class="button"><%= link_to 'Delete Player from Database', @player, method: :delete, data: { confirm: 'Are you sure?' } %></div>
 <br><div class="button"><%= link_to 'Go Back', players_path %></div>
