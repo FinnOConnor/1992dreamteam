@@ -13,4 +13,10 @@ class ManageController < ApplicationController
 	
   def generate
   end
+    
+  def update_player(teamid, playerid)
+      @player = Player.find(playerid)
+      @player.team_id = teamid
+  end 
+  helper_method :update_player
 end

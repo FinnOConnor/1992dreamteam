@@ -9,53 +9,57 @@
       
       
 $(document).ready(function(){      
-    /* Create array to hold team data */
-      
     var allplayers = new Array();
-      
+    var grades = new Array();   
+
     var i = 0;
-    
-    /* All players */
-    
-    <% @players.each do |p| %> 
-        var player = new Object();
-        player.id = <%= p.id %>;
-        player.name = "<%= [p.first_name, p.surname].join(" ") %>"; 
-        allplayers[i++] = player;
-    <% end %>      
+    function init(){
+        /* Create array to hold team data */
+
         
-    i=0;
-    
-    var j = 0;
-    var k = 0;
-    
-    var grades = new Array();    
-    
-    <% @grades.each do |g| %> 
-        var grade = new Object();
-        grade.name = "<%= g.grade_name %>";
-        var teams = new Array();    
-        <% g.teams.each do |t| %>
-            var team = new Object();
-            team.name = "<%= t.name %>";
-            var players = new Array();   
-            <% t.players.each do |p| %>
-                var player = new Object();
-                player.id = <%= p.id %>;
-                player.name = "<%= [p.first_name, p.surname].join(" ") %>"; 
-                players[k++] = player; 
-            <% end %>
-            k = 0;
-            team.players = players;
-            team.id = "<%= t.id %>";
-            teams[j++] = team;
-        <% end %>
-        j = 0;
-        grade.teams = teams; 
-        grades[i++] = grade;            
-    <% end %>      
+
+        /* All players */
+        grades = new Array();  
+        <% @players.each do |p| %> 
+            var player = new Object();
+            player.id = <%= p.id %>;
+            player.name = "<%= [p.first_name, p.surname].join(" ") %>"; 
+            allplayers[i++] = player;
+        <% end %>      
+
+        i=0;
+
+        var j = 0;
+        var k = 0;
+
           
-    i=0;
+
+        <% @grades.each do |g| %> 
+            var grade = new Object();
+            grade.name = "<%= g.grade_name %>";
+            var teams = new Array();    
+            <% g.teams.each do |t| %>
+                var team = new Object();
+                team.name = "<%= t.name %>";
+                var players = new Array();   
+                <% t.players.each do |p| %>
+                    var player = new Object();
+                    player.id = <%= p.id %>;
+                    player.name = "<%= [p.first_name, p.surname].join(" ") %>"; 
+                    players[k++] = player; 
+                <% end %>
+                k = 0;
+                team.players = players;
+                team.id = "<%= t.id %>";
+                teams[j++] = team;
+            <% end %>
+            j = 0;
+            grade.teams = teams; 
+            grades[i++] = grade;            
+        <% end %>    
+    }
+          
+    //i=0;
       
     function load_players(){
         $('#playerList ol').empty();
@@ -80,10 +84,14 @@ $(document).ready(function(){
         }
     }
     
-    
+    init(); 
     load_players();   
     load_team_nav();   
     
+    <% update_player(2, 1) %>
+    init();   
+    load_players();
+    load_team_nav();
           
     function refresh_team(index){    
         var arr = index.split(" ");
