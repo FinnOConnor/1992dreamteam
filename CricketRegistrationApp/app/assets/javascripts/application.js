@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.deserialize
+//= require jquery.facets
 //= require turbolinks
 //= require cocoon
 //= require_tree .

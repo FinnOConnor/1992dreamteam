@@ -1,19 +1,17 @@
 <head>
-  <meta charset="utf-8">
-  <title>jQuery UI Droppable - Shopping Cart Demo</title>
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
-  <script type='text/javascript' src='jquery.facets.js'></script>
-  <link rel="stylesheet" href="/resources/demos/style.css">
+<meta charset="utf-8">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+<link rel="stylesheet" href="/resources/demos/style.css">
 
-  <script>
+<script>
       
       
 $(document).ready(function(){      
     /* Create array to hold team data */
       
-    var players = new Array();
+    var allplayers = new Array();
       
     var i = 0;
     
@@ -23,7 +21,7 @@ $(document).ready(function(){
         var player = new Object();
         player.id = <%= p.id %>;
         player.name = "<%= [p.first_name, p.surname].join(" ") %>"; 
-        players[i++] = player;
+        allplayers[i++] = player;
     <% end %>      
         
     i=0;
@@ -32,7 +30,7 @@ $(document).ready(function(){
     var k = 0;
     
     var grades = new Array();    
-      
+    
     <% @grades.each do |g| %> 
         var grade = new Object();
         grade.name = "<%= g.grade_name %>";
@@ -49,6 +47,7 @@ $(document).ready(function(){
             <% end %>
             k = 0;
             team.players = players;
+            team.id = "<%= t.id %>";
             teams[j++] = team;
         <% end %>
         j = 0;
@@ -60,9 +59,14 @@ $(document).ready(function(){
       
     function load_players(){
         $('#playerList ol').empty();
-        for(var i=0; i<players.length; i++){
-            $('#playerList ol').append('<li>' + players[i].name + '</li>');    
+        for(var i=0; i<allplayers.length; i++){
+            $('#playerList ol').append('<li class=playerDrag>' + allplayers[i].name + '</li>');    
         } 
+        //Make each of the lines draggable
+        $('#playerList li').draggable({
+            appendTo: "body",
+            helper: "clone"
+        });
     }
     
     function load_team_nav(){
@@ -73,8 +77,9 @@ $(document).ready(function(){
                // console.log(grades[i].teams[j].name);
                 $('#leftnav dl').append('<dd data-product="'+ i + ' ' + j + '">' + grades[i].teams[j].name + '</dd>');    
             }        
-        }        
+        }
     }
+    
     
     load_players();   
     load_team_nav();   
@@ -86,22 +91,56 @@ $(document).ready(function(){
         
         $('#team1 ol').empty();
         for(i=0; i< team.players.length; i++){
-            $('#team1 ol').append('<li>' + team.players[i].name + '</li>');
-        }   
+            $('#team1 ol').append('<li class=playerDrag>' + team.players[i].name + '</li>');
+        }
+        //Make each of the lines draggable
+        $('#team1 li').draggable({
+            appendTo: "body",
+            revert: "invalid"
+        });
     }  
     
+    function get_team_id(index){
+        var arr = index.split(" ");
+        var team = grades[arr[0]].teams[arr[1]];
+        
+        return team.id;
+    }
     
-    
+    //This defines the droppable team title region
     $( "#team1 h2" ).droppable({
         accept: "#leftnav dd",
         drop: function( event, ui ) {
+            //Drop checks and logic
             if($("#team2 h2").text() != ui.draggable.text()){
                 $("#team1 h2").text( ui.draggable.text().toLowerCase() );
+                $("#team1 h2").attr("id", get_team_id(ui.draggable.data("product")));
                 refresh_team(ui.draggable.data("product"));
             }
         }
     });  
     
+    //This function does the drop logic checks for the team ordered lists. 
+    function team_drop_check( event, ui ){
+        if (ui.draggable.hasClass("playerDrag")) {
+            
+        }
+    }
+    
+    //This defines the droppable team player list region
+    $( "#team1 ol" ).droppable({
+        greedy: true,
+        drop: function( event, ui ){
+            //Drop checks and logic
+            if (ui.draggable.hasClass("playerDrag")) {
+                if ( !($("#team1 li:first").hasClass("placeholder"))){
+                    $( "<li class 'playerDrag'></li>" ).text( ui.draggable.text() ).appendTo( this ).draggable({appendTo:"body"});   
+                }
+            }
+        }
+    })
+    
+    //This defines the draggables for the left column of team names
     $( "#leftnav dd" ).draggable({
       appendTo: "body",
       helper: "clone"
@@ -112,67 +151,48 @@ $(document).ready(function(){
       });
   </script>
 </head>
-
 <body>
-<div id="container">
-    
-    
-    
-    
-    <div id="leftnav">
-        <h3>grades</h3>
-        <dl>
-
-        </dl>
-    </div>
-    
-    
-    
-    
-    <div id="rightnav">
-        <h3>players</h3>
-
-        <%= search_form_for @search1 do |f| %>
-
-  <%= f.label :first_name_or_surname_cont %>
-  <%= f.search_field :first_name_or_surname_cont %>
-
-  <%= f.submit %>
-<% end %>
-    </div>
+    <div id="container">
+        <div id="leftnav">
+            <h3>grades</h3>
+                <dl>
+                    Script will put grades and teams here
+                </dl>
+        </div>
+        
+        <div id="rightnav">
+            <h3>players</h3>
+            <%= search_form_for @search1 do |f| %>
+                <%= f.label :first_name_or_surname_cont %>
+                <%= f.search_field :first_name_or_surname_cont %>
+                <%= f.submit %>
+            <% end %>
+        </div>
+        
         <div class="content">
             <div class="teamsContent">
                 <div class="innerTeam">
                     <div id="team1">
-      <h2>team 1</h2>
-      <div class="ui-widget-content">
-        <ol>
-          <% @teams.first.players.each do |player| %>
-                <li class="playerLine"><%= [player.first_name, player.surname].join(" ") %> </li>
-          <% end %>
-        </ol>
-      </div>
-    </div> 
-
+                        <h2>team 1</h2>
+                        <div class="ui-widget-content">
+                            <ol>
+                                <li class="placeholder">Script will put player within the team here</li>
+                            </ol>
+                        </div>
+                    </div> 
                 </div>
-
-
             </div> 
 
-        <div class="playersContent">
-            <div id="playerList">
-                <h2>players</h2>
-                <div class="ui-widget-content">
-                <ol>
-                    No players selected!
-                </ol>
+            <div class="playersContent">
+                <div id="playerList">
+                    <h2>players</h2>
+                    <div class="ui-widget-content">
+                        <ol>
+                            No players selected!
+                        </ol>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-
-
-
-    </div>
-</div>
 </body>
