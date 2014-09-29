@@ -1,8 +1,10 @@
+<h5>~ <%= @grade.grade_name %> ~</h5>
+
 <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Grade name:</strong>
-  <%= @grade.grade_name %>
+  
 </p>
 
 <p>
@@ -25,5 +27,8 @@
   <%= @grade.max_age %>
 </p>
 
-<%= link_to 'Edit', edit_grade_path(@grade) %> |
-<%= link_to 'Back', grades_path %>
+<br>
+
+<br><div class="button"><%= link_to 'Edit Grade Information', edit_grade_path(@grade) %></div>
+<br><div class="button"><%= link_to 'Delete Grade from database', @grade, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+<br><div class="button"><%= link_to 'Go Back', grades_path %></div>

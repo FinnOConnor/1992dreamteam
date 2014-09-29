@@ -1,9 +1,9 @@
 class Payment < ActiveRecord::Base
-    has_many :players, :class_name => 'Player', :foreign_key =>'player_id'
+    belongs_to :player, :class_name => 'Player', :foreign_key =>'player_id'
     
-#    validates :season
-#    validates :amount_due
-#    validates :amount_paid
+    validates :season, presence: true
+    validates :amount_due, presence: true
+    validates :amount_paid, :numericality => { :less_than_or_equal_to => :amount_due }
 #    validates :paid
-#    validates :player_id
+    validates :player_id, presence: true
 end
