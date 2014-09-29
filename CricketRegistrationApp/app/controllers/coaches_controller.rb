@@ -30,8 +30,9 @@ class CoachesController < ApplicationController
 
     respond_to do |format|
       if @coach.save
-        format.html { redirect_to @coach, notice: 'Coach was successfully created.' }
-        format.json { render :show, status: :created, location: @coach }
+        #format.html { redirect_to @coach, notice: 'Coach was successfully created.' }
+        #format.json { render :show, status: :created, location: @coach }
+		format.html { redirect_to :back }
       else
         format.html { render :new }
         format.json { render json: @coach.errors, status: :unprocessable_entity }
