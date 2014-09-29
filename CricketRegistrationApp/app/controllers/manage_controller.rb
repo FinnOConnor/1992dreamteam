@@ -15,8 +15,10 @@ class ManageController < ApplicationController
   end
     
   def update_player(teamid, playerid)
-      @player = Player.find(playerid)
-      @player.team_id = teamid
+      player = Player.find(playerid)
+      player.team_id = teamid   
+      player.save(:validate => false)
+      
   end 
   helper_method :update_player
 end

@@ -19,7 +19,7 @@ $(document).ready(function(){
         
 
         /* All players */
-        grades = new Array();  
+        i=0;
         <% @players.each do |p| %> 
             var player = new Object();
             player.id = <%= p.id %>;
@@ -64,7 +64,7 @@ $(document).ready(function(){
     function load_players(){
         $('#playerList ol').empty();
         for(var i=0; i<allplayers.length; i++){
-            $('#playerList ol').append('<li class=playerDrag>' + allplayers[i].name + '</li>');    
+            $('#playerList ol').append('<li class=playerDrag data-playerid="'+allplayers[i].id+'">' + allplayers[i].name + '</li>');    
         } 
         //Make each of the lines draggable
         $('#playerList li').draggable({
@@ -88,7 +88,7 @@ $(document).ready(function(){
     load_players();   
     load_team_nav();   
     
-    <% update_player(2, 1) %>
+    <% update_player(1,3) %>
     init();   
     load_players();
     load_team_nav();
@@ -99,8 +99,24 @@ $(document).ready(function(){
         
         $('#team1 ol').empty();
         for(i=0; i< team.players.length; i++){
-            $('#team1 ol').append('<li class=playerDrag>' + team.players[i].name + '</li>');
+            $('#team1 ol').append('<li class=playerDrag data-playerid="'+allplayers[i].id+'">' + team.players[i].name + '</li>');
         }
+        
+        //This defines the droppable team player list region
+        $( "#team1 ol" ).droppable({
+            greedy: true,
+            drop: function( event, ui ){
+                //Drop checks and logic
+                if (ui.draggable.hasClass("playerDrag")) {
+                    //if (contains_draggable(1,ui.draggable.data("playerid"))){
+                        if ( !($("#team1 li:first").hasClass("placeholder"))){
+                            $( "<li class='playerDrag' data-playerid='"+ui.draggable.data("playerid")+"'></li>" )
+                                .text( ui.draggable.text() ).appendTo( this ).draggable({appendTo:"body"});   
+                        }
+                    //}
+                }
+            }
+        })
         //Make each of the lines draggable
         $('#team1 li').draggable({
             appendTo: "body",
@@ -108,6 +124,15 @@ $(document).ready(function(){
         });
     }  
     
+    function contains_draggable(teamname,id){
+        if(teamname == 1){
+            $("#team1 li").each(function(index){
+                if( $(this).draggable.data("playerid") == id){return true;}
+            })
+            return false;
+        }
+    }
+        
     function get_team_id(index){
         var arr = index.split(" ");
         var team = grades[arr[0]].teams[arr[1]];
@@ -135,18 +160,7 @@ $(document).ready(function(){
         }
     }
     
-    //This defines the droppable team player list region
-    $( "#team1 ol" ).droppable({
-        greedy: true,
-        drop: function( event, ui ){
-            //Drop checks and logic
-            if (ui.draggable.hasClass("playerDrag")) {
-                if ( !($("#team1 li:first").hasClass("placeholder"))){
-                    $( "<li class 'playerDrag'></li>" ).text( ui.draggable.text() ).appendTo( this ).draggable({appendTo:"body"});   
-                }
-            }
-        }
-    })
+    
     
     //This defines the draggables for the left column of team names
     $( "#leftnav dd" ).draggable({
