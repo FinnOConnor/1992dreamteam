@@ -31,7 +31,7 @@ respond_to :json
       
       update_player(@teamid, @playerid)
       respond_to do |format|
-        format.html { render 'foo' }
+        format.html { head :ok }
       end
   end    
     

@@ -96,8 +96,8 @@ $(document).ready(function(){
 //        ids.teamid = 4;
 //        ids.playerid = 8;
         
-        var tid = 4;
-        var pid = 8;
+        var tid = 2;
+        var pid = 1;
         
         $.ajax({
             type: 'POST',
@@ -105,7 +105,7 @@ $(document).ready(function(){
             beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
 //            data: ids,
             data : {playerid: pid, teamid: tid},
-            dataType: 'JSON',
+            dataType: 'script',
             success: function(json, status, xhr){
                 alert("FUCK YEAH!");
             },
@@ -114,6 +114,9 @@ $(document).ready(function(){
             }
         });
     });
+        
+        
+        
           
     function refresh_team(index){    
         var arr = index.split(" ");
@@ -204,9 +207,9 @@ $(document).ready(function(){
                     Script will put grades and teams here
                 </dl>
             
-            
+        <div class="button" id="doshit"><a>Confirm Changes</a></div>
+
         </div>
-                    <div class="button" id="doshit"><a>DO SHIT</a></div>
 
         <div id="rightnav">
             <h3>players</h3>
