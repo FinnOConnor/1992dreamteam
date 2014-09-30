@@ -158,3 +158,8 @@ input[type=submit]:active {
 	text-emphasis-color: #888;
 	text-decoration: none;
 }
+
+/*buttons on public registration pages also get this*/
+#regbtn {
+	position: relative;
+}

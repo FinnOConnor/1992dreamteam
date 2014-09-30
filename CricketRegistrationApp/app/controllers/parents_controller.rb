@@ -32,8 +32,9 @@ class ParentsController < ApplicationController
 
     respond_to do |format|
       if @parent.save
-        format.html { redirect_to @parent, notice: 'Parent was successfully created.' }
-        format.json { render :show, status: :created, location: @parent }
+        #format.html { redirect_to @parent, notice: 'Parent was successfully created.' }
+        #format.json { render :show, status: :created, location: @parent }
+		format.html { redirect_to :back }
       else
         format.html { render :new }
         format.json { render json: @parent.errors, status: :unprocessable_entity }

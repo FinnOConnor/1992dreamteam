@@ -75,14 +75,12 @@
   <div class="field">
     <%= f.hidden_field :coach_id %>
   </div>
-  
-  <h3>Player</h3>
 <div id="player">
   <%= f.fields_for :players do |player| %>
 	<%= render "player_fields", :f => player %>
 <% end %>
     <div class="links">
-        <%= link_to_add_association 'Add Player', f, :players %>
+        <br><div class="button" id="regbtn"><%= link_to_add_association 'Add a Player', f, :players %></div><br><br>
     </div>
 </div>
 
@@ -96,8 +94,8 @@
     </div>
   <% end %>
 
-  <div class="actions">
-	<%= f.submit %>
+  <div class="actions" id="regbtn">
+	<%= f.submit "Confirm" %>
   </div>
 
 <% end %>

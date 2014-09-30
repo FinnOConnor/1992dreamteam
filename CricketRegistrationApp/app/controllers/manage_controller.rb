@@ -9,13 +9,26 @@ respond_to :json
       @players = @search1.result
       @teams = @search.result
       @counter = @counter
+
   end
 	
   def generate
+  
+  end
+  
+  def generateTeams
+    
+	
+	Player.all.each do |player|
+	
+	end
+	
   end
        
   def gogo 
   end    
+    
+  helper_method :generateTeams
     
   def update_player(teamid, playerid)
       player = Player.find(playerid)
