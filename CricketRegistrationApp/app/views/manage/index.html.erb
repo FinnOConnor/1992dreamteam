@@ -120,7 +120,7 @@ $(document).ready(function(){
         
         $('#team1 ol').empty();
         for(i=0; i< team.players.length; i++){
-            $('#team1 ol').append('<li class=playerDrag data-playerid="'+allplayers[i].id+'">' + team.players[i].name + '</li>');
+            $('#team1 ol').append('<li class=playerDrag data-playerid="'+team.players[i].id+'">' + team.players[i].name + '</li>');
         }
         
         //This defines the droppable team player list region
@@ -129,12 +129,12 @@ $(document).ready(function(){
             drop: function( event, ui ){
                 //Drop checks and logic
                 if (ui.draggable.hasClass("playerDrag")) {
-                    //if (contains_draggable(1,ui.draggable.data("playerid"))){
+                    if (!contains_draggable(ui.draggable.data("playerid"))){
                         if ( !($("#team1 li:first").hasClass("placeholder"))){
                             $( "<li class='playerDrag' data-playerid='"+ui.draggable.data("playerid")+"'></li>" )
-                                .text( ui.draggable.text() ).appendTo( this ).draggable({appendTo:"body"});   
+                                .text( ui.draggable.text() ).appendTo( this ).draggable({appendTo:"body",revert :"invalid"});   
                         }
-                    //}
+                    }
                 }
             }
         })
@@ -145,13 +145,14 @@ $(document).ready(function(){
         });
     }  
     
-    function contains_draggable(teamname,id){
-        if(teamname == 1){
-            $("#team1 li").each(function(index){
-                if( $(this).draggable.data("playerid") == id){return true;}
-            })
-            return false;
-        }
+    function contains_draggable(id){
+        var result = false;
+        $("#team1 li").each(function(index){
+            if( $(this).attr("data-playerid") == id){result = true;}
+            console.log($(this).attr("data-playerid")+" "+id);
+        })
+        console.log(result);
+        return result;
     }
         
     function get_team_id(index){
