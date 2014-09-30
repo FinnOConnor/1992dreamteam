@@ -87,11 +87,33 @@ $(document).ready(function(){
     init(); 
     load_players();   
     load_team_nav();   
-    
-    <% update_player(1,3) %>
-    init();   
-    load_players();
-    load_team_nav();
+        
+
+        
+    $('#doshit').click(function(){
+        
+//        var ids = new Object();
+//        ids.teamid = 4;
+//        ids.playerid = 8;
+        
+        var tid = 4;
+        var pid = 8;
+        
+        $.ajax({
+            type: 'POST',
+            url: '/manage/gogo',
+            beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+//            data: ids,
+            data : {playerid: pid, teamid: tid},
+            dataType: 'JSON',
+            success: function(json, status, xhr){
+                alert("FUCK YEAH!");
+            },
+            error: function (xhr, status){
+                alert(status);
+            }
+        });
+    });
           
     function refresh_team(index){    
         var arr = index.split(" ");
@@ -99,7 +121,7 @@ $(document).ready(function(){
         
         $('#team1 ol').empty();
         for(i=0; i< team.players.length; i++){
-            $('#team1 ol').append('<li class=playerDrag data-playerid="'+allplayers[i].id+'">' + team.players[i].name + '</li>');
+            $('#team1 ol').append('<li class=playerDrag data-playerid="'+team.players[i].id+'">' + team.players[i].name + '</li>');
         }
         
         //This defines the droppable team player list region
@@ -108,12 +130,12 @@ $(document).ready(function(){
             drop: function( event, ui ){
                 //Drop checks and logic
                 if (ui.draggable.hasClass("playerDrag")) {
-                    //if (contains_draggable(1,ui.draggable.data("playerid"))){
+                    if (!contains_draggable(ui.draggable.data("playerid"))){
                         if ( !($("#team1 li:first").hasClass("placeholder"))){
                             $( "<li class='playerDrag' data-playerid='"+ui.draggable.data("playerid")+"'></li>" )
-                                .text( ui.draggable.text() ).appendTo( this ).draggable({appendTo:"body"});   
+                                .text( ui.draggable.text() ).appendTo( this ).draggable({appendTo:"body",revert :"invalid"});   
                         }
-                    //}
+                    }
                 }
             }
         })
@@ -124,13 +146,14 @@ $(document).ready(function(){
         });
     }  
     
-    function contains_draggable(teamname,id){
-        if(teamname == 1){
-            $("#team1 li").each(function(index){
-                if( $(this).draggable.data("playerid") == id){return true;}
-            })
-            return false;
-        }
+    function contains_draggable(id){
+        var result = false;
+        $("#team1 li").each(function(index){
+            if( $(this).attr("data-playerid") == id){result = true;}
+            console.log($(this).attr("data-playerid")+" "+id);
+        })
+        console.log(result);
+        return result;
     }
         
     function get_team_id(index){
@@ -180,8 +203,11 @@ $(document).ready(function(){
                 <dl>
                     Script will put grades and teams here
                 </dl>
+            
+            
         </div>
-        
+                    <div class="button" id="doshit"><a>DO SHIT</a></div>
+
         <div id="rightnav">
             <h3>players</h3>
             <%= search_form_for @search1 do |f| %>

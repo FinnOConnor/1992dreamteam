@@ -144,10 +144,12 @@ input[type=submit]:active {
 
 .button a:hover {
     background: linear-gradient(#eaeae5, #d7d9cd);
+    cursor: pointer;
 }
 
 .button a:active {
 	background: linear-gradient(#dee0d1, #f3f5e8);
+    cursor: pointer;
 }
 
 .button a,.button a:link,.button a:visited,.button a:hover,.button a:focus,.button a:active {
