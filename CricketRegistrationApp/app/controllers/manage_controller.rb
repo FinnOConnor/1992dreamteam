@@ -6,11 +6,21 @@ class ManageController < ApplicationController
       @players = @search1.result
      @teams = @search.result
       
-      @counter = @counter
-      
-      
+      @counter = @counter 
   end
 	
   def generate
+  
   end
+  
+  def generateTeams
+    
+	
+	Player.all.each do |player|
+	
+	end
+	
+  end
+  helper_method :generateTeams
+  
 end
