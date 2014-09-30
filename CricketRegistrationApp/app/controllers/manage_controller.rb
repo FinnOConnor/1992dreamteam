@@ -21,6 +21,17 @@ class ManageController < ApplicationController
 	end
 	
   end
+<<<<<<< HEAD
   helper_method :generateTeams
   
+=======
+    
+  def update_player(teamid, playerid)
+      player = Player.find(playerid)
+      player.team_id = teamid   
+      player.save(:validate => false)
+      
+  end 
+  helper_method :update_player
+>>>>>>> origin/master
 end

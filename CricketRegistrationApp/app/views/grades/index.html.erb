@@ -1,16 +1,14 @@
 <div class="index">
 
-	<h3>~ grades ~</h3>
+	<h5>~ manage grades ~</h5>
 
 	<table class="table">
 	  <thead>
 		<tr>
-		  <th>Grade name</th>
-		  <th>Min size</th>
-		  <th>Max size</th>
-		  <th>Min age</th>
-		  <th>Max age</th>
-		  <th colspan="3"></th>
+		  <th><%= sort_link(@search, :grade_name , "name") %></th>
+		  <th><%= sort_link(@search, :min_age, "min age") %></th>
+		  <th><%= sort_link(@search, :max_age, "max age") %></th>
+		  <th>show details</th>
 		</tr>
 	  </thead>
 
@@ -18,20 +16,15 @@
 		<% @grades.each do |grade| %>
 		  <tr>
 			<td><%= grade.grade_name %></td>
-			<td><%= grade.min_size %></td>
-			<td><%= grade.max_size %></td>
 			<td><%= grade.min_age %></td>
 			<td><%= grade.max_age %></td>
-			<td><%= link_to 'Show', grade %></td>
-			<td><%= link_to 'Edit', edit_grade_path(grade) %></td>
-			<td><%= link_to 'Destroy', grade, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+			<td><%= link_to 'Show Grade', grade %></td>
 		  </tr>
 		<% end %>
+			<tr><td>
+				<div class="button"><%= link_to 'Create New Grade', new_grade_path %></div>
+			</td><td colspan="3"></td></tr>
 	  </tbody>
 	</table>
-
-	<br>
-
-	<%= link_to 'New Grade', new_grade_path %>
 
 </div>

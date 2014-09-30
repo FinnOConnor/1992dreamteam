@@ -5,10 +5,10 @@
 	<table class="table">
 	  <thead>
 		<tr>
-		  <th>Season</th>
-		  <th>Amount due</th>
-		  <th>Amount paid</th>
-		  <th>Player</th>
+		  <th>player</th>
+		  <th>season</th>
+		  <th>amount due</th>
+		  <th>amount paid</th>
 		  <th>show details</th>
 		</tr>
 	  </thead>
@@ -16,16 +16,16 @@
 	  <tbody>
 		<% @payments.each do |payment| %>
 		  <tr>
+			<td><%= payment.player.first_name %></td>
 			<td><%= payment.season %></td>
 			<td><%= payment.amount_due %></td>
 			<td><%= payment.amount_paid %></td>
-			<td><%= payment.player_id %></td>
 			<td><div class="button"><%= link_to 'Show Payment', payment %></div></td>
 		  </tr>
 		<% end %>
-			<tr><td>
-				<div class="button"><%= link_to 'Create New Payment', new_payment_path %></div>
-			</td><td colspan="4"></td></tr>
+		  <tr><td>
+			<div class="button"><%= link_to 'Create New Payment', new_payment_path %></div>
+		  </td><td colspan="4"></td></tr>
 	  </tbody>
 	</table>
 
