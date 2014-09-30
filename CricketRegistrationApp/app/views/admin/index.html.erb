@@ -46,6 +46,7 @@
 					case ("item6"): id = "#mi6"; break;
 					case ("item7"): id = "#mi7"; break;
 					case ("item8"): id = "#mi8"; break;
+					case ("itemt"): id = "#mit"; break;
 				} slide(id);
 			});
 								 
@@ -138,7 +139,8 @@
                     <li class="menuItem" id="item6"><h4>Payments Summary</h4></li>
                     <li class="menuItem" id="item7"><h4>Manage Prices</h4></li>
                     <li class="menuItem" id="item8"><h4>Send Message</h4></li>
-
+					
+                    <li class="menuItem" id="itemt"><h4>Test Item</h4></li>
                 </ul>
             </div>
 			<div class="logout"><center><span>Log out</span></center></div> 
@@ -164,14 +166,15 @@
 		<div class="adminContainer" id="mi6"><iframe class="miIframe" id="mi6Iframe" src="../payments" scrolling="no" border="0"></iframe></div>
 		<div class="adminContainer" id="mi7"><iframe class="miIframe" id="mi7Iframe" src="../costs" scrolling="no" border="0"></iframe></div>
 		
-		<div class="adminContainer" id="mi8"><!--will need controller to get email addresses and names from players/parents etc-->
-			<div class="index">
-				<h5>~ Send a Message ~</h5>
-				<div class="message">
-					<!--STUFF HAPPENS IN HERE-->
-				</div>
+		<!--will need controller to get email addresses and names from players/parents etc-->
+		<div class="adminContainer" id="mi8">
+			<h5>~ Send a Message ~</h5>
+			<div class="message">
+				<!--STUFF HAPPENS IN HERE-->
 			</div>
 		</div>
+		
+		<div class="adminContainer" id="mit" style="background:#0f0;"><!--Test stuff in here--></div>
 		
 	</div>
     
