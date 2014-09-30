@@ -1,4 +1,4 @@
-class CostsController < ApplicationController
+lass CostsController < ApplicationController
   before_action :set_cost, only: [:show, :edit, :update, :destroy]
 
   # GET /costs

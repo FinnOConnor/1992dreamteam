@@ -27,5 +27,14 @@ class Player < ActiveRecord::Base
 		senior != true
 	end
     
+	def name
+      "#{self.first_name} #{self.surname}"
+    end
+
+    def name=(fullname)
+      first,last = fullname.split(' ')
+      self.first_name = first
+      self.surname = last
+    end
     
 end

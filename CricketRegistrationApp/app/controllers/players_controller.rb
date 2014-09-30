@@ -7,16 +7,6 @@ class PlayersController < ApplicationController
      @search = Player.search(params[:q])
      @players = @search.result
   end
-	
-	def name
-      "#{self.first_name} #{self.surname}"
-    end
-
-    def name=(fullname)
-      first,last = fullname.split(' ')
-      self.first_name = first
-      self.surname = last
-    end
 
   # GET /players/1
   # GET /players/1.json

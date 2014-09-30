@@ -12,4 +12,15 @@ class Coach < ActiveRecord::Base
     validates :address, :length => {maximum: 50}, presence: true
     validates :home_phone, :length => {in: 7..50}, :allow_blank => true 
     validates :mobile_phone, :length => {in: 7..50}, :allow_blank => true 
+	
+	def name
+      "#{self.first_name} #{self.surname}"
+    end
+
+    def name=(fullname)
+      first,last = fullname.split(' ')
+      self.first_name = first
+      self.surname = last
+    end	
+	
 end

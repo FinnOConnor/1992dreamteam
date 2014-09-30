@@ -7,7 +7,7 @@ class CoachesController < ApplicationController
     #@coaches = Coach.all
 	 @search = Coach.search(params[:q])
      @coaches = @search.result
-  end
+  end	
 
   # GET /coaches/1
   # GET /coaches/1.json
