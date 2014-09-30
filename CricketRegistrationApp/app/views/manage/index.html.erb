@@ -92,13 +92,16 @@ $(document).ready(function(){
         
     $('#doshit').click(function(){
         
-//        var ids = new Object();
-//        ids.teamid = 4;
-//        ids.playerid = 8;
+        var stack = new Array();
+        var action = new Object();
         
-        var tid = 2;
-        var pid = 1;
+        action.pid = 1;
+        action.tid = 2;
+        stack[0] = action;
         
+        var pid = stack[0].pid;
+        var tid = stack[0].tid;
+
         $.ajax({
             type: 'POST',
             url: '/manage/gogo',
@@ -107,7 +110,7 @@ $(document).ready(function(){
             data : {playerid: pid, teamid: tid},
             dataType: 'script',
             success: function(json, status, xhr){
-                alert("FUCK YEAH!");
+                window.location.reload()            
             },
             error: function (xhr, status){
                 alert(status);
