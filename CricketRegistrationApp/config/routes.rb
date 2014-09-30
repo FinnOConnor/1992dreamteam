@@ -21,7 +21,7 @@ Rails.application.routes.draw do
 	
   get 'manage/generate'
 
-    get 'manage/gogo'
+  post 'manage/gogo'
     
   resources :parents
 

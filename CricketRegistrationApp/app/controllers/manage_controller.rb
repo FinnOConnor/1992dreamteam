@@ -25,7 +25,14 @@ respond_to :json
 	
   end
        
-  def gogo 
+  def gogo
+      @playerid = params[:playerid]
+      @teamid = params[:teamid]
+      
+      update_player(@teamid, @playerid)
+      respond_to do |format|
+        format.html { render 'foo' }
+      end
   end    
     
   helper_method :generateTeams
