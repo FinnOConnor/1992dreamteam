@@ -27,7 +27,14 @@ class TeamsController < ApplicationController
   # GET /teams/1/edit
   def edit
   end
-
+  
+  def generateTeams
+	Player.all.each do |player|
+	
+	end
+  end
+  helper_method :generateTeams
+    
   # POST /teams
   # POST /teams.json
   def create
