@@ -1,6 +1,20 @@
+<head>
+
+<script>
+$(document).ready(function() {
+
+	$('#generateTeams').click(function() {
+	<%= generateTeams %>
+	});
+
+});
+	</script>
+
+</head>
+
 <div class="index">
 
-	<h5>~ manage teams ~</h5>
+	<h5>~ generate teams ~</h5>
 
 	<table class="table">
 	  <thead>
@@ -23,6 +37,8 @@
 		<% end %>
 			<tr><td>
 				<div class="button"><%= link_to 'Create New Team', new_team_path %></div>
+                <div class="button" id="generateTeams"><a>Click Me!</a></div>
+                <div><label id="result">Result!</label></div>
 			</td><td colspan="3"></td></tr>
 	  </tbody>
 	</table>
