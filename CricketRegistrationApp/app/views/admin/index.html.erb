@@ -6,12 +6,10 @@
 			
             /* On document resize, refit content */
             $(window).resize(function(){
-                			var pageHeight = ($(window).height()-100) + "px";
-			$("#admin_sidebar").css({height: pageHeight});
-			$(".adminContainer").css({height: pageHeight});
-                			$(".adminContainer").css("width", $(window).width() - 350);
+				var pageHeight = ($(window).height()-100) + "px";
+				$("#admin_sidebar").css({height: pageHeight});
+				$(".adminContainer").css({height: pageHeight});
             });
-            
             
 			/* for testing only, remove later */
 			$('#user').val('admin');
@@ -21,17 +19,18 @@
 			/* page wide variables on load */
 			var loggedIn = false;
 			var transitionSpeed = 600;
+			var pageHeight = ($(window).height()-100) + "px";
+			var menuWidth = ($(window).width() / 5);
 		
 			/* On page load, set sidebar height to 100% - top menu height */
-			var pageHeight = ($(window).height()-100) + "px";
 			$("#admin_sidebar").css({height: pageHeight});
 			$(".adminContainer").css({height: pageHeight});
 			
 			/* On page load, show only login div */
-			$(".adminContainer").css("width", $(window).width() - 350);
+			$(".adminContainer").css("width", $(window).width() - menuWidth);
 			$(".adminContainer").css("left", "-200%");
-			$("#loginDiv").css("left", 350);
-		
+			$("#loginDiv").css("left", menuWidth);
+			
 			/* Menu items functions */
 			
 			var id = "#mi1";
@@ -51,9 +50,9 @@
 			});
 								 
 			function slide(id) {
-				if (loggedIn == true && $(id).position().left != 350) {
+				if (loggedIn == true && $(id).position().left != menuWidth) {
 					$(".adminContainer").animate({left: "-200%"}, transitionSpeed);
-					$(id).animate({left: "350px"}, transitionSpeed);
+					$(id).animate({left: menuWidth+"px"}, transitionSpeed);
 				} else loginWobble();
 			}
 		
@@ -62,7 +61,7 @@
 				if (loggedIn){
 					loggedIn = false;
 					$(".adminContainer").animate({left: "-200%"}, transitionSpeed);
-					$("#loginDiv").animate({left: "350px"}, transitionSpeed);
+					$("#loginDiv").animate({left: menuWidth+"px"}, transitionSpeed);
 				} else logginWobble();
 			});
 			
@@ -76,7 +75,7 @@
 				if (($('#user').val()=="admin")&&(pass=="30b699db62136c65fa9dff7910505eabb69da8c43db6ac5ed0fb2af8")){
 					loggedIn = true;
 					$(".adminContainer").animate({left: "-200%"}, transitionSpeed);
-					$(id).animate({left: "350px"}, transitionSpeed);
+					$(id).animate({left: menuWidth+"px"}, transitionSpeed);
 				} else loginWobble();
 			}
 			
@@ -89,6 +88,13 @@
 				$(".loginDiv").animate({marginLeft: "-195px"},wobbleSpeed,function(){
 				$(".loginDiv").animate({marginLeft: "-200px"},wobbleSpeed/2);});});});});});
 			}
+			
+			/* resizeing admin items on window resize */
+			$(window).resize(function () {
+				$(".adminContainer").css("width", $(window).width() - menuWidth);
+				menuWidth = ($(window).width() / 5);
+				$(id).css("left", menuWidth+"px");
+			});
 			
 		});
 	</script>
