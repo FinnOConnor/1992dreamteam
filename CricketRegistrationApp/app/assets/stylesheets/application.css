@@ -287,3 +287,7 @@ h2 {
     width: 100%;
     z-index: 1;
 }
+
+#generateTeams {
+    right: 0px;
+}

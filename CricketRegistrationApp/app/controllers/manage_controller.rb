@@ -15,15 +15,6 @@ respond_to :json
   
   end
   
-  def generateTeams
-    
-	
-	Player.all.each do |player|
-	
-	end
-	
-  end
-       
   def gogo
       $num = params[:length].to_i
       $i = 0
@@ -46,7 +37,6 @@ respond_to :json
       end
   end    
     
-  helper_method :generateTeams
     
   def update_player(teamid, playerid)
       p ["Updating Player with PlayerID ",playerid," TeamID ",teamid].join("")
