@@ -1,0 +1,17 @@
+<select name="entity" class="select">
+	<option value="">Please Select</option>
+	<optgroup label="Coaches">
+		<% @coaches.each do |coach| %>
+			<option value="<%= coach.id %>"><%= coach.name %></option>
+		<% end %>
+	</optgroup>
+	<optgroup label="Players">
+		<% @players.each do |coach| %>
+			<option value="<%= coach.id %>"><%= coach.name %></option>
+		<% end %>
+	</optgroup>
+</select>
+
+<br><textarea name="message" rows="10" cols="50" class="textinput"></textarea>
+
+<br><br><div class="button"><a>Send Message</a></div>
