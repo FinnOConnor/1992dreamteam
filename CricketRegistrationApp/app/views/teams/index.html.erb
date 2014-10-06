@@ -18,7 +18,7 @@
 			<td><%= team.name %></td>
 			<td><%= team.try(:grade).try(:grade_name) %></td>
 			<td><%= team.try(:coach).try(:first_name) %></td>
-			<td><%= link_to 'Show Team', team %></td>
+			<td><div class="button"><%= link_to 'Team Details', team %></div></td>
 		  </tr>
 		<% end %>
 			<tr><td>
