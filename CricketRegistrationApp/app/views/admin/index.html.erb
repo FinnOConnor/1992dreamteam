@@ -9,6 +9,9 @@
 				var pageHeight = ($(window).height()-100) + "px";
 				$("#admin_sidebar").css({height: pageHeight});
 				$(".adminContainer").css({height: pageHeight});
+				$(".adminContainer").css("width", $(window).width() - menuWidth);
+				menuWidth = ($(window).width() / 5);
+				$(id).css("left", menuWidth+"px");
             });
             
 			/* for testing only, remove later */
@@ -89,13 +92,6 @@
 				$(".loginDiv").animate({marginLeft: "-200px"},wobbleSpeed/2);});});});});});
 			}
 			
-			/* resizeing admin items on window resize */
-			$(window).resize(function () {
-				$(".adminContainer").css("width", $(window).width() - menuWidth);
-				menuWidth = ($(window).width() / 5);
-				$(id).css("left", menuWidth+"px");
-			});
-			
 		});
 	</script>
 </head>
@@ -145,8 +141,6 @@
                     <li class="menuItem" id="item6"><h4>Payments Summary</h4></li>
                     <li class="menuItem" id="item7"><h4>Manage Prices</h4></li>
                     <li class="menuItem" id="item8"><h4>Send Message</h4></li>
-					
-                    <li class="menuItem" id="itemt"><h4>Test Item</h4></li>
                 </ul>
             </div>
 			<div class="logout"><center><span>Log out</span></center></div> 
@@ -179,8 +173,6 @@
 				<%= render 'mail' %>
 			</div>
 		</div>
-		
-		<div class="adminContainer" id="mit" style="background:#0f0;"><!--Test stuff in here--></div>
 		
 	</div>
     

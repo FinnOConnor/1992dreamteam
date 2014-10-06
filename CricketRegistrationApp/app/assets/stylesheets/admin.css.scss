@@ -34,7 +34,8 @@ tidy{} /* ignore this */
     width: 90%;
     display: block;
     border-bottom: 1px solid #75b767;
-    padding: 4px 0px 4px 0px;
+	padding-bottom: 1%;
+	padding-top: 1%;
     left: 0;
     transition: 0.4s
 }
@@ -49,6 +50,9 @@ tidy{} /* ignore this */
     margin-left: 30px;
 	line-height: 100%;
     font-size: 12pt;
+	padding: 0px 0px 0px 0px;
+	margin-top: 6%;
+	margin-bottom: 6%;
 }
 
 #admin_menu{
@@ -59,7 +63,7 @@ tidy{} /* ignore this */
     position:absolute;
     background: #82b77b;
     color: #476a3c;
-    padding: 10px 0px 10px 0px;
+    padding: 1% 0px 1% 0px;
     left: 0;
     width: 100%;
     bottom: 0;
@@ -73,7 +77,7 @@ tidy{} /* ignore this */
 	font-size: 18px;
 	font-weight: bold;
     text-align: center;
-	padding: 20px;
+	padding: 5%;
 }
 
 .logout:hover {
