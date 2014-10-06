@@ -3,13 +3,12 @@ class ManageController < ApplicationController
 respond_to :json
     
   def index
-      @search = Team.search(params[:q])
-      @search1 = Player.search(params[:q])
+      @search = Player.search(params[:q])
       @grades = Grade.all
-      @players = @search1.result
-      @teams = @search.result
+      
+      @players = @search.result
       @counter = @counter
-
+      
   end
 	
   def generate
@@ -26,10 +25,22 @@ respond_to :json
   end
        
   def gogo
-      @playerid = params[:playerid]
-      @teamid = params[:teamid]
+      $num = params[:length].to_i
+      $i = 0
+      while $i < $num do
+          
+            @teamid = params[:stack][$i.to_s][0].to_i
+            @playerid = params[:stack][$i.to_s][1].to_i
+          
+            if @teamid < 0 then
+                @teamid = nil 
+            end
       
-      update_player(@teamid, @playerid)
+            update_player(@teamid, @playerid)
+          
+            $i = $i + 1
+      end
+      
       respond_to do |format|
         format.json { head :ok }
       end
@@ -38,10 +49,13 @@ respond_to :json
   helper_method :generateTeams
     
   def update_player(teamid, playerid)
+      p ["Updating Player with PlayerID ",playerid," TeamID ",teamid].join("")
+      
       player = Player.find(playerid)
       player.team_id = teamid   
       player.save(:validate => false)
       
+      p "Update Player Finished"
   end 
   helper_method :update_player
 end

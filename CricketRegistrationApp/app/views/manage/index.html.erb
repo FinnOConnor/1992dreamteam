@@ -8,7 +8,10 @@
 <script>
       
       
-$(document).ready(function(){      
+$(document).ready(function(){ 
+    var stack = new Array();
+    var stackcount = 0;
+    
     var allplayers = new Array();
     var grades = new Array();   
 
@@ -24,6 +27,7 @@ $(document).ready(function(){
             var player = new Object();
             player.id = <%= p.id %>;
             player.name = "<%= [p.first_name, p.surname].join(" ") %>"; 
+            player.age = <%= p.age(p.date_of_birth) %>
             allplayers[i++] = player;
         <% end %>      
 
@@ -37,6 +41,7 @@ $(document).ready(function(){
         <% @grades.each do |g| %> 
             var grade = new Object();
             grade.name = "<%= g.grade_name %>";
+            grade.age_range = " (<%= g.min_age %> - <%= g.max_age %>)"
             var teams = new Array();    
             <% g.teams.each do |t| %>
                 var team = new Object();
@@ -46,6 +51,7 @@ $(document).ready(function(){
                     var player = new Object();
                     player.id = <%= p.id %>;
                     player.name = "<%= [p.first_name, p.surname].join(" ") %>"; 
+                    player.age = <%= p.age(p.date_of_birth) %>
                     players[k++] = player; 
                 <% end %>
                 k = 0;
@@ -64,7 +70,7 @@ $(document).ready(function(){
     function load_players(){
         $('#playerList ol').empty();
         for(var i=0; i<allplayers.length; i++){
-            $('#playerList ol').append('<li class=playerDrag data-playerid="'+allplayers[i].id+'">' + allplayers[i].name + '</li>');    
+            $('#playerList ol').append('<li class=playerDrag data-playerid="'+allplayers[i].id+'">'+" Name: " + allplayers[i].name + " Age: " +allplayers[i].age+ '</li>');    
         } 
         //Make each of the lines draggable
         $('#playerList li').draggable({
@@ -76,7 +82,7 @@ $(document).ready(function(){
     function load_team_nav(){
         $('#leftnav dl').empty();  
         for(var i=0; i<grades.length; i++){
-            $('#leftnav dl').append('<dt>' + grades[i].name + '</dt>');   
+            $('#leftnav dl').append('<dt>' + grades[i].name +" "+ grades[i].age_range +'</dt>');   
             for(var j=0; j<grades[i].teams.length; j++){
                // console.log(grades[i].teams[j].name);
                 $('#leftnav dl').append('<dd data-product="'+ i + ' ' + j + '">' + grades[i].teams[j].name + '</dd>');    
@@ -86,28 +92,28 @@ $(document).ready(function(){
     
     init(); 
     load_players();   
-    load_team_nav();   
+    load_team_nav();  
+        
+    
+    function push_activity(teamid, playerid){
+        stack[stackcount] = new Array();
+        stack[stackcount][0] = teamid
+        stack[stackcount][1] = playerid
+        stackcount++
+    }
         
 
         
     $('#doshit').click(function(){
         
-        var stack = new Array();
-        var action = new Object();
-        
-        action.pid = 1;
-        action.tid = 2;
-        stack[0] = action;
-        
-        var pid = stack[0].pid;
-        var tid = stack[0].tid;
+        var length = stack.length;
 
         $.ajax({
             type: 'POST',
             url: '/manage/gogo',
             beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
 //            data: ids,
-            data : {playerid: pid, teamid: tid},
+            data : {stack:stack, length:length},
             dataType: 'script',
             success: function(json, status, xhr){
                 window.location.reload()            
@@ -132,34 +138,92 @@ $(document).ready(function(){
         
         //This defines the droppable team player list region
         $( "#team1 ol" ).droppable({
+            accept: "#playerList li, #team2 li",
             greedy: true,
+            receive: function (event, ui) { // add this handler
+                ui.item.remove(); // remove original item
+            },
             drop: function( event, ui ){
                 //Drop checks and logic
                 if (ui.draggable.hasClass("playerDrag")) {
-                    if (!contains_draggable(ui.draggable.data("playerid"))){
+                    if (!contains_draggable(ui.draggable.data("playerid"),1)){
                         if ( !($("#team1 li:first").hasClass("placeholder"))){
-                            $( "<li class='playerDrag' data-playerid='"+ui.draggable.data("playerid")+"'></li>" )
+                            $( "<li class='playerDrag' data-team="+$("#team1 h2").attr('id')+" data-playerid='"+ui.draggable.data("playerid")+"'></li>" )
                                 .text( ui.draggable.text() ).appendTo( this ).draggable({appendTo:"body",revert :"invalid"});   
+                            push_activity($("#team1 h2").attr('id'),ui.draggable.data("playerid"));
+                            delete_from_team_list(2,ui.draggable.data("playerid"));
+                            
                         }
                     }
                 }
             }
-        })
+        });
+        
         //Make each of the lines draggable
         $('#team1 li').draggable({
+            //connectToSortable: "#team2 ol",
             appendTo: "body",
             revert: "invalid"
         });
     }  
+        
+    function refresh_team2(index){    
+        var arr = index.split(" ");
+        var team = grades[arr[0]].teams[arr[1]];
+        
+        $('#team2 ol').empty();
+        for(i=0; i< team.players.length; i++){
+            $('#team2 ol').append('<li class=playerDrag data-playerid="'+team.players[i].id+'">' + team.players[i].name + '</li>');
+        }
+        
+        //This defines the droppable team player list region
+        $( "#team2 ol" ).droppable({
+            accept: "#playerList li, #team1 li",
+            greedy: true,
+            
+            drop: function( event, ui ){
+                //Drop checks and logic
+                if (ui.draggable.hasClass("playerDrag")) {
+                    if (!contains_draggable(ui.draggable.data("playerid"),2)){
+                        if ( !($("#team2 li:first").hasClass("placeholder"))){
+                            $( "<li class='playerDrag' data-team="+$("#team1 h2").attr('id')+" data-playerid='"+ui.draggable.data("playerid")+"'></li>" )
+                                .text( ui.draggable.text() ).appendTo( this ).draggable({appendTo:"body",revert :"invalid"});   
+                            push_activity($("#team2 h2").attr('id'),ui.draggable.data("playerid"));
+                            delete_from_team_list(1,ui.draggable.data("playerid"));
+                        }
+                    }
+                }
+            }
+        });
+        //Make each of the lines draggable
+        $('#team2 li').draggable({
+            //connectToSortable: "#team1 ol",
+            appendTo: "body",
+            revert: "invalid"
+        });
+    }      
     
-    function contains_draggable(id){
+    function contains_draggable(id, team){
         var result = false;
-        $("#team1 li").each(function(index){
-            if( $(this).attr("data-playerid") == id){result = true;}
-            console.log($(this).attr("data-playerid")+" "+id);
-        })
-        console.log(result);
+        if(team == 1){
+            $("#team1 li").each(function(index){
+                if( $(this).attr("data-playerid") == id){result = true;}
+            })
+        }else{
+            $("#team2 li").each(function(index){
+                if( $(this).attr("data-playerid") == id){result = true;}
+            })    
+        }
+            
         return result;
+    }
+        
+    function delete_from_team_list(team, player){
+        if(team == 1){
+            $("#team1 li[ data-playerid="+player+"]").remove() 
+            return true;
+        }
+        $("#team2 li[ data-playerid="+player+"]").remove()   
     }
         
     function get_team_id(index){
@@ -174,13 +238,36 @@ $(document).ready(function(){
         accept: "#leftnav dd",
         drop: function( event, ui ) {
             //Drop checks and logic
-            if($("#team2 h2").text() != ui.draggable.text()){
+            if($("#team2 h2").attr("id") != get_team_id(ui.draggable.data("product"))){
                 $("#team1 h2").text( ui.draggable.text().toLowerCase() );
                 $("#team1 h2").attr("id", get_team_id(ui.draggable.data("product")));
                 refresh_team(ui.draggable.data("product"));
             }
         }
     });  
+    
+    //This defines the droppable team title region
+    $( "#team2 h2" ).droppable({
+        accept: "#leftnav dd",
+        drop: function( event, ui ) {
+            //Drop checks and logic
+            if($("#team1 h2").attr("id") != get_team_id(ui.draggable.data("product"))){
+                $("#team2 h2").text( ui.draggable.text().toLowerCase() );
+                $("#team2 h2").attr("id", get_team_id(ui.draggable.data("product")));
+                refresh_team2(ui.draggable.data("product"));
+            }
+        }
+    });
+    
+    //This defines the droppable area that allows players to be removed from teams
+    $("#container").droppable({
+        accept: "#team1 li, #team2 li",
+        drop: function( event, ui ) {
+            delete_from_team_list(1,ui.draggable.data("playerid"));
+            delete_from_team_list(2,ui.draggable.data("playerid"));
+            push_activity(-1,ui.draggable.data("playerid"));
+        }
+    });
     
     //This function does the drop logic checks for the team ordered lists. 
     function team_drop_check( event, ui ){
@@ -216,7 +303,7 @@ $(document).ready(function(){
 
         <div id="rightnav">
             <h3>players</h3>
-            <%= search_form_for @search1 do |f| %>
+            <%= search_form_for @search do |f| %>
                 <%= f.label :first_name_or_surname_cont %>
                 <%= f.search_field :first_name_or_surname_cont %>
                 <%= f.submit %>
@@ -228,6 +315,14 @@ $(document).ready(function(){
                 <div class="innerTeam">
                     <div id="team1">
                         <h2>team 1</h2>
+                        <div class="ui-widget-content">
+                            <ol>
+                                <li class="placeholder">Script will put player within the team here</li>
+                            </ol>
+                        </div>
+                    </div> 
+                    <div id="team2">
+                        <h2>team 2</h2>
                         <div class="ui-widget-content">
                             <ol>
                                 <li class="placeholder">Script will put player within the team here</li>
