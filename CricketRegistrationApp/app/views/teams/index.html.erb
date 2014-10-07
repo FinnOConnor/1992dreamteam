@@ -4,7 +4,8 @@
 $(document).ready(function() {
 
 	$('#generateTeams').click(function() {
-	<%= generateTeams %>
+	<%= generate_Teams %>
+	location.reload();
 	});
 
 });
@@ -42,6 +43,6 @@ $(document).ready(function() {
 	</table>
     
     <br><br>
-    <div class="button" id="generateTeams" ><a>Click Me!</a></div>
+    <div class="button" id="generateTeams" ><a>Populate Teams!</a></div>
 
 </div>
