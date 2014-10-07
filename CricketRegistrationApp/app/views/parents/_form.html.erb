@@ -4,71 +4,77 @@
 
 <%= form_for (@parent) do |f| %>
 
+<p align="center">Primary contact person</p>
+
   <div class="field">
-    <%= f.label :p_first_name %>
+    <%= f.label :first_name %>
     <%= f.text_field :p_first_name %>
   </div>
   <div class="field">
-    <%= f.label :p_surname %>
+    <%= f.label :surname %>
     <%= f.text_field :p_surname %>
   </div>
   <div class="field">
-    <%= f.label :p_gender %>
+    <%= f.label :gender %>
     <%= f.select( :p_gender, options_for_select([["Male", "male"],["Female","female"]]),:class => "p_genderSelect") %>
   </div>
   <div class="field">
-    <%= f.label :p_address %>
+    <%= f.label :address %>
     <%= f.text_field :p_address %>
   </div>
   <div class="field">
-    <%= f.label :p_home_phone %>
+    <%= f.label :home_phone %>
     <%= f.number_field :p_home_phone %>
   </div>
   <div class="field">
-    <%= f.label :p_mobile_phone %>
+    <%= f.label :mobile_phone %>
     <%= f.number_field :p_mobile_phone %>
   </div>
   <div class="field">
-    <%= f.label :p_email %>
+    <%= f.label :email %>
     <%= f.text_field :p_email %>
   </div>
 <% if false %>
   <div class="field">
-    <%= f.label :p_email_confirmation %>
+    <%= f.label :email_confirmation %>
     <%= f.text_field :p_email_confirmation %>
   </div>
 <% end %>
+
+<br><br>
+<p align="center">Secondary contact person</p>
+
   <div class="field">
-    <%= f.label :s_first_name %>
+    <%= f.label :first_name %>
     <%= f.text_field :s_first_name %>
   </div>
   <div class="field">
-    <%= f.label :s_surname %>
+    <%= f.label :surname %>
     <%= f.text_field :s_surname %>
   </div>
   <div class="field">
-    <%= f.label :s_gender %>
+    <%= f.label :gender %>
     <%= f.select( :s_gender, options_for_select([["Male", "male"],["Female","female"]]),:class => "s_genderSelect") %>
   </div>
   <div class="field">
-    <%= f.label :s_address %>
+    <%= f.label :address %>
     <%= f.text_field :s_address %>
   </div>
   <div class="field">
-    <%= f.label :s_home_phone %>
+    <%= f.label :home_phone %>
     <%= f.number_field :s_home_phone %>
   </div>
   <div class="field">
-    <%= f.label :s_mobile_phone %>
+    <%= f.label :mobile_phone %>
     <%= f.number_field :s_mobile_phone %>
   </div>
   <div class="field">
-    <%= f.label :s_email %>
+    <%= f.label :email %>
     <%= f.text_field :s_email %>
   </div>
 <% if false %>
 <div class="field">
-    <%= f.label :s_email_confirmation %>
+    <%= f.label :email_confirmation %>
     <%= f.text_field :s_email_confirmation %>
   </div>
 <% end %>
