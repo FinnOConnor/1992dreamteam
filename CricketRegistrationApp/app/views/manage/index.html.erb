@@ -73,7 +73,9 @@ $(document).ready(function(){
         <% @grades.each do |g| %> 
             var grade = new Object();
             grade.name = "<%= g.grade_name %>";
-            grade.age_range = " (<%= g.min_age %> - <%= g.max_age %>)"
+            grade.min_age = <%= g.min_age %>;
+            grade.max_age = <%= g.max_age %>;
+            grade.age_range = " ("+grade.min_age+" - "+grade.max_age+")"
             var teams = new Array();    
             <% g.teams.each do |t| %>
                 var team = new Object();
@@ -265,7 +267,6 @@ $(document).ready(function(){
                                 .text( ui.draggable.text() ).appendTo( this ).draggable({appendTo:"body",revert :"invalid"});   
                             push_activity($("#team1 h2").attr('id'),ui.draggable.data("playerid"));
                             delete_from_team_list(2,ui.draggable.data("playerid"));
-                            
                         }
                     }
                 }
@@ -320,8 +321,17 @@ $(document).ready(function(){
         });
     }      
     
+
     
     /* Checks for duplicates */
+        
+    function validate_player_entry(teamindex, playerid){
+        for(var i=0;i<allplayers.length;i++){
+            var player = allplayers[i];
+            
+        }
+    }
+
         
     function contains_draggable(id, team){
         var result = false;
@@ -357,6 +367,7 @@ $(document).ready(function(){
         return team.id;
     }
     
+
         
     /* Defines the droppable team 1 title region */
         
@@ -382,6 +393,7 @@ $(document).ready(function(){
             if($("#team1 h2").attr("id") != get_team_id(ui.draggable.data("product"))){
                 $("#team2 h2").text( ui.draggable.text().toLowerCase() );
                 $("#team2 h2").attr("id", get_team_id(ui.draggable.data("product")));
+                $("#team2 h2").attr("data-teamindex",ui.draggable.data("product"));
                 refresh_team2(ui.draggable.data("product"));
             }
         }
@@ -399,6 +411,7 @@ $(document).ready(function(){
         }
     });
     
+
     
     /* Does the drop logic checks for the team ordered lists */
         
@@ -408,8 +421,10 @@ $(document).ready(function(){
         }
     }
     
+
     
     /* Defines the draggables for the left column of team names */
+        
     $( "#leftnav dd" ).draggable({
       appendTo: "body",
       helper: "clone"
