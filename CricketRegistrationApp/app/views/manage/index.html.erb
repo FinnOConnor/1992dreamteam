@@ -16,27 +16,48 @@ $(document).ready(function(){
     var grades = new Array();   
 
     var i = 0;
-    function init(){
-        /* Create array to hold team data */
+    
 
+    
+    
+    /* Initialise checkbox buttons for the filtering */
         
-
+        
+    $("#age").buttonset();    
+    $('#age :checkbox').prop('checked', true);      
+        
+    $('#filter').click(function(){
+        
+        /* Age checkbox */
+        if($('#check1').prop("checked")) age_1_checked = true;
+        else age_1_checked = false;
+        if($('#check2').prop("checked")) age_2_checked = true;
+        else age_2_checked = false;
+        if($('#check3').prop("checked")) age_3_checked = true;
+        else age_3_checked = false;
+      
+        load_players();
+        
+    });          
+    
+    
+    function init(){
         /* All players */
         i=0;
         <% @players.each do |p| %> 
             var player = new Object();
-            player.id = <%= p.id %>;
-            player.name = "<%= [p.first_name, p.surname].join(" ") %>"; 
-            player.age = <%= p.age(p.date_of_birth) %>
+                player.id = <%= p.id %>;
+                player.name = "<%= [p.surname, p.first_name].join(", ") %>"; 
+                player.age = <%= p.age(p.date_of_birth) %>
+                player.email = "<%= p.email %>"
+                player.phone = <%= p.contact_phone %>
             allplayers[i++] = player;
         <% end %>      
-
+            
         i=0;
 
         var j = 0;
         var k = 0;
-
-          
 
         <% @grades.each do |g| %> 
             var grade = new Object();
@@ -50,7 +71,7 @@ $(document).ready(function(){
                 <% t.players.each do |p| %>
                     var player = new Object();
                     player.id = <%= p.id %>;
-                    player.name = "<%= [p.first_name, p.surname].join(" ") %>"; 
+                    player.name = "<%= [p.surname, p.first_name].join(", ") %>"; 
                     player.age = <%= p.age(p.date_of_birth) %>
                     players[k++] = player; 
                 <% end %>
@@ -65,12 +86,39 @@ $(document).ready(function(){
         <% end %>    
     }
           
-    //i=0;
       
+    var age_1_checked = true;
+    var age_2_checked = true;
+    var age_3_checked = true;
+    
+    
     function load_players(){
+                
+        /* Sorts the player list alphabetically */
+        allplayers.sort(function(a, b) {
+           var aName = a.name;
+           var bName = b.name;
+           return (aName == bName) ? 0 : (aName > bName) ? 1 : -1;
+        });        
+        
+        
         $('#playerList ol').empty();
         for(var i=0; i<allplayers.length; i++){
-            $('#playerList ol').append('<li class=playerDrag data-playerid="'+allplayers[i].id+'">'+" Name: " + allplayers[i].name + " Age: " +allplayers[i].age+ '</li>');    
+            /* Check for filter */
+            if(age_1_checked){
+                if(allplayers[i].age > 3 && allplayers[i].age <9)
+                    $('#playerList ol').append('<li class=playerDrag data-playerid="'+allplayers[i].id+'">'+ allplayers[i].name +'</li>');    
+            }
+            if(age_2_checked){
+                if(allplayers[i].age > 8 && allplayers[i].age <15)
+                    $('#playerList ol').append('<li class=playerDrag data-playerid="'+allplayers[i].id+'">'+ allplayers[i].name +'</li>');    
+            }       
+            if(age_3_checked){
+                if(allplayers[i].age > 14)
+                    $('#playerList ol').append('<li class=playerDrag data-playerid="'+allplayers[i].id+'">'+ allplayers[i].name +'</li>');    
+            }            
+                            
+                
         } 
         //Make each of the lines draggable
         $('#playerList li').draggable({
@@ -78,6 +126,9 @@ $(document).ready(function(){
             helper: "clone"
         });
     }
+        
+        
+        
     
     function load_team_nav(){
         $('#leftnav dl').empty();  
@@ -89,6 +140,8 @@ $(document).ready(function(){
             }        
         }
     }
+        
+    /* Initialise page originally */
     
     init(); 
     load_players();   
@@ -104,7 +157,7 @@ $(document).ready(function(){
         
 
         
-    $('#doshit').click(function(){
+    $('#confirm').click(function(){
         
         var length = stack.length;
 
@@ -112,7 +165,6 @@ $(document).ready(function(){
             type: 'POST',
             url: '/manage/gogo',
             beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
-//            data: ids,
             data : {stack:stack, length:length},
             dataType: 'script',
             success: function(json, status, xhr){
@@ -123,6 +175,64 @@ $(document).ready(function(){
             }
         });
     });
+        
+        
+
+        
+        
+        
+
+        
+    /* Mouse over player */
+
+    var mouseX;
+    var mouseY;
+    $(document).mousemove( function(e) {
+        mouseX = e.pageX; 
+        mouseY = e.pageY;
+    });   
+        
+        
+    var myTimeout;
+        
+    $(document).on("mouseenter", ".ui-widget-content ol li", function(){
+        if($(this).hasClass("ui-draggable-dragging")) {$('.details').hide(); return;}
+
+        var player = $(this);
+        
+        myTimeout = setTimeout(function() {
+            show_player_details(player.data("playerid"));
+        
+        }, 500);
+    });
+        
+    $(document).on("mouseleave", ".ui-widget-content ol li", function(){
+        clearTimeout(myTimeout);
+        $('.details').hide();
+    });        
+
+        
+    function show_player_details(playerid){
+        var player;
+        for(var i =0; i<allplayers.length; i++){
+            if(allplayers[i].id==playerid){
+                player = allplayers[i];
+            }
+        }        
+        $('.details').show();        
+        $('.details').css({left: mouseX+1, top: mouseY+1});
+        $('.details').html("<ul><li>Name: " + player.name + "</li><li>Age: " + player.age + "</li><li>Email: " + player.email + "</li><li>Ph: " + player.phone + "</li></ul>");
+    }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
@@ -218,7 +328,7 @@ $(document).ready(function(){
         return result;
     }
         
-    function delete_from_team_list(team, player){
+    function delete_from_team_list(team, player){        
         if(team == 1){
             $("#team1 li[ data-playerid="+player+"]").remove() 
             return true;
@@ -297,17 +407,20 @@ $(document).ready(function(){
                     Script will put grades and teams here
                 </dl>
             
-        <div class="button" id="doshit"><a>Confirm Changes</a></div>
+            <div class="button" id="confirm"><a>Confirm Changes</a></div>
 
         </div>
 
         <div id="rightnav">
             <h3>players</h3>
-            <%= search_form_for @search do |f| %>
-                <%= f.label :first_name_or_surname_cont %>
-                <%= f.search_field :first_name_or_surname_cont %>
-                <%= f.submit %>
-            <% end %>
+            <div id="age">
+                <input type="checkbox" id="check1"><label for="check1">4-8</label>
+                <input type="checkbox" id="check2"><label for="check2">9-14</label>
+                <input type="checkbox" id="check3"><label for="check3">14+</label>
+            </div>
+            <br>
+            <div class="button" id="filter"><a>Filter</a></div>
+
         </div>
         
         <div class="content">
@@ -342,6 +455,9 @@ $(document).ready(function(){
                     </div>
                 </div>
             </div>
+            
+            <div class="details">hi</div>
+            
         </div>
     </div>
 </body>

@@ -245,6 +245,7 @@ h2 {
 .iframe {
     width: 1000px;
     border: 0;
+    overflow: auto;
 }
 
 

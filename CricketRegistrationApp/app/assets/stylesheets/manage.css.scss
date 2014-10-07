@@ -17,7 +17,7 @@
 #leftnav
 {
     float: left;
-    width: 160px;
+    width: 200px;
     height: 100%;
     position: relative;
     margin: 0;
@@ -27,7 +27,7 @@
 #rightnav
 {
     float: right;
-    width: 160px;
+    width: 200px;
     height: 100%;
     margin: 0;
     padding: 1em;
@@ -35,9 +35,9 @@
 
 .content
 {
-    margin-left: 200px;
+    margin-left: 240px;
     border-left: 1px solid #d8d8cc;
-    margin-right: 200px;
+    margin-right: 240px;
     border-right: 1px solid #d8d8cc;
     padding: 1em;
     max-width: 75%;
@@ -94,6 +94,10 @@ div.ui-widget-content {
     font-size: 14pt;
 }
 
+div.ui-widget-content ol li{
+        cursor: pointer;
+}
+
       
 h1 { padding: .2em; margin: 0; }
   #products { width:90%; margin: 0px auto;}
@@ -114,3 +118,26 @@ h1 { padding: .2em; margin: 0; }
 #leftnav {list-style-type: none;}
 #leftnav dt { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
 #rightnav h2 { margin: 0 0 .5em 0; }
+
+
+
+.details {
+    display: none;
+    background: #9cc185;
+    position: absolute;
+    width: auto;
+    height: auto;
+    color: #e0f4d3;
+    padding: 0px 15px 0px 15px;
+    opacity: 0.9;
+    z-index: 100;
+}
+
+.details ul {
+    list-style-type: none;
+    padding: 0;    
+}
+
+.details li {
+    display: block;   
+}
