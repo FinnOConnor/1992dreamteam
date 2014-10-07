@@ -1,9 +1,9 @@
-// Place all the styles related to the manage controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+/* Styles for the Team management page */
+
 .inlineTable{
     display: inline-block;   
 }
+
 #container
 {
     width: 100%;
@@ -21,7 +21,46 @@
     height: 100%;
     position: relative;
     margin: 0;
-    padding: 1em;
+    color: #565d51;    
+}
+
+#leftnav dl {
+    width: 200px;
+    margin: 0 auto;
+}
+
+#leftnav dt {
+    font-weight: 900;
+    background: #fbfdf6;
+}
+
+#leftnav dd {
+    font-weight: 300;
+    font-size: 14pt;
+    line-height: 150%;
+}
+
+#leftnav dd:hover {
+    cursor: pointer;
+    color: #000;
+}
+
+
+#confirm {
+    position: absolute;
+    right: 0;
+    bottom: 20px;
+    float: right;
+    margin-right: 220px;
+    z-index: 1000;
+}
+
+#filter {
+    float: right;   
+}
+
+#age {
+    margin-left: 10px;
 }
 
 #rightnav
@@ -30,16 +69,14 @@
     width: 200px;
     height: 100%;
     margin: 0;
-    padding: 1em;
 }
 
 .content
 {
-    margin-left: 240px;
+    margin-left: 200px;
     border-left: 1px solid #d8d8cc;
-    margin-right: 240px;
+    margin-right: 200px;
     border-right: 1px solid #d8d8cc;
-    padding: 1em;
     max-width: 75%;
     height: 100%;
 
@@ -120,6 +157,10 @@ h1 { padding: .2em; margin: 0; }
 #rightnav h2 { margin: 0 0 .5em 0; }
 
 
+.hover {
+    box-shadow: 0px 0px 10px -2px #777;
+    transition: 0.3s;
+}
 
 .details {
     display: none;

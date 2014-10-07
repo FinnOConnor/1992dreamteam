@@ -7,17 +7,26 @@
 
 <script>
       
+/**
+    Have to put the javascript in the head of this file for some reason. 
+    We weren't able to get the assets/javascripts/ files working properly
+**/
       
 $(document).ready(function(){ 
+    
+    /* Global variables */
+    
     var stack = new Array();
     var stackcount = 0;
-    
     var allplayers = new Array();
     var grades = new Array();   
-
     var i = 0;
-    
-
+    var age_1_checked = true;
+    var age_2_checked = true;
+    var age_3_checked = true;
+    var myTimeout;    
+    var mouseX;
+    var mouseY;
     
     
     /* Initialise checkbox buttons for the filtering */
@@ -40,6 +49,8 @@ $(document).ready(function(){
         
     });          
     
+    
+    /* Creates player arrays from the database */
     
     function init(){
         /* All players */
@@ -87,10 +98,7 @@ $(document).ready(function(){
     }
           
       
-    var age_1_checked = true;
-    var age_2_checked = true;
-    var age_3_checked = true;
-    
+    /* Loads players into the player list */
     
     function load_players(){
                 
@@ -116,8 +124,7 @@ $(document).ready(function(){
             if(age_3_checked){
                 if(allplayers[i].age > 14)
                     $('#playerList ol').append('<li class=playerDrag data-playerid="'+allplayers[i].id+'">'+ allplayers[i].name +'</li>');    
-            }            
-                            
+            }                             
                 
         } 
         //Make each of the lines draggable
@@ -128,7 +135,7 @@ $(document).ready(function(){
     }
         
         
-        
+    /* Loads the teams and grades into the left navigation bar */    
     
     function load_team_nav(){
         $('#leftnav dl').empty();  
@@ -148,6 +155,8 @@ $(document).ready(function(){
     load_team_nav();  
         
     
+    /* Pushes an action onto the action stack */    
+        
     function push_activity(teamid, playerid){
         stack[stackcount] = new Array();
         stack[stackcount][0] = teamid
@@ -156,11 +165,13 @@ $(document).ready(function(){
     }
         
 
+    /* When the button to confirm changes has been clicked */
         
     $('#confirm').click(function(){
         
         var length = stack.length;
 
+        /* Sends an ajax request to the manage controller */
         $.ajax({
             type: 'POST',
             url: '/manage/gogo',
@@ -177,23 +188,15 @@ $(document).ready(function(){
     });
         
         
+    /* Get mouse coordinates when mouse is moved */
 
-        
-        
-        
-
-        
-    /* Mouse over player */
-
-    var mouseX;
-    var mouseY;
     $(document).mousemove( function(e) {
         mouseX = e.pageX; 
         mouseY = e.pageY;
     });   
         
-        
-    var myTimeout;
+             
+    /* Mouse over a player */
         
     $(document).on("mouseenter", ".ui-widget-content ol li", function(){
         if($(this).hasClass("ui-draggable-dragging")) {$('.details').hide(); return;}
@@ -206,11 +209,16 @@ $(document).ready(function(){
         }, 500);
     });
         
+    
+    /* Mouse out from a player */
+        
     $(document).on("mouseleave", ".ui-widget-content ol li", function(){
         clearTimeout(myTimeout);
         $('.details').hide();
     });        
 
+    
+    /* Show the tooltip */
         
     function show_player_details(playerid){
         var player;
@@ -225,17 +233,10 @@ $(document).ready(function(){
     }
         
         
+
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+    
+    /* Refresh Team 1 (Any time a change is made) */    
           
     function refresh_team(index){    
         var arr = index.split(" ");
@@ -250,6 +251,8 @@ $(document).ready(function(){
         $( "#team1 ol" ).droppable({
             accept: "#playerList li, #team2 li",
             greedy: true,
+            tolerance: "touch", 
+            hoverClass: "hover",
             receive: function (event, ui) { // add this handler
                 ui.item.remove(); // remove original item
             },
@@ -271,11 +274,14 @@ $(document).ready(function(){
         
         //Make each of the lines draggable
         $('#team1 li').draggable({
-            //connectToSortable: "#team2 ol",
             appendTo: "body",
             revert: "invalid"
         });
     }  
+
+        
+        
+    /* Refresh Team 1 (Any time a change is made) */      
         
     function refresh_team2(index){    
         var arr = index.split(" ");
@@ -290,7 +296,8 @@ $(document).ready(function(){
         $( "#team2 ol" ).droppable({
             accept: "#playerList li, #team1 li",
             greedy: true,
-            
+            tolerance: "touch", 
+            hoverClass: "hover",
             drop: function( event, ui ){
                 //Drop checks and logic
                 if (ui.draggable.hasClass("playerDrag")) {
@@ -313,6 +320,9 @@ $(document).ready(function(){
         });
     }      
     
+    
+    /* Checks for duplicates */
+        
     function contains_draggable(id, team){
         var result = false;
         if(team == 1){
@@ -327,6 +337,10 @@ $(document).ready(function(){
             
         return result;
     }
+    
+        
+        
+    /* Removes player from team list */    
         
     function delete_from_team_list(team, player){        
         if(team == 1){
@@ -343,7 +357,9 @@ $(document).ready(function(){
         return team.id;
     }
     
-    //This defines the droppable team title region
+        
+    /* Defines the droppable team 1 title region */
+        
     $( "#team1 h2" ).droppable({
         accept: "#leftnav dd",
         drop: function( event, ui ) {
@@ -356,7 +372,9 @@ $(document).ready(function(){
         }
     });  
     
-    //This defines the droppable team title region
+        
+    /* Defines the droppable team 2 title region */
+        
     $( "#team2 h2" ).droppable({
         accept: "#leftnav dd",
         drop: function( event, ui ) {
@@ -369,7 +387,9 @@ $(document).ready(function(){
         }
     });
     
-    //This defines the droppable area that allows players to be removed from teams
+
+    /* Defines the droppable area that allows players to be removed from teams */
+        
     $("#container").droppable({
         accept: "#team1 li, #team2 li",
         drop: function( event, ui ) {
@@ -379,7 +399,9 @@ $(document).ready(function(){
         }
     });
     
-    //This function does the drop logic checks for the team ordered lists. 
+    
+    /* Does the drop logic checks for the team ordered lists */
+        
     function team_drop_check( event, ui ){
         if (ui.draggable.hasClass("playerDrag")) {
             
@@ -387,19 +409,19 @@ $(document).ready(function(){
     }
     
     
-    
-    //This defines the draggables for the left column of team names
+    /* Defines the draggables for the left column of team names */
     $( "#leftnav dd" ).draggable({
       appendTo: "body",
       helper: "clone"
     });      
-
-    
           
-      });
-  </script>
+});
+</script>
+    
+    
 </head>
 <body>
+    
     <div id="container">
         <div id="leftnav">
             <h3>grades</h3>
@@ -407,7 +429,6 @@ $(document).ready(function(){
                     Script will put grades and teams here
                 </dl>
             
-            <div class="button" id="confirm"><a>Confirm Changes</a></div>
 
         </div>
 
@@ -443,7 +464,12 @@ $(document).ready(function(){
                         </div>
                     </div> 
                 </div>
+                
+        
             </div> 
+            
+                <div class="button" id="confirm"><a>Confirm Changes</a></div>
+        
 
             <div class="playersContent">
                 <div id="playerList">
@@ -457,7 +483,8 @@ $(document).ready(function(){
             </div>
             
             <div class="details">hi</div>
-            
+        
+  
         </div>
     </div>
 </body>
