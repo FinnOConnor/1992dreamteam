@@ -5,12 +5,16 @@
 tidy{} /* ignore this */
 
 
+/* Wraps the entire admin window */
+
 .admin_wrapper{
     width: 100%;
     position: absolute;
     margin-top: 100px;
     height: auto;
 }
+
+/* Left navigation container */
 
 #admin_sidebar{
     position: absolute;
@@ -57,9 +61,13 @@ tidy{} /* ignore this */
 	margin-bottom: 6%;
 }
 
+/* Automatically scroll when there are too many menu items */
+
 #admin_menu{
         overflow: auto;
 }
+
+/* Styles for the logout button. Currently the same as login */
 
 .logout {
     position:absolute;
@@ -71,6 +79,7 @@ tidy{} /* ignore this */
     bottom: 0;
     margin-bottom: 0px;
     z-index: 2;
+    cursor: pointer;    
 }
 
 .logout span {
@@ -79,7 +88,7 @@ tidy{} /* ignore this */
 	font-size: 18px;
 	font-weight: bold;
     text-align: center;
-	padding: 5%;
+	padding: 5%; 
 }
 
 .logout:hover {
@@ -89,6 +98,12 @@ tidy{} /* ignore this */
     color: #94dd7e;
 }
 
+.logout:active {
+    background: #648e5e;
+    transition: 0s;
+}
+
+/* Wrapper contains the menu windows */
 
 .adminContainer {
 	position: absolute;
@@ -97,9 +112,7 @@ tidy{} /* ignore this */
 	background-color: inherit;
 }
 
-#loginDiv {
-	background-color: inherit;
-}
+/* Container for login window */
 
 .loginDiv {
 	position: absolute;
@@ -107,8 +120,10 @@ tidy{} /* ignore this */
 	top: 50%;
 	margin-top: -100px;
 	margin-left: -200px;
-	background: #92ce89;
+	background: #92ce89; 
 }
+
+/* Text styles within login window */
 
 .loginDiv span {
 	display: inline-block;
@@ -120,9 +135,13 @@ tidy{} /* ignore this */
     width: 75px;
 }
 
+/* Provides spacing around inputs */
+
 .loginInputs {
 	padding: 30px;
 }
+
+/* General styling for inputs (user and pass) */
 
 .inputBox {
 	border: 6px solid #9dd894;
@@ -133,14 +152,19 @@ tidy{} /* ignore this */
     color: #666;
 }
 
+/* Password field */
+
 #pass {
 	margin-top: 10px;
 }
 
+/* Login button styles for regular, hover, click and active */
+
 .loginButton {
 	background-color: #82b77b;
     color: #476a3c;
-	z-index: 2;   
+	z-index: 2;  
+    cursor: pointer;
 }
 
 .loginButton span {
@@ -157,10 +181,19 @@ tidy{} /* ignore this */
     color: #94dd7e;
 }
 
+.loginButton:active {
+    background: #648e5e;
+    transition: 0s;    
+}
+
+/* Menu Item Iframe styles */
+
 .miIframe {
 	width: inherit;
 	height: inherit;
 }
+
+/* Generic Iframe styles */
 
 iframe {
     border: 0;
@@ -168,9 +201,11 @@ iframe {
     width: 100%;
 }
 
-.message {
-	position: relative;
-	margin: auto;
-	width: 90%;
-	border-top: 1px solid #ccc;
-}
+/* Message div styles for incomplete messaging feature */
+
+//.message {
+//	position: relative;
+//	margin: auto;
+//	width: 90%;
+//	border-top: 1px solid #ccc;
+//}

@@ -4,6 +4,10 @@
     display: inline-block;   
 }
 
+h2 {
+    margin: 0 0 .5em 0;
+}
+
 #container
 {
     width: 100%;
@@ -24,20 +28,25 @@
     color: #565d51;    
 }
 
-#leftnav dl {
-    width: 200px;
+dl {
+    width: 100%;
     margin: 0 auto;
 }
 
-#leftnav dt {
+dt {
+    top: 0;
+    font-size: 14pt;
+    color: #565d51;
+    padding: 15px;
+    color: #666;
     font-weight: 900;
     background: #fbfdf6;
 }
 
-#leftnav dd {
+dd {
     font-weight: 300;
-    font-size: 14pt;
-    line-height: 150%;
+    font-size: 12pt;
+    line-height: 160%;
 }
 
 #leftnav dd:hover {
@@ -69,7 +78,13 @@
 }
 
 #age {
-    margin-left: 10px;
+    margin: auto;
+    width: 100%;
+}
+
+#grades {
+    margin: auto;
+    width: 100%;
 }
 
 #rightnav
@@ -88,8 +103,8 @@
     border-right: 1px solid #d8d8cc;
     max-width: 75%;
     height: 100%;
-
 }
+
 .teamsContent
 {
     position: relative;
@@ -97,23 +112,44 @@
     height: 100%;
     width: 50%;
 }
+
 .playersContent
 {
     position: relative;
     float: left;
     width: 50%;
     height: 100%;
+    background: #fff;
+    outline: 1px solid #d8d8cc;
 }
 
 .team_container {
     height: 100%;
     top: 40px;
-    width:90%; 
-    margin: 0px auto;    
+    width:90%;
+    margin: 0px auto;  
+    margin-top: 20px; 
+    border: 1px solid #d8d8cc; 
 }
 
 .team_container ol {
-    margin-bottom: 10px;
+    padding: 1em 1em 1em 3em;
+    background: #fff;
+    margin: 0;
+}
+
+.player_container {
+    height: 100%;
+    top: 40px;
+    width:100%;
+    margin: 0px auto;  
+    margin-top: 0px; 
+    border: 0;
+}
+
+.player_container ol {
+    border: 0;
+    color: #506244;
 }
 
 .innerTeam{
@@ -144,35 +180,13 @@
 }
 
 
-div.ui-widget-content {
-    border: 1px solid #d8d8cc; 
-    top: 0;
-    color: #67765c;
-    font-size: 14pt;
-}
-
 div.ui-widget-content ol li{
         cursor: pointer;
 }
 
       
-h1 { padding: .2em; margin: 0; }
-  #products { width:90%; margin: 0px auto;}
 
-  #playerList  {margin-top: 40px;width:90%; margin: 0px auto;}
-  /* style the list to maximize the droppable hitarea */
-  #playerList ol { margin: 0; padding: 1em 0 1em 3em; }
-  /* style the list to maximize the droppable hitarea */
-  #team1 ol { margin: 0; padding: 1em 0 1em 3em; }
-  /* style the list to maximize the droppable hitarea */
-  #team2 ol { margin: 0; padding: 1em 0 1em 3em; }
-  #product ol { margin: 0; padding: 1em 0 1em 3em; }
 
-#leftnav p, #rightnav p { margin: 0 0 1em 0; }
-#leftnav h2 { margin: 0 0 .5em 0; }
-#leftnav {list-style-type: none;}
-#leftnav dt { margin: 3px; padding: 0.4em; font-size: 1.4em; height: 18px; }
-#rightnav h2 { margin: 0 0 .5em 0; }
 
 
 .hover {

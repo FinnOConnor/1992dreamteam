@@ -61,6 +61,8 @@ h2 {
     overflow: hidden;
 }
 
+/* overlay for the Background image */
+
 #colour_block {
     width: 100%;
     margin: 0;
@@ -72,6 +74,8 @@ h2 {
     position: absolute;
     overflow: hidden;
 }
+
+/* Background image div (change image in html file) */
 
 #background_image {
     width: 100%;
@@ -92,6 +96,8 @@ h2 {
     margin-top: 100px;
     top: 40%;
 }
+
+/* Menu styles */
 
 .menu {
     width: 100%;
@@ -132,7 +138,7 @@ h2 {
 }
 
 
-<!-- register --> 
+/* Register */
 
 .menu ul li:nth-child(2) {
     background: #8dc685;
@@ -155,7 +161,7 @@ h2 {
 }
 
 
-<!-- admin --> 
+/* Admin */
 
 .menu ul li:nth-child(3) {
     background: #80b478;
@@ -178,7 +184,7 @@ h2 {
 }
 
 
-<!-- home -->
+/* Home */
 
 .menu ul li:nth-child(1) {
     background: #9ede93;
@@ -199,6 +205,7 @@ h2 {
     transition: 0.4s;
 }
 
+/* Sub menu for the register item */
 
 #sub_menu {
     width: 40%;
@@ -242,12 +249,15 @@ h2 {
     font-weight: lighter;
 }
 
+/* General iframe styles */
+
 .iframe {
     width: 1000px;
     border: 0;
     overflow: auto;
 }
 
+/* font styles and general styles for the the main container */
 
 .container h3 {
     font-size: 34pt;
@@ -279,16 +289,3 @@ h2 {
 }
 
 
-#administration_container {
-    position: absolute;
-    margin-top: 0px;
-    left: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    z-index: 1;
-}
-
-#generateTeams {
-    right: 0px;
-}

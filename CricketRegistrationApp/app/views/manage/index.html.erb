@@ -1,9 +1,7 @@
 <head>
 <meta charset="utf-8">
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
-<link rel="stylesheet" href="/resources/demos/style.css">
 
 <script>
       
@@ -111,7 +109,7 @@ $(document).ready(function(){
            return (aName == bName) ? 0 : (aName > bName) ? 1 : -1;
         });        
         
-        
+        /* Age filter, you can add more filters here if you want */
         $('#playerList ol').empty();
         for(var i=0; i<allplayers.length; i++){
             /* Check for filter */
@@ -142,7 +140,7 @@ $(document).ready(function(){
     function load_team_nav(){
         $('#leftnav dl').empty();  
         for(var i=0; i<grades.length; i++){
-            $('#leftnav dl').append('<dt>' + grades[i].name +" "+ grades[i].age_range +'</dt>');   
+            $('#leftnav dl').append('<dt>' + grades[i].name +'</dt>');   
             for(var j=0; j<grades[i].teams.length; j++){
                // console.log(grades[i].teams[j].name);
                 $('#leftnav dl').append('<dd data-product="'+ i + ' ' + j + '">' + grades[i].teams[j].name + '</dd>');    
@@ -446,20 +444,27 @@ $(document).ready(function(){
     
     <div id="container">
         <div id="leftnav">
+            <div id="grades">
             <h3>grades</h3>
                 <dl>
                     Script will put grades and teams here
                 </dl>
-            
+            </div>
 
         </div>
 
         <div id="rightnav">
-            <h3>players</h3>
+            
+            <!-- This could be extended with more filters, age is just one -->
+            
+            <h3>filter</h3>
             <div id="age">
-                <input type="checkbox" id="check1"><label for="check1">4-8</label>
-                <input type="checkbox" id="check2"><label for="check2">9-14</label>
-                <input type="checkbox" id="check3"><label for="check3">14+</label>
+                <dl>
+                    <dt>Player Age</dt>
+                        <dd><input type="checkbox" id="check1"><label for="check1">4-8</label></dd>
+                        <dd><input type="checkbox" id="check2"><label for="check2">9-14</label></dd>
+                        <dd><input type="checkbox" id="check3"><label for="check3">14+</label></dd>
+                </dl>    
             </div>
             <br>
             <div class="button" id="filter"><a>Filter</a></div>
@@ -493,8 +498,8 @@ $(document).ready(function(){
                 <div class="button" id="confirm"><a>Confirm Changes</a></div>
                 <div class="button" id="refresh"><a>Refresh</a></div>
 
-            <div class="playersContent">
-                <div id="playerList">
+            <div class="playersContent" >
+                <div id="playerList"class="player_container">
                     <h2>players</h2>
                     <div class="ui-widget-content">
                         <ol>
@@ -504,7 +509,7 @@ $(document).ready(function(){
                 </div>
             </div>
             
-            <div class="details">hi</div>
+            <div class="details"></div>
         
   
         </div>
