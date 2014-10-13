@@ -1,6 +1,6 @@
 class Grade < ActiveRecord::Base
     has_many :teams
-    
+    has_many :players
     #Validations
     validates :grade_name, :length => {maximum: 50}, presence: true, uniqueness: {case_sensitive: false}
     validates :min_size, :numericality => { :greater_than => 0, :less_than_or_equal_to => :max_size}

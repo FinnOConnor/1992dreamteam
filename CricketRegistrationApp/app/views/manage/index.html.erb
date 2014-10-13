@@ -59,7 +59,7 @@ $(document).ready(function(){
             var player = new Object();
                 player.id = <%= p.id %>;
                 player.name = "<%= [p.surname, p.first_name].join(", ") %>"; 
-                player.age = <%= p.age(p.date_of_birth) %>
+                player.age = <%= p.age() %>
                 player.email = "<%= p.email %>"
                 player.phone = <%= p.contact_phone %>
             allplayers[i++] = player;
@@ -85,7 +85,7 @@ $(document).ready(function(){
                     var player = new Object();
                     player.id = <%= p.id %>;
                     player.name = "<%= [p.surname, p.first_name].join(", ") %>"; 
-                    player.age = <%= p.age(p.date_of_birth) %>
+                    player.age = <%= p.age() %>
                     players[k++] = player; 
                 <% end %>
                 k = 0;
@@ -187,6 +187,13 @@ $(document).ready(function(){
                 alert(status);
             }
         });
+    });
+        
+        
+    $('#refresh').click(function(){
+            location.reload(true);
+ 
+        
     });
         
         
@@ -462,7 +469,7 @@ $(document).ready(function(){
         <div class="content">
             <div class="teamsContent">
                 <div class="innerTeam">
-                    <div id="team1">
+                    <div id="team1" class="team_container">
                         <h2>team 1</h2>
                         <div class="ui-widget-content">
                             <ol>
@@ -470,7 +477,7 @@ $(document).ready(function(){
                             </ol>
                         </div>
                     </div> 
-                    <div id="team2">
+                    <div id="team2" class="team_container">
                         <h2>team 2</h2>
                         <div class="ui-widget-content">
                             <ol>
@@ -484,7 +491,7 @@ $(document).ready(function(){
             </div> 
             
                 <div class="button" id="confirm"><a>Confirm Changes</a></div>
-        
+                <div class="button" id="refresh"><a>Refresh</a></div>
 
             <div class="playersContent">
                 <div id="playerList">

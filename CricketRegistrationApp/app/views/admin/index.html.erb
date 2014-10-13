@@ -47,18 +47,20 @@
 					case ("item5"): id = "#mi5"; break;
 					case ("item6"): id = "#mi6"; break;
 					case ("item7"): id = "#mi7"; break;
-					//case ("item8"): id = "#mi8"; break;
+					case ("item8"): id = "#mi8"; break;
 					//case ("itemt"): id = "#mit"; break;
 				} slide(id);
 			});
 								 
 			function slide(id) {
 				if (loggedIn == true && $(id).position().left != menuWidth) {
+                    //for when teams are generated, reload the manage team page 
 					$(".adminContainer").animate({left: "-200%"}, transitionSpeed);
 					$(id).animate({left: menuWidth+"px"}, transitionSpeed);
 				} else loginWobble();
 			}
 		
+            
 			/* Logout function */
 			$('.logout').click(function(e) {
 				if (loggedIn){
@@ -136,11 +138,11 @@
                     <li class="menuItem" id="item1"><h4>Player Profiles</h4></li>
                     <li class="menuItem" id="item2"><h4>Coach Profiles</h4></li>
                     <li class="menuItem" id="item3"><h4>Manage Teams</h4></li>
-                    <li class="menuItem" id="item4"><h4>Generate Teams</h4></li>
+                    <li class="menuItem" id="item4"><h4>Teams Profiles</h4></li>
                     <li class="menuItem" id="item5"><h4>Manage Grades</h4></li>
                     <li class="menuItem" id="item6"><h4>Payments Summary</h4></li>
                     <li class="menuItem" id="item7"><h4>Manage Prices</h4></li>
-                    <!--li class="menuItem" id="item8"><h4>Send Message</h4></li-->
+                    <li class="menuItem" id="item8"><h4>Generate Teams</h4></li>
                 </ul>
             </div>
 			<div class="logout"><center><span>Log out</span></center></div> 
@@ -165,6 +167,7 @@
 		<div class="adminContainer" id="mi5"><iframe class="miIframe" id="mi5Iframe" src="../grades" border="0"></iframe></div>
 		<div class="adminContainer" id="mi6"><iframe class="miIframe" id="mi6Iframe" src="../payments" border="0"></iframe></div>
 		<div class="adminContainer" id="mi7"><iframe class="miIframe" id="mi7Iframe" src="../costs" border="0"></iframe></div>
+        <div class="adminContainer" id="mi8"><iframe class="miIframe" id="mi8Iframe" src="../manage/generate"></iframe></div>
 		
 		<!--will need controller to get email addresses and names from players/parents etc
 		<div class="adminContainer" id="mi8">

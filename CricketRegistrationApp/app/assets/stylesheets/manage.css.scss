@@ -55,6 +55,15 @@
     z-index: 1000;
 }
 
+#refresh {
+    position: absolute;
+    left: 0;
+    bottom: 20px;
+    float: left;
+    margin-left: 220px;
+    z-index: 1000;
+}
+
 #filter {
     float: right;   
 }
@@ -94,6 +103,17 @@
     float: left;
     width: 50%;
     height: 100%;
+}
+
+.team_container {
+    height: 100%;
+    top: 40px;
+    width:90%; 
+    margin: 0px auto;    
+}
+
+.team_container ol {
+    margin-bottom: 10px;
 }
 
 .innerTeam{
@@ -139,13 +159,11 @@ div.ui-widget-content ol li{
 h1 { padding: .2em; margin: 0; }
   #products { width:90%; margin: 0px auto;}
 
-  #playerList  {padding-top: 40px;width:90%; margin: 0px auto;}
+  #playerList  {margin-top: 40px;width:90%; margin: 0px auto;}
   /* style the list to maximize the droppable hitarea */
   #playerList ol { margin: 0; padding: 1em 0 1em 3em; }
-      #team1  { padding-top: 40px;width:90%; margin: 0px auto;}
   /* style the list to maximize the droppable hitarea */
   #team1 ol { margin: 0; padding: 1em 0 1em 3em; }
-      #team2  { padding-top: 40px;width:90%; margin: 0px auto;}
   /* style the list to maximize the droppable hitarea */
   #team2 ol { margin: 0; padding: 1em 0 1em 3em; }
   #product ol { margin: 0; padding: 1em 0 1em 3em; }

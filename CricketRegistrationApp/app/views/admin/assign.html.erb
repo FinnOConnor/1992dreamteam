@@ -1,0 +1,18 @@
+<h5>~ generated teams ~</h5>
+<table class="table">
+	<tr>
+		<th>name</th>
+		<th>dob</th>
+        <th>grade</th>
+		<th>team</th>
+	</tr>
+<%@player.each do |player|%>
+	<tr>
+		<td><%=player.first_name%> <%=player.surname%></td>
+        <td><%=player.age()%></td>
+		<td><%=player.try(:grade).try(:grade_name)%></td>
+		<td><%=player.try(:team).try(:name)%></td>
+	</tr>
+
+<%end%>
+</table>    

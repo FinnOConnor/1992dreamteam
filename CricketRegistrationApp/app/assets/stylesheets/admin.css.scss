@@ -37,11 +37,13 @@ tidy{} /* ignore this */
 	padding-bottom: 1%;
 	padding-top: 1%;
     left: 0;
+    display: block;
     transition: 0.4s
 }
 
 #admin_sidebar ul li:hover{
     background: #9ee094;
+    cursor: pointer;
 }
 
 #admin_sidebar ul li h4{
