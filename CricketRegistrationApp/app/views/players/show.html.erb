@@ -59,12 +59,12 @@
 
 <p>
   <strong>Team:</strong>
-  <%= @player.team_id %>
+  <%= @player.try(:team) %>
 </p>
 
 <p>
   <strong>Parent:</strong>
-  <%= @player.parent_id %>
+  <%= @player.try(:parent) %>
 </p>
 
 <br>

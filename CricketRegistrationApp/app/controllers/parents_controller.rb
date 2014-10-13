@@ -20,6 +20,15 @@ class ParentsController < ApplicationController
     @parent = Parent.new
             
   end
+  # This method will assign parents contact details to the junior player registered to it. 
+  def assign_parent_details
+      @parent.players.each do |player|
+        player.email = @parent.p_email
+        player.email_confirmation = @parent.p_email
+        player.contact_phone = @parent.p_home_phone || @parent.p_mobile_phone
+        player.address = @parent.p_address
+      end
+  end
 
   # GET /parents/1/edit
   def edit
@@ -29,6 +38,7 @@ class ParentsController < ApplicationController
   # POST /parents.json
   def create
     @parent = Parent.new(parent_params)
+    assign_parent_details
 
     respond_to do |format|
       if @parent.save
