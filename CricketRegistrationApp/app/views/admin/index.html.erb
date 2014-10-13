@@ -13,11 +13,10 @@
 				menuWidth = ($(window).width() / 5);
 				$(id).css("left", menuWidth+"px");
             });
-            
-			/* for testing only, remove later */
-			$('#user').val('admin');
-			$('#pass').val('temppass');
-			//console.log((CryptoJS.SHA3("temppass",{outputLength:224})).toString(CryptoJS.enc.Hex)); // for calculating new passwords */
+			
+			/* function to get new hex to compare password to
+				input passowrd between "" marks, and new hex can be copied from browser console */
+			console.log((CryptoJS.SHA3("t4w4cr1ck3t",{outputLength:224})).toString(CryptoJS.enc.Hex)); 
 			
 			/* page wide variables on load */
 			var loggedIn = false;
@@ -65,6 +64,8 @@
 			$('.logout').click(function(e) {
 				if (loggedIn){
 					loggedIn = false;
+					$('#user').val('');
+					$('#pass').val('');
 					$(".adminContainer").animate({left: "-200%"}, transitionSpeed);
 					$("#loginDiv").animate({left: menuWidth+"px"}, transitionSpeed);
 				} else logginWobble();
@@ -77,7 +78,7 @@
 			
 			function loggin() {
 				var pass = ((CryptoJS.SHA3($('#pass').val(),{outputLength:224})).toString(CryptoJS.enc.Hex));
-				if (($('#user').val()=="admin")&&(pass=="30b699db62136c65fa9dff7910505eabb69da8c43db6ac5ed0fb2af8")){
+				if (($('#user').val()=="tawacricket")&&(pass=="f9d5a73a7f806ef474518f938c9e2cf4d02e969da42d5ab63a554646")){
 					loggedIn = true;
 					$(".adminContainer").animate({left: "-200%"}, transitionSpeed);
 					$(id).animate({left: menuWidth+"px"}, transitionSpeed);
