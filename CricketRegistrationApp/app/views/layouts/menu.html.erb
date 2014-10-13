@@ -14,6 +14,8 @@
                         scrollTop: title_container + "px"
                 }, 600); 
             }
+
+            
             
            $(window).scroll(function(){
                 if ($(window).scrollTop() >= title_container){
@@ -38,8 +40,9 @@
 
   
         <!--  Menu and header for all pages  -->
-    
-        <div id="background_image" style="background: url(<%= asset_path 'cricket.jpg' %>);"></div>
+        <!-- To change the background image, place it in the assets/images folder, and change asset_path to the name of your image  -->
+
+        <div id="background_image" style="background: url(<%= asset_path '3.jpg' %>);"></div>
     
         <div id="title_container"><div id="title">  
             <p class="title">

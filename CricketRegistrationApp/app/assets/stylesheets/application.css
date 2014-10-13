@@ -16,6 +16,7 @@
 
 tidy{} /* ignore this */
 
+
 body {
     font-family: 'Lato';
     background: #f3f4ee;
@@ -60,6 +61,7 @@ h2 {
     position: absolute;
     overflow: hidden;
 }
+
 
 /* overlay for the Background image */
 
