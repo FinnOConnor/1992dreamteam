@@ -11,10 +11,6 @@ respond_to :json
       
   end
 	
-  def generate
-  
-  end
-  
   def gogo
       $num = params[:length].to_i
       $i = 0
