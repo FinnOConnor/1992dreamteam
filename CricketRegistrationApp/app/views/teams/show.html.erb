@@ -2,15 +2,22 @@
 
 <p id="notice"><%= notice %></p>
 
+
 <p>
   <strong>Grade:</strong>
-  <%= @team.grade %>
+  <%= @team.try(:grade).try(:grade_name) %>
 </p>
 
 <p>
   <strong>Coach:</strong>
-  <%= @team.coach_id %>
+  <%= @team.try(:coach).try(:name) %>
 </p>
+  <strong>Players:</strong>
+    <ul>
+        <% @team.try(:players).each do |player| %>
+            <li><%= player.name %></li>
+        <% end %>
+    </ul>
 
 <br>
 
