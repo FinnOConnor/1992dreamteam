@@ -14,31 +14,27 @@
 	<table class="table">
 	  <thead>
 		<tr>
-		  <th><%= sort_link(@search, :first_name, "first name") %></th>
-		  <th><%= sort_link(@search, :surname, "surname") %></th>
-<!--		  <th><%= sort_link(@search, :gender , "gender") %></th>-->
-	  
-		  <th><%= sort_link(@search, :date_of_birth , "Date of birth") %></th>
-	
-<!--
-		  <th>address</th>
-		  <th>contact phone</th>
-		  <th>email</th>
+		    <th><%= sort_link(@search, :first_name, "first name") %></th>
+		    <th><%= sort_link(@search, :surname, "surname") %></th>
+		    <th><%= sort_link(@search, :date_of_birth , "date of birth") %></th>
+            <th>contact phone</th>
+            <th>show details</th>
+
+<!--        
+            These attributes can be shown, but they will not fit properly on a narrow screen
+            <th>address</th>
+            <th><%= sort_link(@search, :gender , "gender") %></th>
+            <th>email</th>
+            <th><%= sort_link(@search, :school_year , "School year") %></th>
+            <th><%= sort_link(@search, :school_next_year , "School next year") %></th>
+            <th><%= sort_link(@search, :grade_last_season , "Grade last season") %></th>
+            <th><%= sort_link(@search, :team_id_last_season , "Team id last season") %></th>
+            <th><%= sort_link(@search, :senior , "Senior") %></th>
+            <th>Notes</th>
+            <th><%= sort_link(@search, :team , "Team") %></th>
+            <th><%= sort_link(@search, :parent , "Parent") %></th>
+            <th>show details</th>
 -->
-	<!--
-		  <th><%= sort_link(@search, :school_year , "School year") %></th>
-		  <th><%= sort_link(@search, :school_next_year , "School next year") %></th>
-		  <th><%= sort_link(@search, :grade_last_season , "Grade last season") %></th>
-		  <th><%= sort_link(@search, :team_id_last_season , "Team id last season") %></th>
-		  <th><%= sort_link(@search, :senior , "Senior") %></th>
-		  <th>Notes</th>
-		  <th><%= sort_link(@search, :team , "Team") %></th>
-		  <th><%= sort_link(@search, :parent , "Parent") %></th>
-	-->
-		  <th>show details</th>
-	<!--
-		  <th colspan="2"></th>
-	-->
 		</tr>
 	  </thead>
 
@@ -46,17 +42,14 @@
 		<% @players.each do |player| %>
 		  <tr>
 			<td><%= player.first_name %></td>
-			<td><%= player.surname %></td>
-<!--			<td><%= player.gender %></td>-->
-	    
-			<td><%= player.date_of_birth %></td>
-	
+			<td><%= player.surname %></td>		
+	        <td><%= player.date_of_birth %></td>
+            <td><%= player.contact_phone %></td>
+
 <!--
 			<td><%= player.address %></td>
-			<td><%= player.contact_phone %></td>
+            <td><%= player.gender %></td>
 			<td><%= player.email %></td>
--->
-	<!--
 			<td><%= player.school_year %></td>
 			<td><%= player.school_next_year %></td>
 			<td><%= player.grade_last_season %></td>
@@ -65,12 +58,12 @@
 			<td><%= player.notes %></td>
 			<td><%= player.try(:team).try(:name) %></td>
 			<td><%= player.try(:parent).try(:p_first_name) %></td>
-	-->
-			<td><div class="button"><%= link_to 'Player Details', player %></div></td>
-	<!--
-			<td><%= link_to 'Edit', edit_player_path(player) %></td>
-			<td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-	-->
+			<td><%= link_to 'Edit', edit_player_path(player) %></td>              
+			<td><%= link_to 'Destroy', player, method: :delete, data: { confirm: 'Are you sure?' } %></td>      
+-->
+			
+            <td><div class="button"><%= link_to 'Player Details', player %></div></td>
+
 		  </tr>
 		<% end %>
 	  </tbody>

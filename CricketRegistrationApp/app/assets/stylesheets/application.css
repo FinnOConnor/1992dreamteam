@@ -293,3 +293,26 @@ h2 {
 }
 
 
+
+.details {
+    display: none;
+    background: #9cc185;
+    position: absolute;
+    width: auto;
+    height: auto;
+    color: #e0f4d3;
+    padding: 0px 15px 0px 15px;
+    opacity: 0.9;
+    z-index: 100;
+}
+
+.details ul {
+    list-style-type: none;
+    padding: 0;    
+}
+
+.details li {
+    display: block;
+    width: auto;
+}
+

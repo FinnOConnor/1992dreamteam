@@ -163,3 +163,40 @@ input[type=submit]:active {
 #regbtn {
 	position: relative;
 }
+
+
+/* Display information styles */
+
+.person_details {
+    width: 80%;
+    margin: auto;
+    margin-top: -30px;
+}
+
+.person_details p{
+    font-size: 12pt;
+    color: #5a7250;
+    border-bottom: 1px solid #e8e8e8;
+    line-height: 100%;
+    padding: 15px;
+}
+
+.person_details li {
+    font-size: 11pt;
+    color: #5a7250;
+    line-height: 100%;
+    padding: 7px;
+    display: block;
+}
+
+.button_container{
+    right: 30px;
+    position: fixed;
+    bottom: 40px;
+    height: auto;
+}
+
+.button_container div {
+    float: right;
+    margin-bottom: 15px;
+}

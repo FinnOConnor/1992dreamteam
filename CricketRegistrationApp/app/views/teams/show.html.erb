@@ -1,26 +1,100 @@
+<head>
+<meta charset="utf-8">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+
+<script>
+      
+/**
+    Have to put the javascript in the head of this file for some reason. 
+    We weren't able to get the assets/javascripts/ files working properly
+**/
+      
+$(document).ready(function(){ 
+
+    /* Mouse coordinates */
+    var mouseX;
+    var mouseY;
+    
+    /* Get mouse coordinates when mouse is moved */
+
+    $(document).mousemove( function(e) {
+        mouseX = e.pageX; 
+        mouseY = e.pageY;
+    });   
+    
+       
+             
+    /* Mouse over a player */
+        
+    $(document).on("mouseenter", ".person_details ul li", function(){
+        var player = $(this);        
+        myTimeout = setTimeout(function() {
+            show_player_details(player.attr('id'));
+        
+        }, 500);
+    });
+        
+    
+    /* Mouse out from a player */
+        
+    $(document).on("mouseleave", ".person_details ul li", function(){
+        clearTimeout(myTimeout);
+        $('.details').hide();
+    });        
+
+    
+    /* Show the tooltip */
+        
+    function show_player_details(playerid){
+        $('.details').show();        
+        $('.details').css({left: mouseX+1, top: mouseY+1});
+        
+        <% @team.try(:players).each do |p| %>
+            if(<%= p.id %> == playerid){
+                $('.details').html("<ul><li>Name: <%= p.name %> </li><li>Age: <%= p.age %> </li><li>Email: <%= p.email %> </li><li>Ph: <%= p.contact_phone %> </li></ul>");   
+            }
+        <% end %>    
+
+
+    }
+        
+});
+
+</script>
+    
+    
+</head>
+<body>
+    
+    
 <h5>~ <%= @team.name %> ~</h5>
 
-<p id="notice"><%= notice %></p>
+<div class="person_details">
+    <p id="notice"><%= notice %></p>
 
+    <p>
+      <strong>Grade:</strong>
+      <%= @team.try(:grade).try(:grade_name) %>
+    </p>
 
-<p>
-  <strong>Grade:</strong>
-  <%= @team.try(:grade).try(:grade_name) %>
-</p>
+    <p>
+      <strong>Coach:</strong>
+      <%= @team.try(:coach).try(:name) %>
+    </p>
+    <p><strong>Players:</strong></p>
+        <ul>
+            <% @team.try(:players).each do |player| %>
+                <li id="<%= player.id %>"><%= player.name %></li>
 
-<p>
-  <strong>Coach:</strong>
-  <%= @team.try(:coach).try(:name) %>
-</p>
-  <strong>Players:</strong>
-    <ul>
-        <% @team.try(:players).each do |player| %>
-            <li><%= player.name %></li>
-        <% end %>
-    </ul>
-
+            <% end %>
+        </ul>
+</div>
 <br>
 
-<br><div class="button"><%= link_to 'Edit Team Information', edit_team_path(@team) %></div>
-<br><div class="button"><%= link_to 'Delete Team from Database', @team, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-<br><div class="button"><%= link_to 'Go Back', teams_path %></div>
+<div class="button_container">
+    <br><div class="button"><%= link_to 'Edit Team Information', edit_team_path(@team) %></div>
+    <br><div class="button"><%= link_to 'Delete Team from Database', @team, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+    <br><div class="button"><%= link_to 'Go Back', teams_path %></div>
+</div>    
+
+<div class="details"></div>

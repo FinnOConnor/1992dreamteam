@@ -1,74 +1,79 @@
 <h5>~ <%= @player.first_name %> <%= @player.surname %> ~</h5>
 
-<p id="notice"><%= notice %></p>
+<div class="person_details">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Gender:</strong>
-  <%= @player.gender %>
-</p>
+    <p>
+      <strong>Gender:</strong>
+      <%= @player.gender %>
+    </p>
 
-<p>
-  <strong>DoB:</strong>
-  <%= @player.date_of_birth %>
-</p>
+    <p>
+      <strong>DoB:</strong>
+      <%= @player.date_of_birth %>
+    </p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @player.address %>
-</p>
+    <p>
+      <strong>Address:</strong>
+      <%= @player.address %>
+    </p>
 
-<p>
-  <strong>Contact phone:</strong>
-  <%= @player.contact_phone %>
-</p>
+    <p>
+      <strong>Contact phone:</strong>
+      <%= @player.contact_phone %>
+    </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @player.email %>
-</p>
+    <p>
+      <strong>Email:</strong>
+      <%= @player.email %>
+    </p>
 
-<p>
-  <strong>School year:</strong>
-  <%= @player.school_year %>
-</p>
+    <p>
+      <strong>School year:</strong>
+      <%= @player.school_year %>
+    </p>
 
-<p>
-  <strong>School next year:</strong>
-  <%= @player.school_next_year %>
-</p>
+    <p>
+      <strong>School next year:</strong>
+      <%= @player.school_next_year %>
+    </p>
 
-<p>
-  <strong>Grade last season:</strong>
-  <%= @player.grade_last_season %>
-</p>
+    <p>
+      <strong>Grade last season:</strong>
+      <%= @player.grade_last_season %>
+    </p>
 
-<p>
-  <strong>Team id last season:</strong>
-  <%= @player.team_id_last_season %>
-</p>
+    <p>
+      <strong>Team id last season:</strong>
+      <%= @player.team_id_last_season %>
+    </p>
 
-<p>
-  <strong>Senior:</strong>
-  <%= @player.senior %>
-</p>
+    <p>
+      <strong>Senior:</strong>
+      <%= @player.senior %>
+    </p>
 
-<p>
-  <strong>Notes:</strong>
-  <%= @player.notes %>
-</p>
+    <p>
+      <strong>Notes:</strong>
+      <%= @player.notes %>
+    </p>
 
-<p>
-  <strong>Team:</strong>
-  <%= @player.team_id %>
-</p>
+    <p>
+      <strong>Team:</strong>
+      <%= @player.team_id %>
+    </p>
 
-<p>
-  <strong>Parent:</strong>
-  <%= @player.parent_id %>
-</p>
-
+    <p>
+      <strong>Parent:</strong>
+      <%= @player.parent_id %>
+    </p>
+</div>
 <br>
 
-<br><div class="button"><%= link_to 'Edit Player Information', edit_player_path(@player) %></div>
-<br><div class="button"><%= link_to 'Delete Player from Database', @player, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-<br><div class="button"><%= link_to 'Go Back', players_path %></div>
+<div class="button_container">
+
+    <br><div class="button"><%= link_to 'Edit Player Information', edit_player_path(@player) %></div>
+    <br><div class="button"><%= link_to 'Delete Player from Database', @player, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+    <br><div class="button"><%= link_to 'Go Back', players_path %></div>
+
+</div>

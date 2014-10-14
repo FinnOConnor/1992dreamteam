@@ -1,34 +1,37 @@
 <h5>~ <%= @coach.first_name %> <%= @coach.surname %> ~</h5>
 
-<p id="notice"><%= notice %></p>
+<div class="person_details">
+    <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Gender:</strong>
-  <%= @coach.gender %>
-</p>
+    <p>
+      <strong>Gender:</strong>
+      <%= @coach.gender %>
+    </p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @coach.address %>
-</p>
+    <p>
+      <strong>Address:</strong>
+      <%= @coach.address %>
+    </p>
 
-<p>
-  <strong>Home phone:</strong>
-  <%= @coach.home_phone %>
-</p>
+    <p>
+      <strong>Home phone:</strong>
+      <%= @coach.home_phone %>
+    </p>
 
-<p>
-  <strong>Mobile phone:</strong>
-  <%= @coach.mobile_phone %>
-</p>
+    <p>
+      <strong>Mobile phone:</strong>
+      <%= @coach.mobile_phone %>
+    </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @coach.email %>
-</p>
-
+    <p>
+      <strong>Email:</strong>
+      <%= @coach.email %>
+    </p>
+</div>
 <br>
 
-<br><div class="button"><%= link_to 'Edit Coach Information', edit_coach_path(@coach) %></div>
-<br><div class="button"><%= link_to 'Delete Coach from Database', @coach, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-<br><div class="button"><%= link_to 'Go Back', coaches_path %></div>
+<div class="button_container">
+    <br><div class="button"><%= link_to 'Edit Coach Information', edit_coach_path(@coach) %></div>
+    <br><div class="button"><%= link_to 'Delete Coach from Database', @coach, method: :delete, data: { confirm: 'Are you sure?' } %></div>
+    <br><div class="button"><%= link_to 'Go Back', coaches_path %></div>
+</div>
