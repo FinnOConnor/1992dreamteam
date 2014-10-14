@@ -132,6 +132,25 @@ input[type=submit]:active {
 
 /* Submit buttons styling */
 
+.big_button a{
+    padding: 70px;
+    background: linear-gradient(#99f57e, #88d675);
+    border: 1px solid #ccc;
+	border-radius: 10px;
+}
+
+.big_button a{
+    text-decoration: none;
+    font-size: 30pt;
+    color: #4b6c49;
+    margin: 100px;
+}
+
+.big_button a:hover{
+    background: linear-gradient(#88d675, #99f57e);
+    color: #4b6c49;
+}
+
 .button a {
     padding: 6px;
     background: linear-gradient(#f3f5e8, #dee0d1);
