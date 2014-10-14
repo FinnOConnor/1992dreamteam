@@ -21,7 +21,8 @@ class AdminController < ApplicationController
             player.save(:validate => false)
         end
   end
-
+  
+  # Assigning Players to Teams based on the Players' and Teams' grades #
   def assign
       assign_grade
   	Player.all.each do |player|

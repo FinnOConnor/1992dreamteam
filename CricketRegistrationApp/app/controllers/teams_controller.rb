@@ -69,17 +69,6 @@ class TeamsController < ApplicationController
     end
   end
 
-  def generateTeams
-    
-	
-	Player.all.each do |player|
-	
-	end
-	
-  end
-    
-    helper_method :generateTeams
-    
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_team

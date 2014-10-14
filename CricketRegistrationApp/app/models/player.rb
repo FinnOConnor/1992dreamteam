@@ -13,11 +13,11 @@ class Player < ActiveRecord::Base
     validates :address, :length => {maximum: 50}, presence: true
     validates :contact_phone, :length => {in: 7..50}, presence: true, unless: :senior_member?
     validates :email, confirmation: true, if: :senior_member?
-    validates :email_confirmation, presence: true, if: :senior_member?
+    #validates :email_confirmation, presence: true, if: :senior_member?
     validates :school, :length => {maximum: 50}, presence: true, if: :senior_member?
     validates :school_year, :numericality => {:greater_than => 0}, presence: true, if: :senior_member?
     validates :school_next_year, :length => {maximum: 50}, presence: true, if: :senior_member?
-    validates :grade_last_season, :length => {maximum: 50}, presence: true
+    #validates :grade_last_season, :length => {maximum: 50}, presence: true
     validates :notes, :length => {maximum: 500}
     #validates :team_id_last_season
 	#validates :team_id
